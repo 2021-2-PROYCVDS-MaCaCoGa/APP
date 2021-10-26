@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3c.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+      <link rel="stylesheet" href="css/style.css"></link>
+    <link rel="stylesheet" href="css/normalize.css"></link>
+    <h:head>
+        <title>Solidaridad Escuela</title>
+    </h:head>
+    <h:body>
+        <style type="text/css">
+        
+        .login h5{
+            margin: 0;
+            text-align: center;
+            height: 40px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid;
+            font-size: 20px;
+        }
+        .margenBoton{
+            align-items: center;
+            margin-top: 3.5rem;
+            margin-left: 8rem;
+        }
+        .margenes{
+            margin-top: 2rem;
+            margin-left: 3rem;
+        }
+        .login {
+            height: 340px;
+            width: 400px;
+            margin: auto;
+            margin-top: 140px;
+            position: relative;
+            border: 2px solid darkred;
+            border-radius: 15%;
+            padding: 20px 30px;
+            background-color: rgba(94, 94, 94, 0.8);
+        }
+        
+        </style>
+        <body background="resources/FONDO1.jpg"></body>
+        <h:form id="Solidaridad-Escuela">
+            <section class="login">
+                <!--Nombre de usuario-->
+                <h5>Bienvenido a la página de solidaridad de ECI</h5>
+                <img style="margin-top: 0.02rem; margin-left: 7rem;" src="/resources/IMAGEN2.png"/>
+                <p:inputText class="margenes" id="float-input" value="#{inputTextView.text}"/>
+                <p:outputLabel style="margin-left: 1rem;" for="@previous" value="Usuario"/>
+                <!--Contraseña-->
+                <p:password class="margenes" id="nonFeedback" value="#{passwordView.password1}"/>
+                <p:outputLabel style="margin-left: 1rem;" for="@previous" value="Contraseña"/>
+                <!--Boton para iniciar-->
+                <div>
+                    <p:button class="margenBoton" value="Iniciar Sesión" />
+                 </div>
+            </section>
+        </h:form>
+    </h:body>
+</html>
