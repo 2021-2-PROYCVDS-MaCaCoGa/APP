@@ -14,15 +14,11 @@ public class MyBatisUsuario implements UsuarioDao {
     @Override
     public boolean ExistenciaUsuario(String login, String contraseña) throws PersistenceException{
         try{
-<<<<<<< HEAD
             int verificador = usuarioMapper.ExistenciaUsuario(login, contraseña);
             if(verificador == 1){
                 return true;
             }
             return false;
-=======
-            return null;
->>>>>>> 189c31559b61f677490c9651e57230f4ef3bdd0e
         }catch(Exception e){
             throw new PersistenceException("El usuario no existe o la contraseña es incorrecta: ", e);
         }
