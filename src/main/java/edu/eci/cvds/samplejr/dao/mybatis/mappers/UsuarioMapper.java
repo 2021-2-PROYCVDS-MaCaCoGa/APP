@@ -22,6 +22,7 @@ public interface UsuarioMapper {
                                 @Param("CORREO") String correo,
                                 @Param("PERFIL") Perfil perfil);
 
-
+    public int ExistenciaUsuario(@Param("USUARIO") String nombre,
+                                 @Param("CONTRA") String contraseña);
     
 }

@@ -2,7 +2,7 @@ package edu.eci.cvds.samples.services.impl;
 
 import javax.inject.Inject;
 
-import org.apache.ibatis.javassist.bytecode.stackmap.BasicBlock.Catch;
+
 
 
 import edu.eci.cvds.samplejr.dao.PersistenceException;
@@ -16,8 +16,24 @@ public class ServiciosEscuelaImpl implements ServiciosEscuela {
     private UsuarioDao usuario;
 
     @Override
-    public boolean iniciarSesion(String login, String contraseña) throws ExcepcionServiciosEscuela {
-        return false;
+    public Usuario iniciarSesion(String login, String contraseña) throws ExcepcionServiciosEscuela {
+ 
+        return null;
+    }
+
+    /**
+     * Se encarga de revisar si el usuario está en la base de datos, en caso que no, retorna false
+     * Lo mismo pasa con la contraseña. SI no es la correcta, retorna false
+     */
+    @Override
+    public boolean verificarUsuario(String login, String contraseña) throws ExcepcionServiciosEscuela {
+        try{
+            return usuario.ExistenciaUsuario(login, contraseña);
+         } catch(PersistenceException persistenceException){
+         throw new ExcepcionServiciosEscuela("Usuario inexistente o contraseña incorrecta");
      }
+    }    
     
 }
+
+

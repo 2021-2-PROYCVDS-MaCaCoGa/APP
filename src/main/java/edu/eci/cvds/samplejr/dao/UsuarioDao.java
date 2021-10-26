@@ -4,5 +4,7 @@ import edu.eci.cvds.samples.entities.Usuario;
 
 public interface UsuarioDao {
     
-    public boolean iniciarSesion(String login, String contraseña) throws PersistenceException;
+    public Usuario iniciarSesion(String login, String contraseña) throws PersistenceException;
+
+    public boolean ExistenciaUsuario(String login, String contra) throws PersistenceException;
 }

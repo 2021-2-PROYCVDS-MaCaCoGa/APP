@@ -15,3 +15,11 @@
     THEN CAST(1 AS A BIT)
     ELSE CAST(0 AS A BIT) END
     </select>
+
+    <resultMap type="Usuario" id="UsuarioResult">
+        <id property="" column="">
+        <result property="" column="">
+        <result property="" column="">
+        <result property="" column="">
+        <result property="" column="">
+        <result property="" column="">
