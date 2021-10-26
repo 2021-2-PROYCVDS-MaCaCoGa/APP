@@ -1,5 +1,6 @@
 package edu.eci.cvds.samples.services.impl;
 
+<<<<<<< HEAD
 import javax.inject.Inject;
 
 
@@ -7,15 +8,16 @@ import javax.inject.Inject;
 
 import edu.eci.cvds.samplejr.dao.PersistenceException;
 import edu.eci.cvds.samplejr.dao.UsuarioDao;
+=======
+>>>>>>> 189c31559b61f677490c9651e57230f4ef3bdd0e
 import edu.eci.cvds.samples.entities.Usuario;
 import edu.eci.cvds.samples.services.ExcepcionServiciosEscuela;
 import edu.eci.cvds.samples.services.ServiciosEscuela;
 
 public class ServiciosEscuelaImpl implements ServiciosEscuela {
-    @Inject
-    private UsuarioDao usuario;
 
     @Override
+<<<<<<< HEAD
     public Usuario iniciarSesion(String login, String contraseña) throws ExcepcionServiciosEscuela {
  
         return null;
@@ -33,6 +35,11 @@ public class ServiciosEscuelaImpl implements ServiciosEscuela {
          throw new ExcepcionServiciosEscuela("Usuario inexistente o contraseña incorrecta");
      }
     }    
+=======
+    public Usuario iniciarSesion(String login, String contraseña) throws ExcepcionServiciosEscuela{
+        return null;
+    }
+>>>>>>> 189c31559b61f677490c9651e57230f4ef3bdd0e
     
 }
 
