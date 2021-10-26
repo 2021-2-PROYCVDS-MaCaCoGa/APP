@@ -3,6 +3,16 @@ package edu.eci.cvds.samples.entities;
 import java.io.Console;
 import java.io.Serializable;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.*;
+import org.apache.shiro.config.IniSecurityManagerFactory;
+import org.apache.shiro.mgt.SecurityManager;
+import org.apache.shiro.session.Session;
+import org.apache.shiro.subject.Subject;
+import org.apache.shiro.util.Factory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /* Clase que contiene la informacion de los usuarios que utilizan la aplicación
 **/
 public class Usuario implements Serializable{
@@ -11,6 +21,8 @@ public class Usuario implements Serializable{
     private String correo;
     private String contraseña;
     private String login;
+
+    private static final transient Logger log = LoggerFactory.getLogger(Usuario.class);
 
     /**
      * Crea un usuario dados los distintos parametros
@@ -45,4 +57,9 @@ public class Usuario implements Serializable{
     public void setLogin(String login){this.login = login;}
     public String getLogin(){return this.login;}
 
+    public void seguridadLogin(){
+        Factory<SecurityManager> factory = new IniSecurityManagerFactory("classpath:shiro.ini");
+        SecurityManager securityManager = factory.getInstance();
+        SecurityUtils.setSecurityManager(securityManager);
+    }
 }
