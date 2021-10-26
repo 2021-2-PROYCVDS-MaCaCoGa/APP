@@ -2,7 +2,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>edu.eci.cdvs</groupId>
-  <artifactId>Solidaridad-Escuela</artifactId>
+  <artifactId>APP</artifactId>
   <packaging>war</packaging>
   <version>1.0</version>
   <name>Solidaridad-Escuela Maven Webapp</name>
@@ -53,6 +53,14 @@
       <version>7.0</version>
       <scope>provided</scope>
     </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.google.inject/guice -->
+    <dependency>
+        <groupId>com.google.inject</groupId>
+        <artifactId>guice</artifactId>
+        <version>4.2.2</version>
+    </dependency>
+
 
     <dependency>
       <groupId>junit</groupId>

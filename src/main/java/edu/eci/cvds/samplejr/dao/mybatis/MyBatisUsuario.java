@@ -12,12 +12,13 @@ public class MyBatisUsuario implements UsuarioDao {
     UsuarioMapper usuarioMapper;
 
     @Override
-    public Usuario iniciarSesion(String login, String contraseña) throws PersistenceException{
+    public boolean iniciarSesion(String login, String contraseña) throws PersistenceException{
         try{
             return null;
         }catch(Exception e){
             throw new PersistenceException("El usuario o contraseña estan mal escritos o son invalidos: ", e);
         }
+        return true;
     }
 }
 

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.UsuarioMapper">
+    <select parameterType="map" id="ExistenciaUsuario" resultMap="UsuarioResult">
+    SELECT CASE WHEN EXISTS (
+        SELECT *
+        From Login
+        LEFT JOIN Perfiles ON Login.IDPerfil = Login.IDPerfil
+        WHERE Perfiles.IDPerfil = #{usuario} AND
+        Login.Contra = #{contra}
+    )
+    THEN CAST(1 AS A BIT)
+    ELSE CAST(0 AS A BIT) END
+    </select>

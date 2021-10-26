@@ -1,0 +1,7 @@
+edu\eci\cvds\samples\entities\Usuario.class
+edu\eci\cvds\samplejr\dao\UsuarioDao.class
+edu\eci\cvds\samples\entities\Perfil.class
+edu\eci\cvds\samples\entities\Necesidad.class
+edu\eci\cvds\samples\services\ExcepcionServiciosEscuela.class
+edu\eci\cvds\samplejr\dao\PersistenceException.class
+edu\eci\cvds\samplejr\dao\mybatis\mappers\UsuarioMapper.class
