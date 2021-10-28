@@ -14,7 +14,8 @@ public interface CategoriaMapper {
     public void borrarCategoria(@Param("id") int id);
 
     public void modificarCategoria(@Param("id") int id,
-                                          @Param("fechaModificacion") Date fechaModificacion);
+                                   @Param("nombre") String nombre,
+                                   @Param("estado") boolean estado);
 
     public Categoria consultarCategorias();
 }
