@@ -7,7 +7,10 @@ import edu.eci.cvds.samplejr.dao.UsuarioDao;
 import org.apache.ibatis.transaction.TransactionFactory;
 import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 import org.mybatis.guice.XMLMyBatisModule;
+import org.mybatis.guice.datasource.helper.JdbcHelper;
+
 import edu.eci.cvds.samples.services.impl.ServiciosEscuelaImpl;
+import edu.eci.cvds.samples.services.ServiciosEscuela;
 
 import java.util.Optional;
 
@@ -17,23 +20,22 @@ public class ServiciosEscuelaFactory {
 
    private static ServiciosEscuelaFactory instance = new ServiciosEscuelaFactory();
 
-   private static Optional<Injector> optInjector;
+   private static Injector Injector;
+
+   private Optional<Injector> optInjector;
 
    private Injector myBatisInjector(String env, String pathResource) {
        return createInjector(new XMLMyBatisModule() {
            @Override
            protected void initialize() {
-               setEnvironmentId(env);
-               setClassPathResource(pathResource);
-               bind(UsuarioDao.class).to(MyBatisUsuario.class);
-               //ESTA LINEA ESTÁ GENERANDO UN ERROR
-               bind(ServiciosEscuela.class).to(ServiciosEscuelaImpl.class);
+               install(JdbcHelper.PostgreSQL);
+			   setClassPathResource("mybatis-config.xml");
            }
        });
    }
 
    private ServiciosEscuelaFactory(){
-       optInjector = Optional.empty();
+        optInjector = Optional.empty();
    }
 
    public ServiciosEscuela getServiciosEscuela(){
