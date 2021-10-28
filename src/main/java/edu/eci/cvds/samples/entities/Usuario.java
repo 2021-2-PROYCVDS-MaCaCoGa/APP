@@ -62,4 +62,5 @@ public class Usuario implements Serializable{
         SecurityManager securityManager = factory.getInstance();
         SecurityUtils.setSecurityManager(securityManager);
     }
+
 }

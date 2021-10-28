@@ -12,6 +12,15 @@ public class Categoria implements Serializable {
     private Date fechaModificacion;
 
     public Categoria(){
-        
+        this.estado = true;
     }
+    public Categoria(int id, String nombre, String descripcion, Date fechaCreacion){
+        this();
+        this.id = id;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.fechaCreacion = fechaCreacion;
+    }
+
+    
 }

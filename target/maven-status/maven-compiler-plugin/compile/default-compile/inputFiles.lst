@@ -1,13 +1,15 @@
-D:\Juanes\Tareas\U\CVDS\Proyecto\PROYECTO\APP\src\main\java\edu\eci\cvds\samples\entities\Categoria.java
-D:\Juanes\Tareas\U\CVDS\Proyecto\PROYECTO\APP\src\main\java\edu\eci\cvds\samples\entities\Necesidad.java
-D:\Juanes\Tareas\U\CVDS\Proyecto\PROYECTO\APP\src\main\java\edu\eci\cvds\samplejr\dao\mybatis\MyBatisUsuario.java
-D:\Juanes\Tareas\U\CVDS\Proyecto\PROYECTO\APP\src\main\java\edu\eci\cvds\samples\services\ServiciosEscuelaFactory.java
-D:\Juanes\Tareas\U\CVDS\Proyecto\PROYECTO\APP\src\main\java\edu\eci\cvds\samplejr\dao\mybatis\mappers\UsuarioMapper.java
-D:\Juanes\Tareas\U\CVDS\Proyecto\PROYECTO\APP\src\main\java\edu\eci\cvds\samplejr\dao\PersistenceException.java
-D:\Juanes\Tareas\U\CVDS\Proyecto\PROYECTO\APP\src\main\java\edu\eci\cvds\samples\services\ExcepcionServiciosEscuela.java
-D:\Juanes\Tareas\U\CVDS\Proyecto\PROYECTO\APP\src\main\java\edu\eci\cvds\samples\services\ServiciosEscuela.java
-D:\Juanes\Tareas\U\CVDS\Proyecto\PROYECTO\APP\src\main\java\edu\eci\cvds\samplejr\dao\UsuarioDao.java
-D:\Juanes\Tareas\U\CVDS\Proyecto\PROYECTO\APP\src\main\java\edu\eci\cvds\samples\services\impl\ServiciosEscuelaImpl.java
-D:\Juanes\Tareas\U\CVDS\Proyecto\PROYECTO\APP\src\main\java\edu\eci\cvds\samples\entities\Usuario.java
-D:\Juanes\Tareas\U\CVDS\Proyecto\PROYECTO\APP\src\main\java\edu\eci\cvds\view\controladorLogin.java
-D:\Juanes\Tareas\U\CVDS\Proyecto\PROYECTO\APP\src\main\java\edu\eci\cvds\samples\entities\Perfil.java
+C:\Users\crisa\OneDrive - ESCUELA COLOMBIANA DE INGENIERIA JULIO GARAVITO\Universidad\7mo Semestre\CVDS\Proyecto\APP\src\main\java\edu\eci\cvds\samplejr\dao\mybatis\mappers\UsuarioMapper.java
+C:\Users\crisa\OneDrive - ESCUELA COLOMBIANA DE INGENIERIA JULIO GARAVITO\Universidad\7mo Semestre\CVDS\Proyecto\APP\src\main\java\edu\eci\cvds\samples\services\ServiciosEscuelaFactory.java
+C:\Users\crisa\OneDrive - ESCUELA COLOMBIANA DE INGENIERIA JULIO GARAVITO\Universidad\7mo Semestre\CVDS\Proyecto\APP\src\main\java\edu\eci\cvds\samples\entities\Usuario.java
+C:\Users\crisa\OneDrive - ESCUELA COLOMBIANA DE INGENIERIA JULIO GARAVITO\Universidad\7mo Semestre\CVDS\Proyecto\APP\src\main\java\edu\eci\cvds\samplejr\dao\CategoriaDao.java
+C:\Users\crisa\OneDrive - ESCUELA COLOMBIANA DE INGENIERIA JULIO GARAVITO\Universidad\7mo Semestre\CVDS\Proyecto\APP\src\main\java\edu\eci\cvds\samples\services\ServiciosEscuela.java
+C:\Users\crisa\OneDrive - ESCUELA COLOMBIANA DE INGENIERIA JULIO GARAVITO\Universidad\7mo Semestre\CVDS\Proyecto\APP\src\main\java\edu\eci\cvds\samples\entities\Perfil.java
+C:\Users\crisa\OneDrive - ESCUELA COLOMBIANA DE INGENIERIA JULIO GARAVITO\Universidad\7mo Semestre\CVDS\Proyecto\APP\src\main\java\edu\eci\cvds\samples\services\impl\ServiciosEscuelaImpl.java
+C:\Users\crisa\OneDrive - ESCUELA COLOMBIANA DE INGENIERIA JULIO GARAVITO\Universidad\7mo Semestre\CVDS\Proyecto\APP\src\main\java\edu\eci\cvds\view\controladorLogin.java
+C:\Users\crisa\OneDrive - ESCUELA COLOMBIANA DE INGENIERIA JULIO GARAVITO\Universidad\7mo Semestre\CVDS\Proyecto\APP\src\main\java\edu\eci\cvds\samples\entities\Categoria.java
+C:\Users\crisa\OneDrive - ESCUELA COLOMBIANA DE INGENIERIA JULIO GARAVITO\Universidad\7mo Semestre\CVDS\Proyecto\APP\src\main\java\edu\eci\cvds\samples\services\ExcepcionServiciosEscuela.java
+C:\Users\crisa\OneDrive - ESCUELA COLOMBIANA DE INGENIERIA JULIO GARAVITO\Universidad\7mo Semestre\CVDS\Proyecto\APP\src\main\java\edu\eci\cvds\samplejr\dao\mybatis\MyBatisUsuario.java
+C:\Users\crisa\OneDrive - ESCUELA COLOMBIANA DE INGENIERIA JULIO GARAVITO\Universidad\7mo Semestre\CVDS\Proyecto\APP\src\main\java\edu\eci\cvds\samplejr\dao\mybatis\mappers\CategoriaMapper.java
+C:\Users\crisa\OneDrive - ESCUELA COLOMBIANA DE INGENIERIA JULIO GARAVITO\Universidad\7mo Semestre\CVDS\Proyecto\APP\src\main\java\edu\eci\cvds\samplejr\dao\UsuarioDao.java
+C:\Users\crisa\OneDrive - ESCUELA COLOMBIANA DE INGENIERIA JULIO GARAVITO\Universidad\7mo Semestre\CVDS\Proyecto\APP\src\main\java\edu\eci\cvds\samplejr\dao\PersistenceException.java
+C:\Users\crisa\OneDrive - ESCUELA COLOMBIANA DE INGENIERIA JULIO GARAVITO\Universidad\7mo Semestre\CVDS\Proyecto\APP\src\main\java\edu\eci\cvds\samples\entities\Necesidad.java

@@ -8,4 +8,5 @@ public interface ServiciosEscuela {
 
     public abstract boolean verificarUsuario(String login, String contraseña) throws ExcepcionServiciosEscuela;
 
+    
 }
