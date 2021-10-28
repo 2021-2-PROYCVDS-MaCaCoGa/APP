@@ -17,17 +17,14 @@ public class ServiciosEscuelaFactory {
 
    private static ServiciosEscuelaFactory instance = new ServiciosEscuelaFactory();
 
-   private static Optional<Injector> optInjector;
+   private static Injector Injector;
 
    private Injector myBatisInjector(String env, String pathResource) {
        return createInjector(new XMLMyBatisModule() {
            @Override
            protected void initialize() {
-               setEnvironmentId(env);
-               setClassPathResource(pathResource);
-               bind(UsuarioDao.class).to(MyBatisUsuario.class);
-               //ESTA LINEA ESTÁ GENERANDO UN ERROR
-               bind(ServiciosEscuela.class).to(ServiciosEscuelaImpl.class);
+               install(JdbcHelper.PostgreSQL);
+			   setClassPathResource("mybatis-config.xml")
            }
        });
    }
