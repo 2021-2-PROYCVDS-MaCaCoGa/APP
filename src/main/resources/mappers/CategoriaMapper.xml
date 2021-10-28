@@ -29,14 +29,17 @@
 
     <insert id="agregarCategoria">
         INSERT INTO Categoria (id,nombre,descripcion,fechaCreacion,estado)
-        VALUES (#{categoria.id},#{categoria.nombre},#{categoria.descripcion},#{categoria.fechaCreacion},#{categoria.estado});
+        VALUES (#{categoria.id},#{categoria.nombre},#{categoria.descripcion},CURRENT_TIMESTAMP,#{categoria.estado});
     </insert>
 
-    <insert id="modificarCategoria">
-        INSERT INTO Categoria (fechaModificacion)
-        VALUES (#{fechaModificacion})
-        WHERE Categoria.id = #{id};
-    </insert>
+    <update id="modificarCategoria">
+        UPDATE Categoria as c SET
+            c.nombre = #{nombre}
+            c.descripcion = #{despcripcion}
+            c.estado = #{estado}
+            c.fechaModificacion = CURRENT_TIMESTAMP
+        WHERE c.id = #{id};
+    </update>
 
     <resultMap type = "Categoria" id="CategoriaResult">
         <id property="id" column="id"/>

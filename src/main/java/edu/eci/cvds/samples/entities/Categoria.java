@@ -2,6 +2,8 @@ package edu.eci.cvds.samples.entities;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.Calendar;
+
 
 public class Categoria implements Serializable {
     private int id;
@@ -19,7 +21,7 @@ public class Categoria implements Serializable {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.fechaCreacion = fechaCreacion;
+        this.fechaCreacion = new Date(Calendar.getInstance().getTime().getTime());
     }
 
     
