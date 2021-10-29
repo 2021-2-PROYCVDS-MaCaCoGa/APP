@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<Mapper namespace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.NecesidadMapper">
+    <select parameterType="mpa" id="consultarNecesidades" resultMap="NecesidadResult">
+        SELECT 
+            n.id as id
+            n.nombre as nombre
+            n.descripcion as descripcion 
+            n.fechaCreacion as fCreacion
+            n.esatdo as estado
+            n.fechaModificacion as fModificacion
+        FROM Necesidad as n
+    </select>
+    
+    <!--resultMap type="Necesidad" id="NecesidadResult"-->
+        

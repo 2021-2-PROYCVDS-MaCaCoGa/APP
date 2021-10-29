@@ -12,7 +12,6 @@
     <typeAliases>
         <typeAlias type="edu.eci.cvds.samples.entities.Categoria" alias="Categoria"/>
         <typeAlias type="edu.eci.cvds.samples.entities.Necesidad" alias="Necesidad"/>
-        <typeAlias type="edu.eci.cvds.samples.entities.Perfil" alias="Perfil"/>
         <typeAlias type="edu.eci.cvds.samples.entities.Usuario" alias="Usuario"/>
     </typeAliases>	
 
@@ -30,8 +29,7 @@
         
     <mappers>
         <mapper resource="mappers/UsuarioMapper.xml"></mapper>
-        <mapper resource="mappers/NecesidadMapper.xml"></mapper>
-        <mapper resource="mappers/PerfilItemMapper.xml"></mapper>     
+        <mapper resource="mappers/NecesidadMapper.xml"></mapper> 
         <mapper resource="mappers/CategoriaMapper.xml"></mapper>   
     </mappers> 
         

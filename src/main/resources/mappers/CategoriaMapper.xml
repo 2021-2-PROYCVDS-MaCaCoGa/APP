@@ -27,6 +27,17 @@
         WHERE c.id = #{"id"};
     </select>
 
+    <select parameterType="map" id="consultarCategoria" resultMap="categoriaResult">
+        SELECT
+            c.id as id
+            c.nombre as nombre
+            c.descripcion as descripcion
+            c.fechaCreacion as fCreacion 
+            c.estado as estado 
+            c.fechaModificacion as fModificacion
+        FROM Categoria as c
+        WHERE c.nombre = #{"nombre"}; 
+
     <insert id="agregarCategoria">
         INSERT INTO Categoria (id,nombre,descripcion,fechaCreacion,estado)
         VALUES (#{categoria.id},#{categoria.nombre},#{categoria.descripcion},CURRENT_TIMESTAMP,#{categoria.estado});
