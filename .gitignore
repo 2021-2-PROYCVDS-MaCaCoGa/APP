@@ -29,6 +29,7 @@ bin/
 .DS_Store
 /nbproject/
 .idea
+.lock
 *.iml
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml

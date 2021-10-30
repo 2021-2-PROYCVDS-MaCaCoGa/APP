@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<Mapper namespace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.CategoriaMapper">
+<mapper namespace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.CategoriaMapper">
 
     <select parameterType="map" id="consultarCategorias" resultMap="CategoriaResult" >
         SELECT 
@@ -36,13 +36,17 @@
             c.estado as estado 
             c.fechaModificacion as fModificacion
         FROM Categoria as c
-        WHERE c.nombre = #{"nombre"}; 
+        WHERE c.nombre = #{"nombre"};
+       </select>
 
     <insert id="agregarCategoria">
         INSERT INTO Categoria (id,nombre,descripcion,fechaCreacion,estado)
         VALUES (#{categoria.id},#{categoria.nombre},#{categoria.descripcion},CURRENT_TIMESTAMP,#{categoria.estado});
     </insert>
-
+	<insert parameterType="map" id="agregarCategoria">
+		INSERT INTO Categoria (id,nombre,descripcion,fechaCreacion,estado)
+        VALUES (#{id},#{nombre},#{descripcion},CURRENT_TIMESTAMP,#{estado});
+	</insert>
     <update id="modificarCategoria">
         UPDATE Categoria as c SET
             c.nombre = #{nombre}
@@ -51,6 +55,10 @@
             c.fechaModificacion = CURRENT_TIMESTAMP
         WHERE c.id = #{id};
     </update>
+    <delete id = "borrarCategoria">
+    	DELETE FROM Categoria as c
+    	WHERE c.id = #{id};
+    </delete>
 
     <resultMap type = "Categoria" id="CategoriaResult">
         <id property="id" column="id"/>
@@ -61,4 +69,4 @@
         <result property="fechaModificacion" column="fModificacion"/>
     </resultMap>
 
-</Mapper>
+</mapper>
