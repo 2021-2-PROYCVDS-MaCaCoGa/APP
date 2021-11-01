@@ -9,23 +9,16 @@
         <title>Crear Categoría</title>
     </h:head>
     <h:body>
-        <body background="resources/FONDOADMIN.jpg"/>
+        <body background="../resources/REGISTRAR.jpg"></body>
         <style type="text/css">
             *{
                 padding: 0px;
                 margin: 0px;
             }
-            .seccion{
-                margin-top: 2rem;
-                margin-bottom: 2rem;
-            }
             .site-header{
                 padding: 1rem 0 3rem 0;
-                border: 3px solid #b5b5b5;
-                background-color: rgba(177, 177, 177, 0.8);
-            }
-            .fw-300{
-                font-weight: 300;
+               
+                background-color: rgba(47, 55, 158, 0.418);
             }
             .centrarTexto{
                 text-align: center;
@@ -33,7 +26,7 @@
             #header{
                 margin:auto;
                 max-width: 60rem;
-                padding: 1rem 0 3rem 0;
+                padding: 1rem 0 3rem 9rem;
                 
             }
             ul, ol{
@@ -47,12 +40,13 @@
                 display: block;
                 font-size: 1.8rem;
                 margin-right: 3.5rem;
+             
                 object-position: left;
 
             
             }
             .navegacion li a:hover{
-                background-color: rgb(199, 44, 44);
+                background-color: rgb(105, 118, 236);
             }
             .navegacion > li{
                 float: left;
@@ -64,59 +58,45 @@
             }
             .navegacion li ul a{
                 background-color: rgba(177, 177, 177, 0.8);
+                border: #0a2347;
             }
             .navegacion li:hover > ul{
                 display: block;
             }
-
-            .contenedor-anuncios{
-                display: flex;
-                flex-wrap: nowrap;
-                background-color: transparent;
-                width: 95%; 
-                max-width: 120rem;
-                margin : 0 auto;
-            }
-            .anuncio{
-                border: 3px solid #a73c3c;
-                margin-bottom: 0.5rem;
-                margin-top: 6.5rem;
-                margin-right: 0.5rem;
-                background-color: transparent;
-                flex: 0 0 calc(33.3%)-1rem;
-                background-color: rgba(133, 132, 132, 0.8);
-            }
-            .justificar{
-                text-align: justify;
-            }
-            
-            
+            .margenBoton{
+            align-items: center;
+            margin-top: 2rem;
+            margin-left: 17rem;
+        }
         </style>
         <header class="site-header">
+            <h3 class="centrarTexto" style="font-size: 35px; text-align: left;">Registrar Categoría</h3>
             <div id="header">
-                <h3 class="centrarTexto">Bienvenido, Administrador</h3>
                 <ul class="navegacion">
                     <li><a href="">Administración de Categorías</a>
                         <ul>
-                            <li><a href="crearCategoria.xhtml">Registrar Categoría</a></li>
                             <li><a href="modificarCategoria.xhtml">Modificar Categoría</a></li>
                             <li><a href="eliminarCategoria.xhtml">Eliminar Categoría</a></li>
                         </ul>
                     </li>
-                    <li><a href="">Reportes</a>
-                        <ul>
-                            <li><a href="">Reporte 1</a></li>
-                            <li><a href="">Reporte 2</a></li>
-                            <li><a href="">Reporte 3</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="">Cerrar Sesión</a></li>
+                    <li><a href="../administrador.xhtml">Volver al Inicio</a></li>
                 </ul>
             </div>
         </header>
         
-            <h:form id="calculadora_form"> 
-                
-            </h:form>
+        
+        <h:form id="crearCategoria">
+            <!--Para poner el nombre de la categoria-->
+            <h5 style="font-size: 20px; margin-top: 1.5rem;">Nombre de la Categoría</h5>
+            <span class="ui-float-label">
+                <p:inputText id="float-input" value="#{inputTextView.text}"/>
+            </span>
+            <!--Para el formato de descripcion, que sea de texto extendido-->
+            <h5 style="font-size: 20px; margin-top: 1rem;">Descripción</h5>
+            <p:inputTextarea rows="6" cols="80"/>
+            <div>
+                <p:button class="margenBoton" value="Crear Categoría"/>
+            </div>
+        </h:form>
     </h:body>
 </html>
