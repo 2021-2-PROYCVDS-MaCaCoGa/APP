@@ -38,15 +38,12 @@
         FROM Categoria as c
         WHERE c.nombre = #{"nombre"};
        </select>
-
+    
     <insert id="agregarCategoria">
-        INSERT INTO Categoria (id,nombre,descripcion,fechaCreacion,estado)
-        VALUES (#{categoria.id},#{categoria.nombre},#{categoria.descripcion},CURRENT_TIMESTAMP,#{categoria.estado});
+            INSERT INTO Categoria (id,nombre,descripcion,fechaCreacion,estado)
+            VALUES (#{id},#{nombre},#{descripcion},CURRENT_TIMESTAMP,#{estado});
     </insert>
-	<insert parameterType="map" id="agregarCategoria">
-		INSERT INTO Categoria (id,nombre,descripcion,fechaCreacion,estado)
-        VALUES (#{id},#{nombre},#{descripcion},CURRENT_TIMESTAMP,#{estado});
-	</insert>
+    
     <update id="modificarCategoria">
         UPDATE Categoria as c SET
             c.nombre = #{nombre}
