@@ -5,7 +5,8 @@ import java.sql.Date;
 
 public class Necesidad extends Actividad implements Serializable {
     
-    private int urgencia;    
+    private int urgencia;
+    private int actividad;
 
     public Necesidad(int id, Categoria categoria, String nombre, String descripcion, int urgencia, String estado){
         super(id, categoria, nombre, descripcion, estado);

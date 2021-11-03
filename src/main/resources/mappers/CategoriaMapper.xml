@@ -6,22 +6,22 @@
 
     <select parameterType="map" id="consultarCategorias" resultMap="CategoriaResult" >
         SELECT 
-            c.id as id
-            c.nombre as nombre
-            c.descripcion as descripcion
-            c.fechaCreacion as fCreacion 
-            c.estado as estado 
-            c.fechaModificacion as fModificacion 
+            c.id as id,
+            c.nombre as nombre,
+            c.descripcion as descripcion,
+            c.fechaCreacion as fCreacion ,
+            c.estado as estado ,
+            c.fechaModificacion as fModificacion
         FROM Categoria as c
     </select>
 
     <select parameterType="map" id="consultarCategoria" resultMap="CategoriaResult">
         SELECT
-            c.id as id
-            c.nombre as nombre
-            c.descripcion as descripcion
-            c.fechaCreacion as fCreacion 
-            c.estado as estado 
+            c.id as id,
+            c.nombre as nombre,
+            c.descripcion as descripcion,
+            c.fechaCreacion as fCreacion ,
+            c.estado as estado ,
             c.fechaModificacion as fModificacion
         FROM Categoria as c
         WHERE c.id = #{"id"};
@@ -29,11 +29,11 @@
 
     <select parameterType="map" id="consultarCategoria" resultMap="categoriaResult">
         SELECT
-            c.id as id
-            c.nombre as nombre
-            c.descripcion as descripcion
-            c.fechaCreacion as fCreacion 
-            c.estado as estado 
+            c.id as id,
+            c.nombre as nombre,
+            c.descripcion as descripcion,
+            c.fechaCreacion as fCreacion ,
+            c.estado as estado, 
             c.fechaModificacion as fModificacion
         FROM Categoria as c
         WHERE c.nombre = #{"nombre"};
@@ -46,9 +46,9 @@
     
     <update id="modificarCategoria">
         UPDATE Categoria as c SET
-            c.nombre = #{nombre}
-            c.descripcion = #{despcripcion}
-            c.estado = #{estado}
+            c.nombre = #{nombre},
+            c.descripcion = #{despcripcion},
+            c.estado = #{estado},
             c.fechaModificacion = CURRENT_TIMESTAMP
         WHERE c.id = #{id};
     </update>

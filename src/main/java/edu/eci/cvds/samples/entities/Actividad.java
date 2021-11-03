@@ -10,7 +10,7 @@ import java.sql.Date;
  *
  * @author crisa
  */
-public abstract class Actividad {
+public class Actividad {
     
     protected int id;
     protected Categoria categoria;

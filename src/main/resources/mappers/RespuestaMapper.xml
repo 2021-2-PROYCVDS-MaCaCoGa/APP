@@ -7,27 +7,40 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
 
 
 <Mapper nameSpace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.RespuestaMapper">
-
+    
     <select parameterType="map" id="consultarRespuestas" resultMap="RespuestaResult">
         SELECT 
-            r.id as id
-            r.nombre as nombre
-            r.descripcion as descripcion
-            r.fechaCreacion as fCreacion
-            r.estado as estado
+            r.id as id,
+            r.nombre as nombre,
+            r.descripcion as descripcion,
+            r.fechaCreacion as fCreacion,
+            r.estado as estado,
+            r.actividad as actividad
         FROM Respuesta as r;
     </select>
     
     <select parameterType="map" id="consultarRespuesta" resultMap="RespuestaResult">
         SELECT 
-            r.id as id
-            r.nombre as nombre
-            r.descripcion as descripcion
-            r.fechaCreacion as fCreacion
-            r.estado as estado
+            r.id as id,
+            r.nombre as nombre,
+            r.descripcion as descripcion,
+            r.fechaCreacion as fCreacion,
+            r.estado as estado,
+            r.actividad as actividad,
         FROM Respuesta as r
         WHERE r.id = #{id};
     </select>    
+    
+    <select parameterType="map" id="informeRespuestas" resultMap="informaRespuestasResult">
+        SELECT 
+            r.descripcion as descripcion,
+            r.actividad as idActividad,
+            CASE as actividad
+                WHEN r.actividad = "%O%" THEN "Oferta"
+                WHEN r.actividad = "%N%" THEN "Necesidad"
+        FROM Respuesta as r
+        
+    </select>
     
     <ResultMap type="Respuesta" id="RespuestaResult">
         <id property="id" column="id"/>
@@ -35,7 +48,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
         <result property="descripcion" column="descripcion"/>
         <result property="fechaCreacion" column="fCreacion"/>
         <result property="estado" column="estado"/>
+        <association property = "actividad" javaType="Actividad">
+            <result property = "id" column = "actividad"/>
+        </association>
     </ResultMap>
+    
 </Mapper>
     
 

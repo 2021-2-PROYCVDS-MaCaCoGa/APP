@@ -6,11 +6,11 @@
 <mapper namespace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.UsuarioMapper">
     <select parameterType="map" id="consultarUsuarios" resultMap="UsuarioResult">
         SELECT
-            u.nombre
-            u.perfil
-            u.correo
-            u.contraseña
-            u.login
+            u.nombre as nombre,
+            u.perfil as perfil,
+            u.correo as correo,
+            u.contraseña as contraseña,
+            u.login as login
         FROM Usuario as u;
     </select>
  

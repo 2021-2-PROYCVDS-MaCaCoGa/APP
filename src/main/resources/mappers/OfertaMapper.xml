@@ -18,20 +18,20 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
     
     <select parameterType="map" id="ConsultarOfertas" resultMap="ResultadoOfertasResult">
         SELECT 
-            o.categoria as categoria
-            o.nombre as nombre
-            o.descripcion as descripcion
-            o.fechaCreacion as fCreacion
+            o.categoria as categoria,
+            o.nombre as nombre,
+            o.descripcion as descripcion,
+            o.fechaCreacion as fCreacion,
             o.estado as estado
         FROM Oferta;
     </select> 
     
     <select parameterType="map" id="ConsultarOfertas" resultMap="OfertaResult">
         SELECT 
-            o.categoria as categoria
-            o.nombre as nombre
-            o.descripcion as descripcion
-            o.fechaCreacion as fCreacion
+            o.categoria as categoria,
+            o.nombre as nombre,
+            o.descripcion as descripcion,
+            o.fechaCreacion as fCreacion,
             o.estado as estado
         FROM Oferta;
         WHERE o.categoria = #{categoria};
@@ -39,10 +39,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
     
     <select parameterType="map" id="consultarOferta" resultMap="OfertaResult">
         SELECT 
-            o.categoria as categoria
-            o.nombre as nombre
-            o.descripcion as descripcion
-            o.fechaCreacion as fCreacion
+            o.categoria as categoria,
+            o.nombre as nombre,
+            o.descripcion as descripcion,
+            o.fechaCreacion as fCreacion,
             o.estado as estado
         FROM Oferta
         WHERE o.id = #{id};
