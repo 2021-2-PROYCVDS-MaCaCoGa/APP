@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3c.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+      <link rel="stylesheet" href="normalize.css"></link>
+    <h:head>
+        <title>Modificar Categoría</title>
+    </h:head>
+    <h:body>
+        <body background="resources/FONDOADMIN.jpg"/>
+        <style type="text/css">
+            *{
+                padding: 0px;
+                margin: 0px;
+            }
+            .seccion{
+                margin-top: 2rem;
+                margin-bottom: 2rem;
+            }
+            .site-header{
+                padding: 1rem 0 3rem 0;
+                border: 3px solid #b5b5b5;
+                background-color: rgba(177, 177, 177, 0.8);
+            }
+            .fw-300{
+                font-weight: 300;
+            }
+            .centrarTexto{
+                text-align: center;
+            }
+            #header{
+                margin:auto;
+                max-width: 60rem;
+                padding: 1rem 0 3rem 0;
+                
+            }
+            ul, ol{
+                list-style: none;
+            }
+            .navegacion li a{
+                background-color: transparent;
+                color: white;
+                text-decoration: none;
+                padding: 30px 30px;
+                display: block;
+                font-size: 1.8rem;
+                margin-right: 3.5rem;
+                object-position: left;
+
+            
+            }
+            .navegacion li a:hover{
+                background-color: rgb(199, 44, 44);
+            }
+            .navegacion > li{
+                float: left;
+            }
+            .navegacion li ul{
+                display: none;
+                position: absolute;
+                min-width: 140px;
+            }
+            .navegacion li ul a{
+                background-color: rgba(177, 177, 177, 0.8);
+            }
+            .navegacion li:hover > ul{
+                display: block;
+            }
+
+            .contenedor-anuncios{
+                display: flex;
+                flex-wrap: nowrap;
+                background-color: transparent;
+                width: 95%; 
+                max-width: 120rem;
+                margin : 0 auto;
+            }
+            .anuncio{
+                border: 3px solid #a73c3c;
+                margin-bottom: 0.5rem;
+                margin-top: 6.5rem;
+                margin-right: 0.5rem;
+                background-color: transparent;
+                flex: 0 0 calc(33.3%)-1rem;
+                background-color: rgba(133, 132, 132, 0.8);
+            }
+            .justificar{
+                text-align: justify;
+            }
+            
+            
+        </style>
+        <header class="site-header">
+            <div id="header">
+                <h3 class="centrarTexto">Bienvenido, Administrador</h3>
+                <ul class="navegacion">
+                    <li><a href="">Administración de Categorías</a>
+                        <ul>
+                            <li><a href="crearCategoria.xhtml">Registrar Categoría</a></li>
+                            <li><a href="modificarCategoria.xhtml">Modificar Categoría</a></li>
+                            <li><a href="eliminarCategoria.xhtml">Eliminar Categoría</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="">Reportes</a>
+                        <ul>
+                            <li><a href="">Reporte 1</a></li>
+                            <li><a href="">Reporte 2</a></li>
+                            <li><a href="">Reporte 3</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="">Cerrar Sesión</a></li>
+                </ul>
+            </div>
+        </header>
+        
+            <h:form id="calculadora_form"> 
+                <div class="contenedor-anuncios">
+                    <div class="anuncio">
+                        <img src="resources/ANUNCIO1.jpg"/>
+                        <h3 class="centrarTexto">Que es Solidaridad Escuela?</h3>
+                    <p class = 'justificar'>La Plataforma Solidaridad Escuela, es una herramienta para generar un entorno de comunicación y ayuda dentro de la comunidad de la Escuela Colombiana de Ingeniería Julio Garavito</p>
+                    </div>
+
+                    <div class="anuncio">
+                        <img src="resources/ANUNCIO2.jpg"/>
+                        <h3 class = 'centrarTexto'>Pedir Elementos</h3>
+                    <p class = 'justificar'>Permite que los estudiantes puedan expresar las necesidades que puedan tener de algún elemento para poder desarrollar sus actividades de forma correcta, y que los demás miembros de la comunidad puedan facilitar estos elementos a quienes lo necesitan</p>
+                    </div>
+
+                    <div class="anuncio">
+                        <img src="resources/ANUNCIO3.jpg"/>
+                        <h3 class = 'centrarTexto'>Ofrecer Elementos</h3>
+                    <p class = 'justificar'>De igual manera los miembros de la comunidad pueden ofrecer diferentes elementos que sean de interés para los estudiantes sin que exista alguna solicitud específica</p>
+                    </div>
+                </div>
+            </h:form>
+    </h:body>
+</html>
