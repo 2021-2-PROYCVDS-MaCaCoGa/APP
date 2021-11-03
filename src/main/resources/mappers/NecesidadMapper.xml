@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<Mapper namespace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.NecesidadMapper">
+<mapper namespace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.NecesidadMapper">
     <select parameterType="map" id="consultarNecesidades" resultMap="ReportesNecesidadesResult">
         SELECT 
             n.id as id
@@ -80,5 +80,5 @@
         </association>
     </resultMap>
     
-</Mapper>
+</mapper>
         
