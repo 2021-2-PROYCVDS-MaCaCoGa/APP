@@ -76,7 +76,7 @@
         <result property = "estado" column = "estado"/>
         <result property = "fechaModificacion" column = "fModificacion"/>
         <association property = "usuario" javaType = "Usuario">
-            <result property = "usuario" column = "usuario"/>
+            <result property = "nombre" column = "usuario"/>
         </association>
     </resultMap>
     

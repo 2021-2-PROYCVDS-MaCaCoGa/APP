@@ -16,7 +16,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
         VALUES (#{oferta.id},#{oferta.categoria},#{oferta.nombre},#{oferta.descripcion},CURRENT_TIMESTAMP);
     </insert>
     
-    <select parameterType="map" id="ConsultarOfertas" resultMap="OfertaResult">
+    <select parameterType="map" id="ConsultarOfertas" resultMap="ResultadoOfertasResult">
         SELECT 
             o.categoria as categoria
             o.nombre as nombre
@@ -54,13 +54,26 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
         WHERE o.id = #{id};
     </updtate>
     
-    <resultMap type="Categoria" id="CategoriaResult">
+    <resultMap type="Categoria" id="OfertaResult">
         <id property="id" column="id"/>
         <result property="categoria" column="categoria"/>
         <result property="nombre" column="nombre"/>
         <result property="descripcion" column="descripcion"/>
         <result property="fechaCreacion" column="fCreacion"/>
         <result property="estado" column="estado"/>
+    </resultMap>
+    
+    <resultMap type="Categoria" id="ResultadoOfertasResult">
+        <id property="id" column="id"/>
+        <result property="categoria" column="categoria"/>
+        <result property="nombre" column="nombre"/>
+        <result property="descripcion" column="descripcion"/>
+        <result property="fechaCreacion" column="fCreacion"/>
+        <result property="estado" column="estado"/>
+        <result propertyP="fechaModificacion" column="fModificacion"/>
+        <association  property="usuario" javaType="Usuario">
+            <result property="nombre" column="usuario"/>
+        </association>
     </resultMap>
     
     
