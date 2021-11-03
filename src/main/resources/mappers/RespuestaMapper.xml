@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this template
+-->
+
+
+
+<Mapper nameSpace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.RespuestaMapper">
+
+    <select parameterType="map" id="consultarRespuestas" resultMap="RespuestaResult">
+        SELECT 
+            r.id as id
+            r.nombre as nombre
+            r.descripcion as descripcion
+            r.fechaCreacion as fCreacion
+            r.estado as estado
+        FROM Respuesta as r;
+    </select>
+    
+    <select parameterType="map" id="consultarRespuesta" resultMap="RespuestaResult">
+        SELECT 
+            r.id as id
+            r.nombre as nombre
+            r.descripcion as descripcion
+            r.fechaCreacion as fCreacion
+            r.estado as estado
+        FROM Respuesta as r
+        WHERE r.id = #{id};
+    </select>    
+    
+    <ResultMap type="Respuesta" id="RespuestaResult">
+        <id property="id" column="id"/>
+        <result property="nombre" column="nombre"/>
+        <result property="descripcion" column="descripcion"/>
+        <result property="fechaCreacion" column="fCreacion"/>
+        <result property="estado" column="estado"/>
+    </ResultMap>
+</Mapper>
+    
+
+

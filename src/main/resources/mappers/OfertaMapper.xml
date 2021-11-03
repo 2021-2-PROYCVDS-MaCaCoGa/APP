@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this template
+-->
+
+
+
+<Mapper nameSpace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.OfertaMapper">
+    
+    <insert id="addOferta">
+        INSERT INTO Oferta (id, categoria, nombre, descripcion, fCreacion)
+        VALUES (#{oferta.id},#{oferta.categoria},#{oferta.nombre},#{oferta.descripcion},CURRENT_TIMESTAMP);
+    </insert>
+    
+    <select parameterType="map" id="ConsultarOfertas" resultMap="OfertaResult">
+        SELECT 
+            o.categoria as categoria
+            o.nombre as nombre
+            o.descripcion as descripcion
+            o.fechaCreacion as fCreacion
+            o.estado as estado
+        FROM Oferta;
+    </select> 
+    
+    <select parameterType="map" id="ConsultarOfertas" resultMap="OfertaResult">
+        SELECT 
+            o.categoria as categoria
+            o.nombre as nombre
+            o.descripcion as descripcion
+            o.fechaCreacion as fCreacion
+            o.estado as estado
+        FROM Oferta;
+        WHERE o.categoria = #{categoria};
+    </select> 
+    
+    <select parameterType="map" id="consultarOferta" resultMap="OfertaResult">
+        SELECT 
+            o.categoria as categoria
+            o.nombre as nombre
+            o.descripcion as descripcion
+            o.fechaCreacion as fCreacion
+            o.estado as estado
+        FROM Oferta
+        WHERE o.id = #{id};
+    </select>
+    
+    <resultMap type="Categoria" id="CategoriaResult">
+        <id property="id" column="id"/>
+        <result property="categoria" column="categoria"/>
+        <result property="nombre" column="nombre"/>
+        <result property="descripcion" column="descripcion"/>
+        <result property="fechaCreacion" column="fCreacion"/>
+        <result property="estado" column="estado"/>
+    </resultMap>
+    
+    
+</Mapper>
