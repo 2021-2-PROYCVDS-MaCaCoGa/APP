@@ -9,7 +9,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
 
 
 
-<Mapper nameSpace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.OfertaMapper">
+<mapper namespace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.OfertaMapper">
     
     <insert id="addOferta">
         INSERT INTO Oferta (id, categoria, nombre, descripcion, fCreacion)
@@ -48,11 +48,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
         WHERE o.id = #{id};
     </select>
     
-    <updtate id = "actualizarEstado">
+    <update id = "actualizarEstado">
         UPDATE Oferta as o SET
             o.estado = #{estado}
         WHERE o.id = #{id};
-    </updtate>
+    </update>
     
     <resultMap type="Categoria" id="OfertaResult">
         <id property="id" column="id"/>
@@ -70,11 +70,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
         <result property="descripcion" column="descripcion"/>
         <result property="fechaCreacion" column="fCreacion"/>
         <result property="estado" column="estado"/>
-        <result propertyP="fechaModificacion" column="fModificacion"/>
+        <result property="fechaModificacion" column="fModificacion"/>
         <association  property="usuario" javaType="Usuario">
             <result property="nombre" column="usuario"/>
         </association>
     </resultMap>
     
     
-</Mapper>
+</mapper>

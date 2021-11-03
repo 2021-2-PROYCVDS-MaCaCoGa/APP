@@ -1,9 +1,12 @@
 package edu.eci.cvds.samplejr.dao.mybatis;
 
+import java.util.List;
+
 import com.google.inject.Inject;
 import edu.eci.cvds.samplejr.dao.PersistenceException;
 import edu.eci.cvds.samplejr.dao.UsuarioDao;
 import edu.eci.cvds.samplejr.dao.mybatis.mappers.UsuarioMapper;
+import edu.eci.cvds.samples.entities.Perfil;
 import edu.eci.cvds.samples.entities.Usuario;
 
 public class MyBatisUsuario implements UsuarioDao {
@@ -26,7 +29,50 @@ public class MyBatisUsuario implements UsuarioDao {
 
     @Override
     public Usuario iniciarSesion(String login, String contraseña) throws PersistenceException {
-        return null;
+    	try {
+    		return usuarioMapper.iniciarSesion(login, contraseña);
+    	}catch(org.apache.ibatis.exceptions.PersistenceException e) {
+    		throw new PersistenceException("Error al iniciar sesion");
+    	}
     }
+
+	@Override
+	public Usuario consultarUsuaro(String log) throws PersistenceException {
+		try {
+			return usuarioMapper.consultarUsuario(log);
+		}catch(org.apache.ibatis.exceptions.PersistenceException e) {
+			throw new PersistenceException("Error al consultar usuario: "+log, e);
+		}
+		
+	}
+
+	@Override
+	public List<Usuario> consultarUsuarios() throws PersistenceException {
+		try {
+			return usuarioMapper.consultarUsuarios();
+		}catch(org.apache.ibatis.exceptions.PersistenceException e){
+			throw new PersistenceException("Error al consultar usuarios");
+		}
+	}
+
+	@Override
+	public void ingresarUsuario(String nombre, String log, String contraseña, String correo, Perfil perfil)
+			throws PersistenceException {
+		try {
+			usuarioMapper.ingresarUsuario(nombre, log, contraseña, correo, perfil);
+		}catch(org.apache.ibatis.exceptions.PersistenceException e) {
+			throw new PersistenceException("Error al ingresar usuario: "+nombre, e);
+		}
+		
+	}
+
+	@Override
+	public int existenciaSusuario(String nombre, String contraseña) throws PersistenceException {
+		try {
+			return usuarioMapper.ExistenciaUsuario(nombre, contraseña);
+		}catch(org.apache.ibatis.exceptions.PersistenceException e) {
+			throw new PersistenceException("Error al consultar la existencia del usuario: "+nombre, e);
+		}
+	}
 }
 

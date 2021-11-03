@@ -6,7 +6,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
 
 
 
-<Mapper nameSpace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.RespuestaMapper">
+<mapper namespace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.RespuestaMapper">
 
     <select parameterType="map" id="consultarRespuestas" resultMap="RespuestaResult">
         SELECT 
@@ -36,7 +36,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
         <result property="fechaCreacion" column="fCreacion"/>
         <result property="estado" column="estado"/>
     </ResultMap>
-</Mapper>
+</mapper>
     
 
 
