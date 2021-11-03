@@ -6,8 +6,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
 
 
 
+<<<<<<< HEAD
 <Mapper nameSpace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.RespuestaMapper">
     
+=======
+<mapper namespace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.RespuestaMapper">
+
+>>>>>>> 6e85b0104ea09f58b921cd91fff154762cef56e8
     <select parameterType="map" id="consultarRespuestas" resultMap="RespuestaResult">
         SELECT 
             r.id as id,
@@ -52,8 +57,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
             <result property = "id" column = "actividad"/>
         </association>
     </ResultMap>
+<<<<<<< HEAD
     
 </Mapper>
+=======
+</mapper>
+>>>>>>> 6e85b0104ea09f58b921cd91fff154762cef56e8
     
 
 

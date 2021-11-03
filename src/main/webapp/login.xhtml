@@ -53,14 +53,14 @@
                 <!--Nombre de usuario-->
                 <h5>Bienvenido a la página de solidaridad de ECI</h5>
                 <img style="margin-top: 0.02rem; margin-left: 7rem;" src="/resources/IMAGEN2.png"/>
-                <p:inputText class="margenes" id="float-input" value="#{inputTextView.text}"/>
+                <p:inputText class="margenes" id="float-input" value="#{loginListener.correo}"/>
                 <p:outputLabel style="margin-left: 1rem;" for="@previous" value="Usuario"/>
                 <!--Contraseña-->
-                <p:password class="margenes" id="nonFeedback" value="#{passwordView.password1}"/>
+                <p:password class="margenes" id="nonFeedback" value="#{loginListener.contra}"/>
                 <p:outputLabel style="margin-left: 1rem;" for="@previous" value="Contraseña"/>
                 <!--Boton para iniciar-->
                 <div>
-                    <p:button class="margenBoton" value="Iniciar Sesión" />
+                    <p:button class="margenBoton" actionListener="#{loginListener.loguear}" update="Solidaridad-Escuela" value="Iniciar Sesion"/>
                  </div>
             </section>
         </h:form>
