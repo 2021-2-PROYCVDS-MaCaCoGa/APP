@@ -10,16 +10,23 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 import org.apache.shiro.SecurityUtils;
+import java.sql.Connection;
+import java.sql.DriverManager;
 
+@SuppressWarnings("deprecation")
 @ManagedBean(name = "loginListener")
 public class LoginBean {
-    @Inject
-    private login logger;
+    private login logger ;
     private String correo;
-    private String contraseña;
+    private  String contra;
     private Subject actual;
     private String message;
     private FacesMessage.Severity estado;
+
+    public LoginBean(){
+        correo = "";
+        contra = "";
+    }
 
 
     /**
@@ -33,7 +40,8 @@ public class LoginBean {
                 System.out.println("Usuario logueado con exito");
             }
             else{
-                logger.log(correo, contraseña);
+                logger.log(correo, contra);
+                redireccionInicial();
             }
         } catch(Exception exception){
             
@@ -101,7 +109,7 @@ public class LoginBean {
      */
     public void valoresPredeterminados(){
         this.correo = "";
-        this.contraseña = "";
+        this.contra = "";
     }
     
     /**
@@ -117,7 +125,7 @@ public class LoginBean {
      * @param nuevaContra 
      */
     public void setContra(String nuevaContra){
-        this.contraseña = nuevaContra;
+        this.contra = nuevaContra;
     }
     
     /**
@@ -133,7 +141,7 @@ public class LoginBean {
      * @return 
      */
     public String getContra(){
-        return this.contraseña;
+        return this.contra;
     }
 
 }
