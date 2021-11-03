@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <Mapper namespace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.NecesidadMapper">
-    <select parameterType="map" id="consultarNecesidades" resultMap="NecesidadResult">
+    <select parameterType="map" id="consultarNecesidades" resultMap="ReportesNecesidadesResult">
         SELECT 
             n.id as id
             n.nombre as nombre
@@ -14,7 +14,10 @@
             n.urgencia as urgencia
             n.esatdo as estado
             n.fechaModificacion as fModificacion
+            u.nombre as usuario
         FROM Necesidad as n
+        LEFT JOIN Usuario as u ON u.id = o.usuario
+        GROUP BY n.estado
     </select>
     
     <select parameterType="map" id="consultarNecesidades" resultMap="NecesidadResult">
@@ -26,7 +29,6 @@
             n.fechaCreacion as fCreacion
             n.urgencia as urgencia
             n.esatdo as estado
-            n.fechaModificacion as fModificacion
         FROM Necesidad as n
         WHERE n.categoria = #{categoria};
     </select>
@@ -39,8 +41,7 @@
             n.descripcion as descripcion 
             n.fechaCreacion as fCreacion
             n.urgencia as urgencia
-            n.esatdo as estado
-            n.fechaModificacion as fModificacion
+            n.estado as estado
         FROM Necesidad as n
         WHERE n.id = #{id};
     </select>
@@ -64,6 +65,20 @@
         <result property = "fechaCreacion" column = "fCreacion"/>
         <result property = "urgencia" column = "urgencia"/>
         <result property = "estado" column = "estado"/>
-        <result property = "fechaModificacion"  column = "fModificacion"/>
     </resultMap>
+    
+    <resultMap type="Necesidad" id="ReporteNecesidadResult">
+        <id property="id" column="id"/>
+        <result property = "categoria" column = "categoria"/>
+        <result property = "nombre" column = "nombre"/>
+        <result property = "descripcion" column = "descripcion"/>
+        <result property = "fechaCreacion" column = "fCreacion"/>
+        <result property = "estado" column = "estado"/>
+        <result property = "fechaModificacion" column = "fModificacion"/>
+        <association property = "usuario" javaType = "Usuario">
+            <result property = "usuario" column = "usuario"/>
+        </association>
+    </resultMap>
+    
+</Mapper>
         

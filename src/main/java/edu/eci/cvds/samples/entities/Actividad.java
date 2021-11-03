@@ -19,6 +19,7 @@ public abstract class Actividad {
     protected Date fechaCreacion;
     protected String estado;
     protected Date fechaModificacion;
+    protected Usuario usuario;
     public static  int nSolicitudes;
     public final static String ACTIVA = "Activa";
     public final static String ENPROCESO = "En Proceso";
