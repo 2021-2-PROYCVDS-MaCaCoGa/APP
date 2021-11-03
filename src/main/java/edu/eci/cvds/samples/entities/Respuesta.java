@@ -14,14 +14,16 @@ public class Respuesta {
     private String nombre;
     private List<String> comentarios;
     private Date fechaCreacion;
+    private Actividad actividad;
     
-    public Respuesta(int id, String nombre, List<String> comentarios, Date fechaCreacion){
+    public Respuesta(int id, String nombre, List<String> comentarios, Date fechaCreacion, Actividad actividad){
         this.id = id;
         this.nombre = nombre;
         this.comentarios = comentarios;
         this.fechaCreacion = new Date(Calendar.getInstance().getTime().getTime());
+        this.actividad = actividad;
     }
-    
+        
     public int getId() {
         return this.id;
     

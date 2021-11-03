@@ -17,6 +17,9 @@ public interface OfertaMapper {
                         @Param("nombre") String nombre);
     
     
+    public void actualizarEstado(@Param("id") int id,
+                                @Param("estado") String estado);
+    
     public void consultarOferta(@Param("id") int id);
     public List<Oferta> consultarOfertas(@Param("categoria") int categoria);
     public List<Oferta> consultarOfertas();

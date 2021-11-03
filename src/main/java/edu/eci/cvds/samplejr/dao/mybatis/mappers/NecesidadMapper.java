@@ -26,5 +26,8 @@ public interface NecesidadMapper {
     
     public Necesidad consultarNecesidad(@Param("id") int id);
     
+    public void actualizarEstado (@Param("id") int id,
+                                    @Param("estado") String estado);
+    
    
 }

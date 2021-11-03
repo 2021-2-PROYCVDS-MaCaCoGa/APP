@@ -1,6 +1,8 @@
 package edu.eci.cvds.samples.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 
 
@@ -8,10 +10,11 @@ import java.io.Serializable;
 **/
 public class Usuario implements Serializable{
     private String nombre;
-    private int perfil;
+    private Perfil perfil;
     private String correo;
     private String contraseña;
     private String login;
+    private List<Actividad> actividades;
 
 
     /**
@@ -22,21 +25,22 @@ public class Usuario implements Serializable{
      * @param contraseña
      * @param login - Nombre de usuario del usuario
      */
-    public Usuario(String nombre, int Perfil, String correo, String contraseña, String login){
+    public Usuario(String nombre, Perfil Perfil, String correo, String contraseña, String login){
         this.nombre = nombre;
         this.perfil = perfil;
         this.correo = correo;
         this.contraseña = contraseña;
-        this.login = login;        
+        this.login = login;       
+        this.actividades = new ArrayList<Actividad>();
     }
-
+    
     public Usuario(){}
 
     public void setNombre(String nombre){this.nombre = nombre;}
     public String getNombre(){return this.nombre;}
 
-    public void setPerfil(int perfil){this.perfil = perfil;}
-    public int getPerfil(){return this.perfil;}
+    public void setPerfil(Perfil perfil){this.perfil = perfil;}
+    public Perfil getPerfil(){return this.perfil;}
 
     public void setCorreo(String correo){this.correo = correo;}
     public String getCorreo(){return this.correo;}
