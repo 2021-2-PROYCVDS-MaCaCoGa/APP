@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.UsuarioMapper">
+    <select parameterType="map" id="consultarUsuarios" resultMap="UsuarioResult">
+        SELECT
+            u.nombre as nombre,
+            u.perfil as perfil,
+            u.correo as correo,
+            u.contraseña as contraseña,
+            u.login as login
+        FROM Usuario as u;
+    </select>
+ 
+    <resultMap type="Usuario" id="UsuarioResult">
+        <id property="nombre" column="nombre"/>
+        <result property="perfil" column="perfil"/>
+        <result property="correo" column="correo"/>
+        <result property="contraseña" column="contraseña"/>
+        <result property="login" column="login"/>
+    </resultMap>
+</mapper>

@@ -1,0 +1,102 @@
+/*Cambia el grosor de la letra a 700*/
+.fw-700{
+    font-weight: 700;
+}
+/*Cambia el grosor de la letra a 300*/
+.fw-300{
+    font-weight: 300;
+}
+/*Se usa para que el botón sea más grande y poder ponerlo en otra parte*/
+.boton{
+    height:20px; 
+    position:relative; 
+    width:100px; 
+    top:50%; 
+    left:23%;
+    margin-right: 1rem;
+    
+}
+/*Cambia de posicion de los valores que nos va a dar la calculadora*/
+.cambioPosicion{
+    position:relative; 
+    left:20%;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+/*Centra el texto deseado*/
+.centrarTexto{
+    text-align: center;
+}
+/*Encargado de poner color al header de arriba, lo deja cafe oscuro*/
+.site-header{
+    background-color: rgb(37, 32, 32);
+    padding: 1rem 0 3rem 0;
+}
+/*Se encarga de darle el color y tamaño a la letra del menu
+Como por ejemplo a Varianza, Moda, Mediana y Desviación*/
+.navegacion a {
+    color : white;
+    text-decoration: none;
+    text-align: center;
+    font-size: 1.8rem;
+    display: inline-block;
+    margin-bottom: 1.4rem;
+    margin-right: 2rem;
+    width: 22%;
+}
+/*Encargado de darle color al footer, es donde dice quienes fueron los creadores*/
+.site-footer{
+    background-color: rgb(37, 32, 32);
+    margin: 0;
+}
+/*Se encarga de las medidas del footer*/
+.seccion{
+    margin-top: 11rem;
+    margin-bottom: 2rem;
+}
+.contenedor-footer{
+    display:block;
+    padding: 2rem 0;
+    text-align: center;
+} 
+/*Se encarga de partir la pagina a la mitad*/
+.contenido{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+.margenes{
+    margin-top: 2rem;
+    margin-left: 3rem;
+}
+.margenesValores{
+    margin-left: 15rem;
+}
+.margenes2{
+    margin-left: 15rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.margenBoton{
+    align-items: center;
+    margin-top: 3.5rem;
+    margin-left: 8rem;
+}
+.login{
+    width: 400px;
+    height: 340px;
+    background-color: #4e4d4d;
+    margin: auto;
+    margin-top: 180px;
+    box-shadow: 7px 13px 37px black;
+    padding: 20px 30px;
+    border-top: 4px solid blue;
+    color: white;
+}
+.login h5{
+    margin: 0;
+    text-align: center;
+    height: 40px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid;
+    font-size: 20px;
+}

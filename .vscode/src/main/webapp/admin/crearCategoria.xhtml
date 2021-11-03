@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3c.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+      <link rel="stylesheet" href="normalize.css"></link>
+    <h:head>
+        <title>Crear Categoría</title>
+    </h:head>
+    <h:body>
+        <body background="../resources/REGISTRAR.jpg"></body>
+        <style type="text/css">
+            *{
+                padding: 0px;
+                margin: 0px;
+            }
+            .site-header{
+                padding: 1rem 0 3rem 0;
+               
+                background-color: rgba(47, 55, 158, 0.418);
+            }
+            .centrarTexto{
+                text-align: center;
+            }
+            #header{
+                margin:auto;
+                max-width: 60rem;
+                padding: 1rem 0 3rem 9rem;
+                
+            }
+            ul, ol{
+                list-style: none;
+            }
+            .navegacion li a{
+                background-color: transparent;
+                color: white;
+                text-decoration: none;
+                padding: 30px 30px;
+                display: block;
+                font-size: 1.8rem;
+                margin-right: 3.5rem;
+             
+                object-position: left;
+
+            
+            }
+            .navegacion li a:hover{
+                background-color: rgb(105, 118, 236);
+            }
+            .navegacion > li{
+                float: left;
+            }
+            .navegacion li ul{
+                display: none;
+                position: absolute;
+                min-width: 140px;
+            }
+            .navegacion li ul a{
+                background-color: rgba(177, 177, 177, 0.8);
+                border: #0a2347;
+            }
+            .navegacion li:hover > ul{
+                display: block;
+            }
+            .margenBoton{
+            align-items: center;
+            margin-top: 2rem;
+            margin-left: 17rem;
+        }
+        </style>
+        <header class="site-header">
+            <h3 class="centrarTexto" style="font-size: 35px; text-align: left;">Registrar Categoría</h3>
+            <div id="header">
+                <ul class="navegacion">
+                    <li><a href="">Administración de Categorías</a>
+                        <ul>
+                            <li><a href="modificarCategoria.xhtml">Modificar Categoría</a></li>
+                            <li><a href="eliminarCategoria.xhtml">Eliminar Categoría</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../roles/administrador.xhtml">Volver al Inicio</a></li>
+                </ul>
+            </div>
+        </header>
+        
+        
+        <h:form id="crearCategoria">
+            <!--Para poner el nombre de la categoria-->
+            <h5 style="font-size: 20px; margin-top: 1.5rem;">Nombre de la Categoría</h5>
+            <span class="ui-float-label">
+                <p:inputText id="float-input" value="#{inputTextView.text}"/>
+            </span>
+            <!--Para el formato de descripcion, que sea de texto extendido-->
+            <h5 style="font-size: 20px; margin-top: 1rem;">Descripción</h5>
+            <p:inputTextarea rows="6" cols="80"/>
+            <div>
+                <p:button class="margenBoton" value="Crear Categoría"/>
+            </div>
+        </h:form>
+    </h:body>
+</html>

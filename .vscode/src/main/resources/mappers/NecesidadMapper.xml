@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.NecesidadMapper">
+    <select parameterType="map" id="consultarNecesidades" resultMap="ReportesNecesidadesResult">
+        SELECT 
+            n.id as id,
+            a.nombre as nombre,
+            a.categoria as categoria,
+            a.descripcion as descripcion ,
+            a.fechaCreacion as fCreacion,
+            a.urgencia as urgencia,
+            a.esatdo as estado,
+            a.fechaModificacion as fModificacion,
+            a.nombre as usuario
+        FROM Necesidad as n
+        INNER JOIN Actividad as a ON a.actividad = n.id
+        LEFT JOIN Usuario as u ON u.id = o.usuario
+        GROUP BY n.estado
+    </select>
+    
+    <select parameterType="map" id="consultarNecesidades" resultMap="NecesidadResult">
+        SELECT 
+            n.id as id,
+            a.nombre as nombre,
+            a.categoria as categoria,
+            a.descripcion as descripcion,
+            a.fechaCreacion as fCreacion,
+            n.urgencia as urgencia,
+            a.estado as estado
+        FROM Necesidad as n
+        INNER JOIN Actividad as a ON a.actividad = n.id
+        WHERE n.categoria = #{categoria};
+    </select>
+    
+    <select parameterType="map" id="consultarNecesidad" resultMap="NecesidadResult">
+        SELECT 
+            n.id as id,
+            a.nombre as nombre,
+            a.categoria as categoria,
+            a.descripcion as descripcion ,
+            a.fechaCreacion as fCreacion,
+            n.urgencia as urgencia,
+            a.estado as estado
+        FROM Necesidad as n
+        INNER JOIN Actividad as a ON a.actividad = a.id
+        WHERE n.id = #{id};
+    </select>
+    
+    <insert id = "addNecesidad">
+        INSERT INTO Necesidad (nombre, categoria, descripcion, fechaCreacion, urgencia)
+        VALUES (#{nombre},#{categoria},#{descripcion},CURRENT_TIMESTAMP,#{urgencia});
+    </insert>
+    
+    <update id = "actualizarEstado">
+        UPDATE Necesidad SET
+            n.estado = #{estado}
+        WHERE n.id = #{id};
+    </update>
+    
+    <resultMap type="Necesidad" id="NecesidadResult">
+        <id property="id" column="id"/>
+        <result property = "categoria" column="categoria"/>
+        <result property = "nombre" column = "nombre"/>
+        <result property = "descripcion" column = "descripcion"/>
+        <result property = "fechaCreacion" column = "fCreacion"/>
+        <result property = "urgencia" column = "urgencia"/>
+        <result property = "estado" column = "estado"/>
+    </resultMap>
+    
+    <resultMap type="Necesidad" id="ReporteNecesidadResult">
+        <id property="id" column="id"/>
+        <result property = "categoria" column = "categoria"/>
+        <result property = "nombre" column = "nombre"/>
+        <result property = "descripcion" column = "descripcion"/>
+        <result property = "fechaCreacion" column = "fCreacion"/>
+        <result property = "estado" column = "estado"/>
+        <result property = "fechaModificacion" column = "fModificacion"/>
+        <association property = "usuario" javaType = "Usuario">
+            <result property = "nombre" column = "usuario"/>
+        </association>
+    </resultMap>
+    
+</mapper>
+        
