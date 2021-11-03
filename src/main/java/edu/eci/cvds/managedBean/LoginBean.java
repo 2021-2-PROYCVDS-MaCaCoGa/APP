@@ -7,6 +7,8 @@ import javax.faces.application.FacesMessage;
 import org.apache.shiro.subject.Subject;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 import org.apache.shiro.SecurityUtils;
 
 @ManagedBean(name = "loginListener")
@@ -23,7 +25,7 @@ public class LoginBean {
     /**
      * Metodo encargado de loguear al usuario de acuerdo a su correo y contraseña
      */
-    public void Loguear(){
+    public void loguear(){
         try{
             limpio();
             actual =  SecurityUtils.getSubject();
@@ -48,10 +50,22 @@ public class LoginBean {
     
     public void redireccionInicial(){
         try{
+            FacesContext facesContext = FacesContext.getCurrentInstance();
             if(rolEstudiante()){
+                //En esta parte decimos que el estudiante se pudo loguear, y se redirije a la pagina estudiante.xhtml
+                HttpSession sesion = (HttpSession)facesContext.getExternalContext().getSession(true);
+                facesContext.getExternalContext().redirect("../roles/estudiante.xhtml");
+            }
+            else if(rolAdministrador()){
+                //En esta parte decimos que el administrador se pudo loguear y se redirije a la pagina administrador.xhtml
+                HttpSession sesion = (HttpSession)facesContext.getExternalContext().getSession(true);
+                facesContext.getExternalContext().redirect("../roles/administrador.xhtml");
             }
            
         } catch(Exception exception){
+            cerrar();
+            valoresPredeterminados();
+            
         }
     }
     
@@ -69,6 +83,57 @@ public class LoginBean {
      */
     public boolean rolEstudiante(){
         return actual.hasRole("Estudiante");
+    }
+    
+    /**
+     * Metodo encargado de cerrar sesion 
+     */
+    public void cerrar(){
+        try{
+            logger.cerrarSesion();
+        } catch(Exception exception){
+            
+        }
+    }
+        
+    /**
+     * Metodo encargado de volver los valores de correo y contraseña a ""
+     */
+    public void valoresPredeterminados(){
+        this.correo = "";
+        this.contraseña = "";
+    }
+    
+    /**
+     * Cambia el valor del correo al que ingrese el usuario
+     * @param nuevoCorreo 
+     */
+    public void setCorreo(String nuevoCorreo){
+        this.correo = nuevoCorreo;
+    }
+    
+    /**
+     * Cambia el valor de la contraseña a la que ingresa el usuario
+     * @param nuevaContra 
+     */
+    public void setContra(String nuevaContra){
+        this.contraseña = nuevaContra;
+    }
+    
+    /**
+     * Retorna el valor de correo del usuario
+     * @return 
+     */
+    public String getCorreo(){
+        return this.correo;
+    }
+    
+    /**
+     * Retorna el valor de contraseña del usuario
+     * @return 
+     */
+    public String getContra(){
+        return this.contraseña;
     }
 
 }
