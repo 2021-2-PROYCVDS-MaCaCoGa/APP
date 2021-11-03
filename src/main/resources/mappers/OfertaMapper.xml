@@ -48,6 +48,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
         WHERE o.id = #{id};
     </select>
     
+    <updtate id = "actualizarEstado">
+        UPDATE Oferta as o SET
+            o.estado = #{estado}
+        WHERE o.id = #{id};
+    </updtate>
+    
     <resultMap type="Categoria" id="CategoriaResult">
         <id property="id" column="id"/>
         <result property="categoria" column="categoria"/>

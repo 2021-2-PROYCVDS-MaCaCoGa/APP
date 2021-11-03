@@ -6,7 +6,7 @@
 <mapper namespace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.UsuarioMapper">
  
  
-  </select> 
+  
   <resultMap type="Usuario" id="UsuarioResult">
         <id property="" column=""/>
         <result property="" column=""/>

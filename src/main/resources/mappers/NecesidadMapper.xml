@@ -50,6 +50,12 @@
         VALUES (#{nombre},#{categoria},#{descripcion},CURRENT_TIMESTAMP,#{urgencia});
     </insert>
     
+    <update id = "actualizarEstado">
+        UPDATE Necesidad SET
+            n.estado = #{estado}
+        WHERE n.id = #{id};
+    </update>
+    
     <resultMap type="Necesidad" id="NecesidadResult">
         <id property="id" column="id"/>
         <result property = "categoria" column="categoria"/>
