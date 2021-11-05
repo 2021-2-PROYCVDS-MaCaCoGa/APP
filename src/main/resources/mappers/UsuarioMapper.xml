@@ -3,22 +3,33 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.UsuarioMapper">
+<mapper namespace="edu.eci.cvds.samplejr.dao.mybatis.mappers.UsuarioMapper">
     <select parameterType="map" id="consultarUsuarios" resultMap="UsuarioResult">
         SELECT
-            u.nombre as nombre,
-            u.perfil as perfil,
-            u.correo as correo,
-            u.contraseña as contraseña,
-            u.login as login
-        FROM Usuario as u;
+            u.NOMBRE as nombre,
+            u.PERFIL as perfil,
+            u.CORREO as correo,
+            u.PASSWORD as contraseña,
+            u.LOGIN as login
+        FROM USUARIO as u;
+    </select>
+    
+    <select parameterType="map" id="consultarUsuario" resultMap="UsuarioResult">
+        SELECT
+            u.NOMBRE as nombre,
+            u.PERFIL as perfil,
+            u.CORREO as correo,
+            u.PASSWORD as contraseña,
+            u.LOGIN as login
+        FROM USUARIO as u
+        WHERE u.LOGIN = #{LOGIN};
     </select>
  
     <resultMap type="Usuario" id="UsuarioResult">
         <id property="nombre" column="nombre"/>
         <result property="perfil" column="perfil"/>
         <result property="correo" column="correo"/>
-        <result property="contraseña" column="contraseña"/>
+        <result property="password" column="contraseña"/>
         <result property="login" column="login"/>
     </resultMap>
 </mapper>

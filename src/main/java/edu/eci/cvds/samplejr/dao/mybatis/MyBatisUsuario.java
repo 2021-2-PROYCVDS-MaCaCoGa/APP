@@ -56,7 +56,7 @@ public class MyBatisUsuario implements UsuarioDao {
 	}
 
 	@Override
-	public void ingresarUsuario(String nombre, String log, String contraseña, String correo, Perfil perfil)
+	public void ingresarUsuario(String nombre, String log, String contraseña, String correo, String perfil)
 			throws PersistenceException {
 		try {
 			usuarioMapper.ingresarUsuario(nombre, log, contraseña, correo, perfil);

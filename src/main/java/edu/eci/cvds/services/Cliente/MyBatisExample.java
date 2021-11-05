@@ -17,6 +17,7 @@ package edu.eci.cvds.services.Cliente;
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+import edu.eci.cvds.samplejr.dao.mybatis.mappers.UsuarioMapper;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
@@ -43,7 +44,7 @@ public class MyBatisExample {
         if (sqlSessionFactory == null) {
             InputStream inputStream;
             try {
-                inputStream = Resources.getResourceAsStream("mybatis-config.xml");
+                inputStream = Resources.getResourceAsStream("mybatis-config-h2.xml");
                 sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
             } catch (IOException e) {
                 throw new RuntimeException(e.getCause());
@@ -59,9 +60,17 @@ public class MyBatisExample {
      */
     public static void main(String args[]) throws SQLException {
         SqlSessionFactory sessionfact = getSqlSessionFactory();
-
+        //sessionfact.getConfiguration().addMapper(UsuarioMapper.class);
         SqlSession sqlss = sessionfact.openSession();
-
+        
+        UsuarioMapper usuarioM = (UsuarioMapper)sqlss.getMapper(UsuarioMapper.class);
+        
+        System.out.println("-----------------------Consultar Clientes-------------------");
+        System.out.println(usuarioM.consultarUsuarios());
+        System.out.println("------------------------Consultar Cliente-------------------");
+        System.out.println(usuarioM.consultarUsuario("CristianC"));
+        
+        
         sqlss.commit();
         sqlss.close();
     }

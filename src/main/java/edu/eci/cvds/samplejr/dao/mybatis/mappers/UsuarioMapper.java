@@ -20,7 +20,7 @@ public interface UsuarioMapper {
                                 @Param("LOGIN") String login,
                                 @Param("CONTRASEÑA") String contraseña,
                                 @Param("CORREO") String correo,
-                                @Param("PERFIL") Perfil perfil);
+                                @Param("PERFIL") String perfil);
 
     public int ExistenciaUsuario(@Param("USUARIO") String nombre,
                                  @Param("CONTRA") String contraseña);
