@@ -10,11 +10,7 @@ import java.util.List;
 **/
 public class Usuario implements Serializable{
     private String nombre;
-<<<<<<< HEAD
     private String rol;
-=======
-    private String perfil;
->>>>>>> db620d0fb789e7c478ac26da7a01a25f5e3ac312
     private String correo;
     private String password;
     private String login;
@@ -43,13 +39,8 @@ public class Usuario implements Serializable{
     public void setNombre(String nombre){this.nombre = nombre;}
     public String getNombre(){return this.nombre;}
 
-<<<<<<< HEAD
     public void setPerfil(String rol){this.rol = rol;}
     public String getPerfil(){return this.rol;}
-=======
-    public void setPerfil(String perfil){this.perfil = perfil;}
-    public String getPerfil(){return this.perfil;}
->>>>>>> db620d0fb789e7c478ac26da7a01a25f5e3ac312
 
     public void setCorreo(String correo){this.correo = correo;}
     public String getCorreo(){return this.correo;}
@@ -62,7 +53,7 @@ public class Usuario implements Serializable{
     
     @Override
     public String toString(){
-        return "Usuario{"+"nombre="+getNombre()+", perfil="+perfil+", correo="+correo+", contraseña= "+getContraseña()+", login="+login+"}\n";
+        return "Usuario{"+"nombre="+getNombre()+", rol="+rol+", correo="+correo+", contraseña= "+getContraseña()+", login="+login+"}\n";
     }
 
 
