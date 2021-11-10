@@ -3,10 +3,13 @@ package edu.eci.cvds.managedBean;
 
 import com.google.inject.Inject;
 import edu.eci.cvds.security.login;
+import edu.eci.cvds.security.loginconnection;
+
 import javax.faces.application.FacesMessage;
 import org.apache.shiro.subject.Subject;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 import org.apache.shiro.SecurityUtils;
@@ -15,7 +18,9 @@ import java.sql.DriverManager;
 
 @SuppressWarnings("deprecation")
 @ManagedBean(name = "loginListener")
+@SessionScoped
 public class LoginBean {
+    @Inject
     private login logger ;
     private String correo;
     private  String contra;
@@ -33,6 +38,7 @@ public class LoginBean {
      * Metodo encargado de loguear al usuario de acuerdo a su correo y contraseña
      */
     public void loguear(){
+        System.out.println("Entra al metodo loguear");
         try{
             limpio();
             actual =  SecurityUtils.getSubject();
@@ -41,9 +47,14 @@ public class LoginBean {
             }
             else{
                 logger.log(correo, contra);
+                System.out.println("Se pudo");
                 redireccionInicial();
             }
         } catch(Exception exception){
+            message = exception.getMessage();
+            estado = FacesMessage.SEVERITY_WARN;
+            valoresPredeterminados();
+            System.out.println("Problemas con el log");
             
         }
     }
@@ -62,15 +73,18 @@ public class LoginBean {
             if(rolEstudiante()){
                 //En esta parte decimos que el estudiante se pudo loguear, y se redirije a la pagina estudiante.xhtml
                 HttpSession sesion = (HttpSession)facesContext.getExternalContext().getSession(true);
+                sesion.setAttribute("correo", correo);
                 facesContext.getExternalContext().redirect("../roles/estudiante.xhtml");
             }
             else if(rolAdministrador()){
                 //En esta parte decimos que el administrador se pudo loguear y se redirije a la pagina administrador.xhtml
                 HttpSession sesion = (HttpSession)facesContext.getExternalContext().getSession(true);
+                sesion.setAttribute("correo", correo);
                 facesContext.getExternalContext().redirect("../roles/administrador.xhtml");
             }
            
         } catch(Exception exception){
+            System.out.print("Problemas en el login, jodase");
             cerrar();
             valoresPredeterminados();
             
@@ -142,6 +156,10 @@ public class LoginBean {
      */
     public String getContra(){
         return this.contra;
+    }
+
+    public void estadoLogin() {
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(estado, "LogIn", message));
     }
 
 }

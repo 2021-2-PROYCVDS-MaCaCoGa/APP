@@ -9,7 +9,6 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
 /**
- *
  * @author diego
  */
 public class Autenticacion extends AccessControlFilter{
@@ -25,10 +24,10 @@ public class Autenticacion extends AccessControlFilter{
     protected boolean onAccessDenied(ServletRequest request, ServletResponse response) throws Exception {
         Subject subject = getSubject(request, response);
         if( subject.hasRole("Administrador")){
-            welcomeurl = "roles/administrador.xhtml";
+            welcomeurl = "../roles/administrador.xhtml";
         }   
         else if( subject.hasRole("Estudiante") ){
-            welcomeurl = "roles/estudiante.xhtml";
+            welcomeurl = "../roles/estudiante.xhtml";
         }
         WebUtils.issueRedirect(request, response, welcomeurl);
         return false;

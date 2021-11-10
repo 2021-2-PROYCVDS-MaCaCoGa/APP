@@ -25,9 +25,9 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 
    <mappers>
        <mapper resource="mappers/UsuarioMapper.xml"></mapper>
-       <mapper resource="mappers/NecesidadMapper.xml"></mapper>
+       <!--<mapper resource="mappers/NecesidadMapper.xml"></mapper>
        <mapper resource="mappers/PerfilMapper.xml"></mapper>
-       <mapper resource="mappers/CategoriaMapper.xml"></mapper>
+       <mapper resource="mappers/CategoriaMapper.xml"></mapper>-->
    </mappers> 
 
 </configuration>
