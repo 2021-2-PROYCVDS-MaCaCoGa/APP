@@ -2,7 +2,13 @@
 package edu.eci.cvds.services.Cliente;
 
 
+<<<<<<< HEAD
 import com.mysql.jdbc.Connection;
+=======
+import edu.eci.cvds.samplejr.dao.mybatis.mappers.CategoriaMapper;
+import edu.eci.cvds.samplejr.dao.mybatis.mappers.UsuarioMapper;
+import edu.eci.cvds.samples.entities.Perfil;
+>>>>>>> db620d0fb789e7c478ac26da7a01a25f5e3ac312
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.DriverManager;
@@ -26,7 +32,29 @@ public class MyBatisExample {
     static final String USER = "sa"; 
    static final String PASS = "sa"; 
 
+<<<<<<< HEAD
     
+=======
+    /**
+     * Método que construye una fábrica de sesiones de MyBatis a partir del
+     * archivo de configuración ubicado en src/main/resources
+     *
+     * @return instancia de SQLSessionFactory
+     */
+    public static SqlSessionFactory getSqlSessionFactory() {
+        SqlSessionFactory sqlSessionFactory = null;
+        if (sqlSessionFactory == null) {
+            InputStream inputStream;
+            try {
+                inputStream = Resources.getResourceAsStream("mybatis-config-h2.xml");
+                sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+            } catch (IOException e) {
+                throw new RuntimeException(e.getCause());
+            }
+        }
+        return sqlSessionFactory;
+    }
+>>>>>>> db620d0fb789e7c478ac26da7a01a25f5e3ac312
 
     /**
      * Programa principal de ejempo de uso de MyBATIS
@@ -34,6 +62,7 @@ public class MyBatisExample {
      * @throws SQLException
      */
     public static void main(String args[]) throws SQLException {
+<<<<<<< HEAD
         Connection conn = null; 
         Statement stmt = null; 
         try { 
@@ -63,4 +92,30 @@ public class MyBatisExample {
       } //end try 
       System.out.println("Goodbye!");
    } 
+=======
+        SqlSessionFactory sessionfact = getSqlSessionFactory();
+        //sessionfact.getConfiguration().addMapper(UsuarioMapper.class);
+        SqlSession sqlss = sessionfact.openSession();
+        
+        UsuarioMapper usuarioM = (UsuarioMapper)sqlss.getMapper(UsuarioMapper.class);
+        CategoriaMapper categoriaM = (CategoriaMapper)sqlss.getMapper(CategoriaMapper.class);
+        
+        System.out.println("-----------------------Consultar Clientes-------------------");
+        System.out.println(usuarioM.consultarUsuarios());
+        System.out.println("------------------------Consultar Cliente-------------------");
+        System.out.println(usuarioM.consultarUsuario("CristianC"));
+        usuarioM.ingresarUsuario(3,"Michael", "michael_mni", "14325mc", "michaelmni@gmail.com", Perfil.valueOf("ESTUDIANTE").toString());
+        System.out.println("--------------------------Consultar Cliente michael_mni------------");
+        System.out.println(usuarioM.consultarUsuario("michael_mni"));
+        usuarioM.deleteUsuario(3);        
+        System.out.println("--------------------Consultar Categorias-------------------");
+        System.out.println(categoriaM.consultarCategorias());
+        
+        
+        sqlss.commit();
+        sqlss.close();
+    }
+
+
+>>>>>>> db620d0fb789e7c478ac26da7a01a25f5e3ac312
 }

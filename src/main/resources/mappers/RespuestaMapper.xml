@@ -6,13 +6,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
 
 
 
-<<<<<<< HEAD
 <Mapper nameSpace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.RespuestaMapper">
-    
-=======
-<mapper namespace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.RespuestaMapper">
 
->>>>>>> 6e85b0104ea09f58b921cd91fff154762cef56e8
     <select parameterType="map" id="consultarRespuestas" resultMap="RespuestaResult">
         SELECT 
             r.id as id,
@@ -36,15 +31,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
         WHERE r.id = #{id};
     </select>    
     
-    <select parameterType="map" id="informeRespuestas" resultMap="informaRespuestasResult">
+    <select parameterType="map" id="informeRespuestas" resultMap="informeRespuestasResult">
         SELECT 
             r.descripcion as descripcion,
             r.actividad as idActividad,
             CASE as actividad
-                WHEN r.actividad = "%O%" THEN "Oferta"
-                WHEN r.actividad = "%N%" THEN "Necesidad"
-        FROM Respuesta as r
-        
+                WHEN r.actividad LIKE '%O%' THEN "Oferta"
+                WHEN r.actividad LIKE '%N%' THEN "Necesidad"
+        FROM Respuesta as r;        
     </select>
     
     <ResultMap type="Respuesta" id="RespuestaResult">
@@ -57,12 +51,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
             <result property = "id" column = "actividad"/>
         </association>
     </ResultMap>
-<<<<<<< HEAD
+    
+    <resultMap type="Respuesta" id="InformeRespuestaResult">
+        <result property="descripcion" column="descripcion"/>
+        <association property="actividad" javaType="Actividad">
+            <result property = "id" column = "idActividad"/>
+        </association>
+    </resultMap>
     
 </Mapper>
-=======
-</mapper>
->>>>>>> 6e85b0104ea09f58b921cd91fff154762cef56e8
+
     
 
 

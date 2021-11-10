@@ -22,5 +22,5 @@ public interface CategoriaMapper {
     public List<Categoria> consultarCategorias();
 
     public Categoria consultarCategoria(@Param("id") int di);
-    public Categoria consultarCategoria(@Param("nombre") String nombre);
+    public Categoria consultarCategoriaNombre(@Param("nombre") String nombre);
 }
