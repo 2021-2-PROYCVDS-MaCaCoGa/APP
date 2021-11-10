@@ -12,17 +12,20 @@ public interface UsuarioMapper {
     public Usuario consultarUsuario(@Param("LOGIN") String login);
 
     public Usuario iniciarSesion(@Param("LOGIN") String login,
-                                 @Param("CONTRASEÑA") String contraseña);
+                                 @Param("PASSWORD") String contraseña);
 
     public List<Usuario> consultarUsuarios();
 
-    public void ingresarUsuario(@Param("NOMBRE") String nombre,
+    public void ingresarUsuario(@Param("ID") int id,
+                                @Param("NOMBRE") String nombre,
                                 @Param("LOGIN") String login,
-                                @Param("CONTRASEÑA") String contraseña,
+                                @Param("PASSWORD") String contraseña,
                                 @Param("CORREO") String correo,
                                 @Param("PERFIL") String perfil);
 
     public int ExistenciaUsuario(@Param("USUARIO") String nombre,
                                  @Param("CONTRA") String contraseña);
+    
+    public void deleteUsuario(@Param("ID") int id);
     
 }

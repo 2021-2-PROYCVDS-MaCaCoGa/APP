@@ -23,7 +23,18 @@
             u.LOGIN as login
         FROM USUARIO as u
         WHERE u.LOGIN = #{LOGIN};
-    </select>
+    </select> 
+    
+    <insert id="ingresarUsuario">
+        INSERT INTO Usuario (ID, NOMBRE, PERFIL, CORREO, PASSWORD, LOGIN)
+        VALUES (#{ID}, #{NOMBRE},#{PERFIL},#{CORREO},#{PASSWORD},#{LOGIN});
+        
+    </insert>
+    
+    <delete id="deleteUsuario">
+        DELETE FROM Usuario as u
+        WHERE u.id = #{ID};
+    </delete>
  
     <resultMap type="Usuario" id="UsuarioResult">
         <id property="nombre" column="nombre"/>

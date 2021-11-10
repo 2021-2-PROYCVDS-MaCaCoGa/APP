@@ -17,7 +17,9 @@ package edu.eci.cvds.services.Cliente;
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+import edu.eci.cvds.samplejr.dao.mybatis.mappers.CategoriaMapper;
 import edu.eci.cvds.samplejr.dao.mybatis.mappers.UsuarioMapper;
+import edu.eci.cvds.samples.entities.Perfil;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
@@ -64,11 +66,18 @@ public class MyBatisExample {
         SqlSession sqlss = sessionfact.openSession();
         
         UsuarioMapper usuarioM = (UsuarioMapper)sqlss.getMapper(UsuarioMapper.class);
+        CategoriaMapper categoriaM = (CategoriaMapper)sqlss.getMapper(CategoriaMapper.class);
         
         System.out.println("-----------------------Consultar Clientes-------------------");
         System.out.println(usuarioM.consultarUsuarios());
         System.out.println("------------------------Consultar Cliente-------------------");
         System.out.println(usuarioM.consultarUsuario("CristianC"));
+        usuarioM.ingresarUsuario(3,"Michael", "michael_mni", "14325mc", "michaelmni@gmail.com", Perfil.valueOf("ESTUDIANTE").toString());
+        System.out.println("--------------------------Consultar Cliente michael_mni------------");
+        System.out.println(usuarioM.consultarUsuario("michael_mni"));
+        usuarioM.deleteUsuario(3);        
+        System.out.println("--------------------Consultar Categorias-------------------");
+        System.out.println(categoriaM.consultarCategorias());
         
         
         sqlss.commit();

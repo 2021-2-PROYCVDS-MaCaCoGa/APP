@@ -6,13 +6,25 @@
  * Author:  crisa
  * Created: 3/11/2021
  */
-
-CREATE TABLE USUARIO (
+-- -----------------------------------------------
+-- Table `USUARIO`
+-- -----------------------------------------------
+CREATE TABLE IF NOT EXISTS `USUARIO` (
     `ID` NUMBER NOT NULL,
     `NOMBRE` VARCHAR(100) NOT NULL,
     `PERFIL` VARCHAR(20) NOT NULL,
     `CORREO` VARCHAR(100) NOT NULL,
     `PASSWORD` VARCHAR(20) NOT NULL,
-    `LOGIN` VARCHAR(20) NOT NULL
-)
+    `LOGIN` VARCHAR(20) NOT NULL);
+-- -----------------------------------------------
+-- Table `CATEGORIA`
+-- -----------------------------------------------
+
+CREATE TABLE IF NOT EXISTS `CATEGORIA` (
+    `ID` NUMBER NOT NULL,
+    `NOMBRE` VARCHAR(100) NOT NULL,
+    `DESCRIPCION` VARCHAR(200) NOT NULL,
+    `FECHACREACION` DATE NOT NULL,
+    `ESTADO` VARCHAR(50) NOT NULL,
+    `FECHAMODIFICACION` DATE);
 

@@ -2,17 +2,17 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.CategoriaMapper">
+<mapper namespace="edu.eci.cvds.samplejr.dao.mybatis.mappers.CategoriaMapper">
 
     <select parameterType="map" id="consultarCategorias" resultMap="CategoriaResult" >
         SELECT 
-            c.id as id,
-            c.nombre as nombre,
-            c.descripcion as descripcion,
-            c.fechaCreacion as fCreacion ,
-            c.estado as estado ,
-            c.fechaModificacion as fModificacion
-        FROM Categoria as c
+            c.ID as id,
+            c.NOMBRE as nombre,
+            c.DESCRIPCION as descripcion,
+            c.FECHACREACION as fCreacion ,
+            c.ESTADO as estado ,
+            c.FECHAMODIFICACION as fModificacion
+        FROM CATEGORIA as c
     </select>
 
     <select parameterType="map" id="consultarCategoria" resultMap="CategoriaResult">
@@ -23,11 +23,11 @@
             c.fechaCreacion as fCreacion ,
             c.estado as estado ,
             c.fechaModificacion as fModificacion
-        FROM Categoria as c
+        FROM CATEGORIA as c
         WHERE c.id = #{"id"};
     </select>
 
-    <select parameterType="map" id="consultarCategoria" resultMap="categoriaResult">
+    <select parameterType="map" id="consultarCategoriaNombre" resultMap="CategoriaResult">
         SELECT
             c.id as id,
             c.nombre as nombre,
@@ -35,7 +35,7 @@
             c.fechaCreacion as fCreacion ,
             c.estado as estado, 
             c.fechaModificacion as fModificacion
-        FROM Categoria as c
+        FROM CATEGORIA as c
         WHERE c.nombre = #{"nombre"};
        </select>
     
@@ -44,16 +44,19 @@
             VALUES (#{id},#{nombre},#{descripcion},CURRENT_TIMESTAMP,#{estado});
     </insert>
     
+    
+    
     <update id="modificarCategoria">
-        UPDATE Categoria as c SET
+        UPDATE CATEGORIA as c SET
             c.nombre = #{nombre},
             c.descripcion = #{despcripcion},
             c.estado = #{estado},
             c.fechaModificacion = CURRENT_TIMESTAMP
         WHERE c.id = #{id};
     </update>
+    
     <delete id = "borrarCategoria">
-    	DELETE FROM Categoria as c
+    	DELETE FROM CATEGORIA as c
     	WHERE c.id = #{id};
     </delete>
 
