@@ -9,7 +9,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
 
 
 
-<mapper namespace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.OfertaMapper">
+<mapper namespace="edu.eci.cvds.samplejr.dao.mybatis.mappers.OfertaMapper">
     
     <insert id="addOferta">
         INSERT INTO Oferta (id, categoria, nombre, descripcion, fCreacion)

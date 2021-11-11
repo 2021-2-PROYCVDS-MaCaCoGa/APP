@@ -6,7 +6,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
 
 
 
-<Mapper nameSpace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.RespuestaMapper">
+<Mapper nameSpace="edu.eci.cvds.samplejr.dao.mybatis.mappers.RespuestaMapper">
 
     <select parameterType="map" id="consultarRespuestas" resultMap="RespuestaResult">
         SELECT 

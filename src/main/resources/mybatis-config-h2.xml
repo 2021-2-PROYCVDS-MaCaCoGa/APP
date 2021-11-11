@@ -6,9 +6,9 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 
    <typeAliases>
        <typeAlias type='edu.eci.cvds.samples.entities.Usuario' alias='Usuario'/>
-       <typeAlias type='edu.eci.cvds.samples.entities.Necesidad' alias='Necesidad'/>
-       <typeAlias type='edu.eci.cvds.samples.entities.Perfil' alias='Perfil'/>
        <typeAlias type='edu.eci.cvds.samples.entities.Categoria' alias='Categoria'/>
+       <!--typeAlias type='edu.eci.cvds.samples.entities.Necesidad' alias='Necesidad'/-->
+       
    </typeAliases>
 
 	  <environments default="test">
@@ -25,9 +25,9 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 
    <mappers>
        <mapper resource="mappers/UsuarioMapper.xml"></mapper>
-       <!--mapper resource="mappers/NecesidadMapper.xml"></mapper-->
-       <!--mapper resource="mappers/PerfilMapper.xml"></mapper-->
        <mapper resource="mappers/CategoriaMapper.xml"></mapper>
+       <!--mapper resource="mappers/NecesidadMapper.xml"></mapper-->
+       
    </mappers> 
 
 </configuration>

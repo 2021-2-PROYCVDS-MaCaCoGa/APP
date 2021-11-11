@@ -42,7 +42,10 @@ public class Categoria implements Serializable {
     public Date getFechaModificacion(){return this.fechaModificacion;}
     public void setFechaModificacion(Date fechaModificacion){this.fechaModificacion = fechaModificacion;}
     
-
+    @Override
+    public String toString(){
+        return "Categoria{"+"id="+getId()+", nombre="+getNombre()+", descripcion="+getDescripcion()+", fechaCreacion= "+getFechaCreacion()+" estado="+estado+", fechaModificacion= "+getFechaModificacion()+"}\n";
+    }
 
     
 }

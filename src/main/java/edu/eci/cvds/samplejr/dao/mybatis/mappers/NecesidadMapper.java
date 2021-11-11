@@ -15,13 +15,13 @@ public interface NecesidadMapper {
                             @Param("nombre") String nombre,
                             @Param("descripcion")String descripcion,
                             @Param("urgencia") int urgencia,
-                            @Param("estado") boolean estado);
+                            @Param("estado") String estado);
 
     /**
      * Se consultan las necesidades de acuerdo a una categoria especifica
      * @return 
      */
-    public List<Necesidad> consultarNecesidades(@Param("categoria") int categoria);
+    public List<Necesidad> consultarNecesidadesCategoria(@Param("categoria") int categoria);
     public List<Necesidad> consultarNecesidades();
     
     public Necesidad consultarNecesidad(@Param("id") int id);

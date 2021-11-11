@@ -15,7 +15,7 @@ public class MyBatisNecesidadDao implements NecesidadDao{
 	private NecesidadMapper necesidadMapper;
 
 	@Override
-	public void agregarNecesidad(int categoria, String nombre, String descripcion, int urgencia, boolean estado)
+	public void agregarNecesidad(int categoria, String nombre, String descripcion, int urgencia, String estado)
 			throws PersistenceException {
 		try {
 			necesidadMapper.addNecesidad(categoria, nombre, descripcion, urgencia, estado);
@@ -28,7 +28,7 @@ public class MyBatisNecesidadDao implements NecesidadDao{
 	@Override
 	public List<Necesidad> consultarNecesidades(int categoria) throws PersistenceException {
 		try {
-			return necesidadMapper.consultarNecesidades(categoria);
+			return necesidadMapper.consultarNecesidadesCategoria(categoria);
 		}catch(org.apache.ibatis.exceptions.PersistenceException e) {
 			throw new PersistenceException("Error al consultar necesidades: "+ categoria, e);
 		}

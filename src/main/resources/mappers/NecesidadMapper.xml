@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<!--mapper namespace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.NecesidadMapper">
+<!mapper namespace="edu.eci.cvds.samplejr.dao.mybatis.mappers.NecesidadMapper">
     <select parameterType="map" id="consultarNecesidades" resultMap="ReportesNecesidadesResult">
         SELECT 
             n.id as id,
@@ -30,8 +30,20 @@
             n.urgencia as urgencia,
             n.estado as estado
         FROM Necesidad as n
-        WHERE n.categoria = #{categoria};
     </select>
+    
+    <select parameterType="map" id="consultarNecesidadesCategoria" resultMap="NecesidadResult">
+        SELECT 
+            n.id as id,
+            n.nombre as nombre,
+            n.categoria as categoria,
+            n.descripcion as descripcion,
+            n.fechaCreacion as fCreacion,
+            n.urgencia as urgencia,
+            n.estado as estado
+        FROM Necesidad as n
+        WHERE n.categoria = #{categoria};
+    </select> 
     
     <select parameterType="map" id="consultarNecesidad" resultMap="NecesidadResult">
         SELECT 
@@ -60,7 +72,7 @@
     <resultMap type="Necesidad" id="NecesidadResult">
         <id property="id" column="id"/>
         <association property = "categoria" javaType="Categoria">
-            <id property="id" column="categoria"/>
+            <id property="id" column="categoria"></id>
         </association>
         <result property = "nombre" column = "nombre"/>
         <result property = "descripcion" column = "descripcion"/>
@@ -71,18 +83,14 @@
     
     <resultMap type="Necesidad" id="ReporteNecesidadResult">
         <id property="id" column="id"/>
-        <association property = "categoria" javaType="Categoria">
-            <id property="id" column="categoria"/>
-        </association>
+        <association property = "categoria" javaType="Categoria" select="edu.eci.cvds.samplejr.dao.mybatis.mappers.CategoriaMapper.consultarCategorias"></association>
         <result property = "nombre" column = "nombre"/>
         <result property = "descripcion" column = "descripcion"/>
         <result property = "fechaCreacion" column = "fCreacion"/>
         <result property = "estado" column = "estado"/>
         <result property = "fechaModificacion" column = "fModificacion"/>
-        <association property = "usuario" javaType = "Usuario" >
-            <result property = "nombre" column = "usuario">
-        </association>
+        <association property = "usuario" javaType = "Usuario" select = "edu.eci.cvds.samplejr.dao.mybatis.mappers.UsuarioMapper.consultarUsuarios" ></association>
     </resultMap>
     
-</mapper-->
+</mapper>
         
