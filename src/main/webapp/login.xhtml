@@ -60,7 +60,7 @@
                 <p:outputLabel style="margin-left: 1rem;" for="@previous" value="Contraseña"/>
                 <!--Boton para iniciar-->
                 <div>
-                    <p:button class="margenBoton" actionListener="#{loginListener.loguear}" update="Solidaridad-Escuela" value="Iniciar Sesion"/>
+                    <p:button class="margenBoton" actionListener="#{loginListener.loguear}" update="Solidaridad-Escuela" value="Iniciar Sesion" action="#{login.estadoLogin}"/>
                  </div>
             </section>
         </h:form>

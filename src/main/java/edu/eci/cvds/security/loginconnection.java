@@ -15,6 +15,9 @@ import java.io.IOException;
 
 import edu.eci.cvds.services.HistorialLoginExcepcion;
 import javax.faces.context.FacesContext;
+import org.apache.shiro.crypto.hash.Sha256Hash;
+
+import sun.security.provider.SHA;
 
 public class loginconnection implements login{
 
@@ -23,20 +26,26 @@ public class loginconnection implements login{
      * en el recuadro de la pagina para entrar
      */
     @Override
-    public void log(String usuario, String contraseña) throws HistorialLoginExcepcion {
+    public void log(String usuario, String contra) throws HistorialLoginExcepcion {
+        System.out.println("Se intenta el log, entra al metodo");
         try{
             Subject currentUser = SecurityUtils.getSubject();
             //MD5HASH es un metodo de criptografia de shiro
-            UsernamePasswordToken token = new UsernamePasswordToken(usuario, new Md5Hash(contraseña).toHex());
+            UsernamePasswordToken token = new UsernamePasswordToken(usuario, new Sha256Hash(contra).toHex());
             currentUser.getSession().setAttribute("usuario",usuario);
             currentUser.login(token);
+            System.out.print("log exitoso");
         } catch(UnknownSessionException unknownSessionException){
+            System.out.print("pailas");
             throw new HistorialLoginExcepcion("El usuario no se encuentra registrado");
         } catch(IncorrectCredentialsException incorrectCredentialsException){
+            System.out.print("pailas");
             throw new HistorialLoginExcepcion("Contraseña del usuario incorrecta, pruebe de nuevo");
         } catch(LockedAccountException lockedAccountException){
+            System.out.print("pailas");
             throw new HistorialLoginExcepcion("El usuario se encuentra actualmente bloqueado");
         } catch(Exception exception){
+            System.out.print("pailas");
             throw new HistorialLoginExcepcion("Ocurrio un error inesperado");
         }
     }
