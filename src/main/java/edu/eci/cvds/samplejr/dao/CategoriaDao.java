@@ -7,7 +7,8 @@ import edu.eci.cvds.samples.entities.Categoria;
 public interface CategoriaDao {
     
     public void agregarCategoria(int id, String nombre, String descripcion, boolean estado) throws PersistenceException;
-    public void agregarCategoria(Categoria cat) throws PersistenceException;
+    //public void agregarCategoria(Categoria cat) throws PersistenceException;
+    public void agregarCategoria(String nombre, String descripcion) throws PersistenceException;
 
     public void borrarCategoria(int id) throws PersistenceException;
 

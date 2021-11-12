@@ -22,9 +22,9 @@ import java.sql.DriverManager;
 @SuppressWarnings("deprecation")
 @ManagedBean(name = "loginListener")
 @SessionScoped
-public class LoginBean{
+public class LoginBean {
     @Inject
-    private login logger ;
+    private loginconnection logger ;
     private String correo;
     private String contra;
     private Subject actual;
@@ -43,22 +43,19 @@ public class LoginBean{
     public void loguear(){
         System.out.println("Entra al metodo loguear");
         try{
-            System.out.println("Entra al try");
-            limpio();
-            actual =  SecurityUtils.getSubject();
-            if(logger.Logueado()){
-                System.out.println("Entra el if");
-                System.out.println("Usuario logueado con exito");
-            }
-            else{
-                System.out.println("Entra en el else");
-                logger.log(correo, contra);
-                System.out.println("Se pudo");
-                redireccionInicial();
-            }
+            
+            
+            System.out.println("SE INTENTA DE MANERA BRUSCA");
+            System.out.println(correo);
+            System.out.println(contra);
+            System.out.println("SIN ERRORES EN EL CORREO Y PASSWORD");
+            this.logger.log(correo, contra);
+            System.out.println("PROBLEMAS CON EL LOG DE LOGGINCONNECTION");
+            
+            
         } catch(Exception exception){
             message = exception.getMessage();
-            estado = FacesMessage.SEVERITY_WARN;
+            //estado = FacesMessage.SEVERITY_WARN;
             valoresPredeterminados();
             System.out.println("Problemas con el log");
             exception.printStackTrace();
@@ -76,8 +73,9 @@ public class LoginBean{
     
     public void redireccionInicial(){
         try{
+            System.out.println("entra a la redireccion");
             FacesContext facesContext = FacesContext.getCurrentInstance();
-            if(rolEstudiante()){
+            /**if(rolEstudiante()){
                 //En esta parte decimos que el estudiante se pudo loguear, y se redirije a la pagina estudiante.xhtml
                 HttpSession sesion = (HttpSession)facesContext.getExternalContext().getSession(true);
                 sesion.setAttribute("correo", correo);
@@ -88,7 +86,7 @@ public class LoginBean{
                 HttpSession sesion = (HttpSession)facesContext.getExternalContext().getSession(true);
                 sesion.setAttribute("correo", correo);
                 facesContext.getExternalContext().redirect("../roles/administrador.xhtml");
-            }
+            }*/
            
         } catch(Exception exception){
             System.out.print("Problemas en el login,");

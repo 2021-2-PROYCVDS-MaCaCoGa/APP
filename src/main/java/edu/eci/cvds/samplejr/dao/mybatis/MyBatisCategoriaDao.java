@@ -13,6 +13,11 @@ public class MyBatisCategoriaDao implements CategoriaDao{
 	@Inject
 	private CategoriaMapper categoriaMapper;
 
+        
+         @Override
+    public void agregarCategoria(String nombre, String descripcion) throws PersistenceException {
+        //AGREGAR METODO, TOCA TAMBIEN EN EL MAPPER
+    }
 	
 
 	@Override
@@ -42,16 +47,6 @@ public class MyBatisCategoriaDao implements CategoriaDao{
 			categoriaMapper.agregarCategoria(id, nombre, descripcion, estado);
 		}catch(org.apache.ibatis.exceptions.PersistenceException e) {
 			throw new PersistenceException("Error al agregar categoria: "+nombre, e);
-		}
-		
-	}
-	
-	@Override
-	public void agregarCategoria(Categoria cat) throws PersistenceException {
-		try {
-			categoriaMapper.agregarCategoria(cat.getId(), cat.getNombre(), cat.getDescripcion(), true);
-		}catch(org.apache.ibatis.exceptions.PersistenceException e) {
-			throw new PersistenceException("Error al agregar categoria: "+cat.getNombre(), e);
 		}
 		
 	}
@@ -85,6 +80,8 @@ public class MyBatisCategoriaDao implements CategoriaDao{
 		}
 		
 	}
+
+
 
 	
 

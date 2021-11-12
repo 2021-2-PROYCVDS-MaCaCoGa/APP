@@ -38,13 +38,11 @@ public class GuiceContextListener implements ServletContextListener {
                 install(JdbcHelper.MySQL);
                 setEnvironmentId("development");
                 setClassPathResource("mybatis-config.xml");
-                bind(UsuarioDao.class).to(MyBatisUsuario.class);
-                bind(CategoriaDao.class).to(MyBatisCategoriaDao.class);
-                bind(NecesidadDao.class).to(MyBatisNecesidadDao.class);
-                bind(OfertaDao.class).to(MyBatisOfertaDao.class);
-                bind(RespuestaDao.class).to(MyBatisRespuestaDao.class);
-                bind(ServiciosEscuela.class).to(ServiciosEscuelaImpl.class);
+              
+                //La clase de login cuando se vaya a inyectar se hacen los metodos de loginconncetion
                 bind(login.class).to(loginconnection.class);
+         
+                
                 
             }
         });

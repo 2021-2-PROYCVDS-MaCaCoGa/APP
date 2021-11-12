@@ -4,9 +4,9 @@ import edu.eci.cvds.samples.entities.Usuario;
 
 public interface ServiciosEscuela {
     
-    public abstract Usuario iniciarSesion(String login, String contraseña) throws ExcepcionServiciosEscuela;
-
-    public abstract boolean verificarUsuario(String login, String contraseña) throws ExcepcionServiciosEscuela;
+    public abstract void crearCategoria1(int id, String nombre, String descripcion, boolean estado) throws ExcepcionServiciosEscuela;
+  
+    public abstract void crearCategoria2(String nombre, String descripcion) throws ExcepcionServiciosEscuela;
 
     
 }
