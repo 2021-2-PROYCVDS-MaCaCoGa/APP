@@ -58,7 +58,7 @@ public class MyBatisExample {
      */
     public static void main(String args[]) throws SQLException {
         SqlSessionFactory sessionfact = getSqlSessionFactory();
-        //sessionfact.getConfiguration().addMapper(UsuarioMapper.class);
+        sessionfact.getConfiguration().addMapper(UsuarioMapper.class);
         SqlSession sqlss = sessionfact.openSession();
         
         UsuarioMapper usuarioM = (UsuarioMapper)sqlss.getMapper(UsuarioMapper.class);

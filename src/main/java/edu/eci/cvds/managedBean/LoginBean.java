@@ -1,6 +1,7 @@
 package edu.eci.cvds.managedBean;
 
 
+
 import com.google.inject.Inject;
 import edu.eci.cvds.security.login;
 import edu.eci.cvds.security.loginconnection;
@@ -12,27 +13,29 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
+import javax.annotation.PostConstruct;
 import org.apache.shiro.SecurityUtils;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+
 @SuppressWarnings("deprecation")
 @ManagedBean(name = "loginListener")
 @SessionScoped
-public class LoginBean {
+public class LoginBean{
     @Inject
     private login logger ;
     private String correo;
-    private  String contra;
+    private String contra;
     private Subject actual;
     private String message;
     private FacesMessage.Severity estado;
+   
 
-    public LoginBean(){
-        correo = "";
-        contra = "";
+    public void prueba(){
+        System.out.println(correo);
+        System.out.println(contra);
     }
-
 
     /**
      * Metodo encargado de loguear al usuario de acuerdo a su correo y contraseña
@@ -40,12 +43,15 @@ public class LoginBean {
     public void loguear(){
         System.out.println("Entra al metodo loguear");
         try{
+            System.out.println("Entra al try");
             limpio();
             actual =  SecurityUtils.getSubject();
             if(logger.Logueado()){
+                System.out.println("Entra el if");
                 System.out.println("Usuario logueado con exito");
             }
             else{
+                System.out.println("Entra en el else");
                 logger.log(correo, contra);
                 System.out.println("Se pudo");
                 redireccionInicial();
@@ -55,6 +61,7 @@ public class LoginBean {
             estado = FacesMessage.SEVERITY_WARN;
             valoresPredeterminados();
             System.out.println("Problemas con el log");
+            exception.printStackTrace();
             
         }
     }
@@ -84,7 +91,7 @@ public class LoginBean {
             }
            
         } catch(Exception exception){
-            System.out.print("Problemas en el login, jodase");
+            System.out.print("Problemas en el login,");
             cerrar();
             valoresPredeterminados();
             
