@@ -17,47 +17,47 @@
 
     <select parameterType="map" id="consultarCategoria" resultMap="CategoriaResult">
         SELECT
-            c.id as id,
-            c.nombre as nombre,
-            c.descripcion as descripcion,
-            c.fechaCreacion as fCreacion ,
-            c.estado as estado ,
-            c.fechaModificacion as fModificacion
+            c.ID as id,
+            c.NOMBRE as nombre,
+            c.DESCRIPCION as descripcion,
+            c.FECHACREACION as fCreacion ,
+            c.ESTADO as estado ,
+            c.FECHAMODIFICACION as fModificacion
         FROM CATEGORIA as c
-        WHERE c.id = #{"id"};
+        WHERE c.ID = #{id};
     </select>
 
     <select parameterType="map" id="consultarCategoriaNombre" resultMap="CategoriaResult">
         SELECT
-            c.id as id,
-            c.nombre as nombre,
-            c.descripcion as descripcion,
-            c.fechaCreacion as fCreacion ,
-            c.estado as estado, 
-            c.fechaModificacion as fModificacion
+            c.ID as id,
+            c.NOMBRE as nombre,
+            c.DESCRIPCION as descripcion,
+            c.FECHACREACION as fCreacion ,
+            c.ESTADO as estado, 
+            c.FECHAMODIFICACION as fModificacion
         FROM CATEGORIA as c
-        WHERE c.nombre = #{"nombre"};
+        WHERE c.NOMBRE = #{nombre};
        </select>
     
     <insert id="agregarCategoria">
-            INSERT INTO Categoria (id,nombre,descripcion,fechaCreacion,estado)
-            VALUES (#{id},#{nombre},#{descripcion},CURRENT_TIMESTAMP,#{estado});
+            INSERT INTO Categoria (ID, NOMBRE, DESCRIPCION, FECHACREACION, ESTADO)
+            VALUES (#{id},#{nombre},#{descripcion},CURDATE(),#{estado});
     </insert>
     
     
     
     <update id="modificarCategoria">
         UPDATE CATEGORIA as c SET
-            c.nombre = #{nombre},
-            c.descripcion = #{despcripcion},
-            c.estado = #{estado},
-            c.fechaModificacion = CURRENT_TIMESTAMP
-        WHERE c.id = #{id};
+            c.NOMBRE = #{nombre},
+            c.DESCRIPCION = #{descripcion},
+            c.ESTADO = #{estado},
+            c.FECHAMODIFICACION = CURRENT_TIMESTAMP
+        WHERE c.ID = #{id};
     </update>
     
     <delete id = "borrarCategoria">
     	DELETE FROM CATEGORIA as c
-    	WHERE c.id = #{id};
+    	WHERE c.ID = #{id};
     </delete>
 
     <resultMap type = "Categoria" id="CategoriaResult">

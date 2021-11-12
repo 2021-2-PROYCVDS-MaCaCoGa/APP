@@ -5,6 +5,7 @@ package edu.eci.cvds.services.Cliente;
 
 import com.mysql.jdbc.Connection;
 import edu.eci.cvds.samplejr.dao.mybatis.mappers.CategoriaMapper;
+import edu.eci.cvds.samplejr.dao.mybatis.mappers.NecesidadMapper;
 import edu.eci.cvds.samplejr.dao.mybatis.mappers.UsuarioMapper;
 import edu.eci.cvds.samples.entities.Perfil;
 import java.io.IOException;
@@ -58,11 +59,17 @@ public class MyBatisExample {
      */
     public static void main(String args[]) throws SQLException {
         SqlSessionFactory sessionfact = getSqlSessionFactory();
+<<<<<<< HEAD
         sessionfact.getConfiguration().addMapper(UsuarioMapper.class);
+=======
+        //sessionfact.getConfiguration().addMapper(UsuarioMapper.class);
+        //sessionfact.getConfiguration().addMapper(CategoriaMapper.class);
+>>>>>>> d3f468adf8e96667ff3662ef13591263b22e3437
         SqlSession sqlss = sessionfact.openSession();
         
         UsuarioMapper usuarioM = (UsuarioMapper)sqlss.getMapper(UsuarioMapper.class);
         CategoriaMapper categoriaM = (CategoriaMapper)sqlss.getMapper(CategoriaMapper.class);
+        //NecesidadMapper necesidadM = (NecesidadMapper)sqlss.getMapper(NecesidadMapper.class);
         
         System.out.println("-----------------------Consultar Clientes-------------------");
         System.out.println(usuarioM.consultarUsuarios());
@@ -74,8 +81,14 @@ public class MyBatisExample {
         usuarioM.deleteUsuario(3);        
         System.out.println("--------------------Consultar Categorias-------------------");
         System.out.println(categoriaM.consultarCategorias());
-        
-        
+        categoriaM.agregarCategoria(3, "LENGUAS", "Se expresan dudas de cualquier materia de lenguas extranjeras", true);
+        System.out.println("--------------------Consultar Categoria LENGUAS-------------");
+        System.out.println(categoriaM.consultarCategoriaNombre("LENGUAS"));
+        System.out.println(categoriaM.consultarCategoria(3));
+        categoriaM.modificarCategoria(3, "LENGUAJE", "Se expresan dudas de cualquier tema", false);
+        System.out.println("--------------------Consultar Categoria LENGUAS-------------");
+        System.out.println(categoriaM.consultarCategoria(3));
+        categoriaM.borrarCategoria(3);
         sqlss.commit();
         sqlss.close();
     }
