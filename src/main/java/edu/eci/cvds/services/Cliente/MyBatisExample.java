@@ -68,9 +68,15 @@ public class MyBatisExample {
         CategoriaMapper categoriaM = (CategoriaMapper)sqlss.getMapper(CategoriaMapper.class);
         //NecesidadMapper necesidadM = (NecesidadMapper)sqlss.getMapper(NecesidadMapper.class);
         
-        
         categoriaM.agregarCategoria(3, "LENGUAS", "Se expresan dudas de cualquier materia de lenguas extranjeras", true);
         System.out.println("--------------------Consultar Categoria LENGUAS-------------");
+        System.out.println(categoriaM.consultarCategoriaNombre("LENGUAS"));
+        System.out.println(categoriaM.consultarCategoria(3));
+        categoriaM.modificarCategoria(3, "LENGUAJE", "Se expresan dudas de cualquier tema", false);
+        System.out.println("--------------------Consultar Categoria LENGUAS-------------");
+        System.out.println(categoriaM.consultarCategoria(3));
+        categoriaM.borrarCategoria(3);
+        
  
         sqlss.commit();
         sqlss.close();

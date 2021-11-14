@@ -6,7 +6,6 @@
     <!--<settings>
         <setting name="logImpl" value="LOG4J"/>        
     </settings>-->
-    
     <properties resource="config.properties">
     </properties>
     <typeAliases>
