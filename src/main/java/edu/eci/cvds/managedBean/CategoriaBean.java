@@ -22,6 +22,7 @@ public class CategoriaBean{
     
     private String nombreCategoria;
     private String descripcionCategoria;
+    private String estadoCategoria;
     private String mensaje;
     private FacesMessage.Severity estadoSolicitud;
 
@@ -29,8 +30,6 @@ public class CategoriaBean{
         System.out.println(nombreCategoria);
         System.out.println(descripcionCategoria);
     }
-
-  
 
     
     /**
@@ -40,6 +39,23 @@ public class CategoriaBean{
     public void registrarCategoria(){
         try{
             serviciosEscuela.crearCategoria(nombreCategoria, descripcionCategoria);
+            mensajeSinErrores();
+        }
+        catch(Exception exception){
+            mensajeConErrores(exception.getMessage());
+        }
+    }
+    
+    
+    /**
+     * Se encarga de actualizar la categoria que requiera el usuario
+     * La idea es que en caso que el usuario no quiera modificar algun campo, este quede
+     * con los datos anteriores (funcion de la capa de interfaz, los cuales dejan los atributos
+     * con esos valores.)
+     */
+    public void actualizarCategoria(){
+        try{
+            serviciosEscuela.actualizarCategoria(nombreCategoria, descripcionCategoria, estadoCategoria);
             mensajeSinErrores();
         }
         catch(Exception exception){

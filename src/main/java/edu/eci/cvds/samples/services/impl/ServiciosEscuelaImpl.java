@@ -28,6 +28,26 @@ public class ServiciosEscuelaImpl implements ServiciosEscuela {
             throw new ExcepcionServiciosEscuela("No se pudo crear la categoria");
         }
     }  
+
+    /**
+     * Se encarga de actualizar la categoria que requiera el administrador
+     * Solo se puede modificar el nombre, descripcion y estado
+     * @param nuevoNombre
+     * @param nuevaDescripcion
+     * @param nuevoEstado
+     * @throws ExcepcionServiciosEscuela 
+     */
+    @Override
+    public void actualizarCategoria(String nuevoNombre, String nuevaDescripcion, String nuevoEstado) throws ExcepcionServiciosEscuela{
+        try{
+            categoriaDao.modificarCategoria(nuevoNombre, nuevaDescripcion, nuevoEstado);
+        }
+        catch(PersistenceException persistenceException){
+            throw new ExcepcionServiciosEscuela("No se pudo actualizar la categoria");
+        }
+    }
+
+    
 }
 
 

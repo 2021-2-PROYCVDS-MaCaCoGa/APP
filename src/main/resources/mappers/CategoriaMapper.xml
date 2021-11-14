@@ -52,6 +52,8 @@
             c.DESCRIPCION = #{descripcion},
             c.ESTADO = #{estado},
             c.FECHAMODIFICACION = CURRENT_TIMESTAMP
+            <!--NECESITO UN CAMBIO ACA, NECESITO QUE EL WHERE QUEDE
+            EN CUESTION DE EL NOMBRE VIEJO, PUES NOMBRE ES UNA LLLAVE UNICA-->
         WHERE c.ID = #{id};
     </update>
     

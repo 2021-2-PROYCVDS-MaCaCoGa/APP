@@ -43,9 +43,9 @@ public class MyBatisCategoriaDao implements CategoriaDao{
 	}
 
 	@Override
-	public void modificarCategoria(int id, String nombre,String descripcion, boolean estado) throws PersistenceException  {
+	public void modificarCategoria(String nombre,String descripcion, String estado) throws PersistenceException  {
 		try {
-			categoriaMapper.modificarCategoria(id, nombre,descripcion, estado);
+			categoriaMapper.modificarCategoria(nombre,descripcion, estado);
 		}catch(org.apache.ibatis.exceptions.PersistenceException e) {
 			throw new PersistenceException("Error al modificar categoria: "+nombre, e);
 		}
