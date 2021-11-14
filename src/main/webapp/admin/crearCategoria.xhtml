@@ -89,13 +89,13 @@
             <!--Para poner el nombre de la categoria-->
             <h5 style="font-size: 20px; margin-top: 1.5rem;">Nombre de la Categoría</h5>
             <span class="ui-float-label">
-                <p:inputText id="float-input" value="#{inputTextView.text}"/>
+                <p:inputText id="float-input" value="#{categoriaListener.nombreCategoria}"/>
             </span>
             <!--Para el formato de descripcion, que sea de texto extendido-->
             <h5 style="font-size: 20px; margin-top: 1rem;">Descripción</h5>
-            <p:inputTextarea rows="6" cols="80"/>
+            <p:inputTextarea rows="6" cols="80" value="#{categoriaListener.descripcionCategoria}"/>
             <div>
-                <p:button class="margenBoton" value="Crear Categoría"/>
+                <p:button class="margenBoton" value="Crear Categoría" actionListener="#{categoriaListener.prueba}"/>
             </div>
         </h:form>
     </h:body>

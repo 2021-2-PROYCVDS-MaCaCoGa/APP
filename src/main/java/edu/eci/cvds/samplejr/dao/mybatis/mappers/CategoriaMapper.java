@@ -10,13 +10,17 @@ import java.util.List;
 
 public interface CategoriaMapper {
     
-    public void agregarCategoria(@Param("id")int id,@Param("nombre") String nombre, @Param("descripcion")String descripcion,@Param("estado")boolean estado);
+    /**
+     * Encargado de la conexion a la base para crear una categoria
+     * @param nombre
+     * @param descripcion 
+     */
+    public void agregarCategoria(@Param("nombre") String nombre, @Param("descripcion")String descripcion);
 
 
-    public void modificarCategoria(@Param("id") int id,
-                                   @Param("nombre") String nombre,
+    public void modificarCategoria(@Param("nombre") String nombre,
                                    @Param("descripcion") String descripcion,
-                                   @Param("estado") boolean estado);
+                                   @Param("estado") String estado);
     public void borrarCategoria(@Param("id")int id);
 
     public List<Categoria> consultarCategorias();
