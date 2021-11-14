@@ -21,6 +21,7 @@ public class CategoriaBean{
     ServiciosEscuela serviciosEscuela;
     
     private String nombreCategoria;
+    private String nuevoNombre;//-->> Se pone porque para cambiar una categoria, debo daber cual era el nombre anterior de la categoria 
     private String descripcionCategoria;
     private String estadoCategoria;
     private String mensaje;
@@ -55,7 +56,7 @@ public class CategoriaBean{
      */
     public void actualizarCategoria(){
         try{
-            serviciosEscuela.actualizarCategoria(nombreCategoria, descripcionCategoria, estadoCategoria);
+            serviciosEscuela.actualizarCategoria(nombreCategoria,nuevoNombre, descripcionCategoria, estadoCategoria);
             mensajeSinErrores();
         }
         catch(Exception exception){

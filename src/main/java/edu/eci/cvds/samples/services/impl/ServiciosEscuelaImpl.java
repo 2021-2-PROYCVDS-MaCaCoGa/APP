@@ -44,9 +44,9 @@ public class ServiciosEscuelaImpl implements ServiciosEscuela {
      * @throws ExcepcionServiciosEscuela 
      */
     @Override
-    public void actualizarCategoria(String nuevoNombre, String nuevaDescripcion, String nuevoEstado) throws ExcepcionServiciosEscuela{
+    public void actualizarCategoria(String categoria, String nuevoNombre, String nuevaDescripcion, String nuevoEstado) throws ExcepcionServiciosEscuela{
         try{
-            categoriaDao.modificarCategoria(nuevoNombre, nuevaDescripcion, nuevoEstado);
+            categoriaDao.modificarCategoria(categoria, nuevoNombre, nuevaDescripcion, nuevoEstado);
         }
         catch(PersistenceException persistenceException){
             throw new ExcepcionServiciosEscuela("No se pudo actualizar la categoria");

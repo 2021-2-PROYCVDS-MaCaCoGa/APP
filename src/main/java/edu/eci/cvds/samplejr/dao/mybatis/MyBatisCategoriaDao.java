@@ -33,19 +33,19 @@ public class MyBatisCategoriaDao implements CategoriaDao{
 	
 
 	@Override
-	public void borrarCategoria(int id) throws PersistenceException {
+	public void borrarCategoria(String categoria) throws PersistenceException {
 		try {
-			categoriaMapper.borrarCategoria(id);
+			categoriaMapper.borrarCategoria(categoria);
 		}catch(org.apache.ibatis.exceptions.PersistenceException e) {
-			throw new PersistenceException("Error al borrar categoria: "+id, e);
+			throw new PersistenceException("Error al borrar categoria: "+categoria, e);
 		}
 		
 	}
 
 	@Override
-	public void modificarCategoria(String nombre,String descripcion, String estado) throws PersistenceException  {
+	public void modificarCategoria(String categoria,String nombre,String descripcion, String estado) throws PersistenceException  {
 		try {
-			categoriaMapper.modificarCategoria(nombre,descripcion, estado);
+			categoriaMapper.modificarCategoria(categoria,nombre,descripcion, estado);
 		}catch(org.apache.ibatis.exceptions.PersistenceException e) {
 			throw new PersistenceException("Error al modificar categoria: "+nombre, e);
 		}

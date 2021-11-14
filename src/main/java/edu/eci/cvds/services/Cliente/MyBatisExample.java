@@ -71,22 +71,21 @@ public class MyBatisExample {
         System.out.println("------------------------Consultar Cliente-------------------");
         System.out.println(usuarioM.consultarUsuario("CristianC"));
         System.out.println("---------------------Ingresando usuario michael_mni------------------------");
-        usuarioM.ingresarUsuario("Michael", "michael_mni", "14325mc", "michaelmni@gmail.com", Perfil.valueOf("ESTUDIANTE").toString());
+        usuarioM.ingresarUsuario("Michael", "michael_mni", "14325mc", "michaelmni@gmail.com.co", Perfil.valueOf("ESTUDIANTE").toString());
         System.out.println("--------------------------Consultar Cliente michael_mni------------");
         System.out.println(usuarioM.consultarUsuario("michael_mni"));
         usuarioM.deleteUsuario("michael_mni","14325mc");
         System.out.println("-----------------------Consultar Clientes-------------------");
-        System.out.println(usuarioM.consultarUsuarios());      
-        /**System.out.println("--------------------Consultar Categorias-------------------");
+        System.out.println(usuarioM.consultarUsuarios());     
+        System.out.println("--------------------Consultar Categorias-------------------");
         System.out.println(categoriaM.consultarCategorias());
         categoriaM.agregarCategoria("LENGUAS", "Se expresan dudas de cualquier materia de lenguas extranjeras");
         System.out.println("--------------------Consultar Categoria LENGUAS-------------");
         System.out.println(categoriaM.consultarCategoriaNombre("LENGUAS"));
-        System.out.println(categoriaM.consultarCategoria(3));
-        categoriaM.modificarCategoria("LENGUAJE", "Se expresan dudas de cualquier tema", "ACTIVO");
-        System.out.println("--------------------Consultar Categoria LENGUAS-------------");
-        System.out.println(categoriaM.consultarCategoria(3));
-        categoriaM.borrarCategoria(3);*/
+        categoriaM.modificarCategoria("LENGUAS","LENGUAJE", "Se expresan dudas de cualquier tema", "ACTIVO");
+        System.out.println("--------------------Consultar Categoria LENGUAJE-------------");
+        System.out.println(categoriaM.consultarCategoriaNombre("LENGUAJE"));
+        categoriaM.borrarCategoria("LENGUAJE");
 
         
  
