@@ -6,7 +6,7 @@ import edu.eci.cvds.samples.entities.Necesidad;
 
 public interface NecesidadDao {
 	
-	public void agregarNecesidad (int categoria, String nombre, String descripcion, int urgencia, String estado) throws PersistenceException;
+	public void agregarNecesidad (String categoria, String nombre, String descripcion, int urgencia) throws PersistenceException;
 	
 	public List<Necesidad> consultarNecesidades(int categoria)throws PersistenceException;
 	

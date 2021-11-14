@@ -1,6 +1,7 @@
 package edu.eci.cvds.samples.services.impl;
 
 import edu.eci.cvds.samplejr.dao.CategoriaDao;
+import edu.eci.cvds.samplejr.dao.NecesidadDao;
 import javax.inject.Inject;
 import edu.eci.cvds.samplejr.dao.PersistenceException;
 import edu.eci.cvds.samplejr.dao.UsuarioDao;
@@ -12,6 +13,9 @@ public class ServiciosEscuelaImpl implements ServiciosEscuela {
 
     @Inject
     CategoriaDao categoriaDao;
+    
+    @Inject
+    NecesidadDao necesidadDao;
     
     /**
      * Se encarga de crear la categoria y meterla a la base de datos
@@ -44,6 +48,24 @@ public class ServiciosEscuelaImpl implements ServiciosEscuela {
         }
         catch(PersistenceException persistenceException){
             throw new ExcepcionServiciosEscuela("No se pudo actualizar la categoria");
+        }
+    }
+
+    /**
+     * 
+     * @param categoria
+     * @param nombre
+     * @param descripcion
+     * @param urgencia
+     * @throws ExcepcionServiciosEscuela 
+     */
+    @Override
+    public void expresarNecesidad(String categoria, String nombre, String descripcion, int urgencia) throws ExcepcionServiciosEscuela {
+        try{
+            necesidadDao.agregarNecesidad(categoria, nombre, descripcion, urgencia);
+        }
+        catch(PersistenceException persistenceException){
+            throw new ExcepcionServiciosEscuela("No se pudo crear la necesidad");
         }
     }
 
