@@ -15,11 +15,11 @@ public class MyBatisOfertaDao implements OfertaDao{
 	private OfertaMapper ofertaMapper;
 
 	@Override
-	public void agregarOferta(int id, String categoria, String descripcion, String nombre) throws PersistenceException {
+	public void agregarOferta(String categoria, String descripcion, String nombre) throws PersistenceException {
 		try {
-			ofertaMapper.addOferta(id, categoria, descripcion, nombre);
+			ofertaMapper.addOferta(categoria, descripcion, nombre);
 		}catch(org.apache.ibatis.exceptions.PersistenceException e) {
-			throw new PersistenceException("Error al agregar oferta: "+id, e);
+			throw new PersistenceException("Error al agregar oferta: "+nombre, e);
 		}
 		
 	}

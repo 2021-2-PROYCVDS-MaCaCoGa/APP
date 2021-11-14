@@ -15,6 +15,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
         INSERT INTO Oferta (id, categoria, nombre, descripcion, fCreacion)
         VALUES (#{oferta.id},#{oferta.categoria},#{oferta.nombre},#{oferta.descripcion},CURRENT_TIMESTAMP);
     </insert>
+    <!--ARREGLAR MAPPER DE AÑADIR OFERTA DE ACUERDO AL MAPPER DE JAVA-->
     
     <select parameterType="map" id="ConsultarOfertas" resultMap="ResultadoOfertasResult">
         SELECT 
