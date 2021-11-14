@@ -40,8 +40,8 @@
        </select>
     
     <insert id="agregarCategoria">
-            INSERT INTO Categoria (ID, NOMBRE, DESCRIPCION, FECHACREACION, ESTADO)
-            VALUES (#{nombre},#{descripcion});
+            INSERT INTO CATEGORIA (NOMBRE, DESCRIPCION, FECHACREACION, ESTADO)
+            VALUES (#{nombre},#{descripcion},CURRENT_TIMESTAMP,"ACTIVO");
     </insert>
     
     
@@ -52,9 +52,7 @@
             c.DESCRIPCION = #{descripcion},
             c.ESTADO = #{estado},
             c.FECHAMODIFICACION = CURRENT_TIMESTAMP
-            <!--NECESITO UN CAMBIO ACA, NECESITO QUE EL WHERE QUEDE
-            EN CUESTION DE EL NOMBRE VIEJO, PUES NOMBRE ES UNA LLLAVE UNICA-->
-        WHERE c.ID = #{id};
+        WHERE c.NOMBRE = #{nombre};
     </update>
     
     <delete id = "borrarCategoria">

@@ -56,10 +56,10 @@ public class MyBatisUsuario implements UsuarioDao {
 	}
 
 	@Override
-	public void ingresarUsuario(int id, String nombre, String log, String contraseña, String correo, String perfil)
+	public void ingresarUsuario(String nombre, String log, String contraseña, String correo, String perfil)
 			throws PersistenceException {
 		try {
-			usuarioMapper.ingresarUsuario(id ,nombre, log, contraseña, correo, perfil);
+			usuarioMapper.ingresarUsuario(nombre, log, contraseña, correo, perfil);
 		}catch(org.apache.ibatis.exceptions.PersistenceException e) {
 			throw new PersistenceException("Error al ingresar usuario: "+nombre, e);
 		}

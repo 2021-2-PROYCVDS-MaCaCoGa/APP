@@ -59,26 +59,35 @@ public class MyBatisExample {
      */
     public static void main(String args[]) throws SQLException {
         SqlSessionFactory sessionfact = getSqlSessionFactory();
-        sessionfact.getConfiguration().addMapper(UsuarioMapper.class);
-        sessionfact.getConfiguration().addMapper(UsuarioMapper.class);
-        sessionfact.getConfiguration().addMapper(CategoriaMapper.class);
+        //sessionfact.getConfiguration().addMapper(UsuarioMapper.class);
+        //sessionfact.getConfiguration().addMapper(CategoriaMapper.class);
         SqlSession sqlss = sessionfact.openSession();
         
         UsuarioMapper usuarioM = (UsuarioMapper)sqlss.getMapper(UsuarioMapper.class);
         CategoriaMapper categoriaM = (CategoriaMapper)sqlss.getMapper(CategoriaMapper.class);
         //NecesidadMapper necesidadM = (NecesidadMapper)sqlss.getMapper(NecesidadMapper.class);
-        
-<<<<<<< HEAD
-        categoriaM.agregarCategoria(3, "LENGUAS", "Se expresan dudas de cualquier materia de lenguas extranjeras", true);
+        System.out.println("-----------------------Consultar Clientes-------------------");
+        System.out.println(usuarioM.consultarUsuarios());
+        System.out.println("------------------------Consultar Cliente-------------------");
+        System.out.println(usuarioM.consultarUsuario("CristianC"));
+        System.out.println("---------------------Ingresando usuario michael_mni------------------------");
+        usuarioM.ingresarUsuario("Michael", "michael_mni", "14325mc", "michaelmni@gmail.com", Perfil.valueOf("ESTUDIANTE").toString());
+        System.out.println("--------------------------Consultar Cliente michael_mni------------");
+        System.out.println(usuarioM.consultarUsuario("michael_mni"));
+        usuarioM.deleteUsuario("michael_mni","14325mc");
+        System.out.println("-----------------------Consultar Clientes-------------------");
+        System.out.println(usuarioM.consultarUsuarios());      
+        /**System.out.println("--------------------Consultar Categorias-------------------");
+        System.out.println(categoriaM.consultarCategorias());
+        categoriaM.agregarCategoria("LENGUAS", "Se expresan dudas de cualquier materia de lenguas extranjeras");
         System.out.println("--------------------Consultar Categoria LENGUAS-------------");
         System.out.println(categoriaM.consultarCategoriaNombre("LENGUAS"));
         System.out.println(categoriaM.consultarCategoria(3));
-        categoriaM.modificarCategoria(3, "LENGUAJE", "Se expresan dudas de cualquier tema", false);
+        categoriaM.modificarCategoria("LENGUAJE", "Se expresan dudas de cualquier tema", "ACTIVO");
         System.out.println("--------------------Consultar Categoria LENGUAS-------------");
         System.out.println(categoriaM.consultarCategoria(3));
-        categoriaM.borrarCategoria(3);
-=======
->>>>>>> 48445b7eaba1782e3b4ed3ac9f4e8943b6ab577a
+        categoriaM.borrarCategoria(3);*/
+
         
  
         sqlss.commit();

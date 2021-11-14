@@ -9,6 +9,7 @@ import java.util.List;
 /* Clase que contiene la informacion de los usuarios que utilizan la aplicación
 **/
 public class Usuario implements Serializable{
+    private int id;
     private String nombre;
     private String rol;
     private String correo;
