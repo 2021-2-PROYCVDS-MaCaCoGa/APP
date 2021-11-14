@@ -41,7 +41,7 @@
     
     <insert id="agregarCategoria">
             INSERT INTO Categoria (ID, NOMBRE, DESCRIPCION, FECHACREACION, ESTADO)
-            VALUES (#{id},#{nombre},#{descripcion},CURDATE(),#{estado});
+            VALUES (#{nombre},#{descripcion});
     </insert>
     
     

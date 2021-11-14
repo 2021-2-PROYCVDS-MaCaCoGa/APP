@@ -13,10 +13,22 @@ public class MyBatisCategoriaDao implements CategoriaDao{
 	@Inject
 	private CategoriaMapper categoriaMapper;
 
-        
+        /**
+         * Encargado de la implementacion del metodo para agregar 
+         * una categoria a la tabla CATEGORIA
+         * Solo se deja dos parametros, pues los demas se hacen por triggers
+         * @param nombre
+         * @param descripcion
+         * @throws PersistenceException 
+         */
          @Override
     public void agregarCategoria(String nombre, String descripcion) throws PersistenceException {
-        //AGREGAR METODO, TOCA TAMBIEN EN EL MAPPER
+        try{
+            categoriaMapper.agregarCategoria(nombre, descripcion);
+        }
+        catch(org.apache.ibatis.exceptions.PersistenceException exception){
+            throw new PersistenceException("Error al agregar la categoria: "+nombre, exception);
+        }
     }
 	
 
@@ -40,16 +52,7 @@ public class MyBatisCategoriaDao implements CategoriaDao{
 		
 	}
 
-	@Override
-	public void agregarCategoria(int id, String nombre, String descripcion, boolean estado)
-			throws PersistenceException {
-		try {
-			categoriaMapper.agregarCategoria(id, nombre, descripcion, estado);
-		}catch(org.apache.ibatis.exceptions.PersistenceException e) {
-			throw new PersistenceException("Error al agregar categoria: "+nombre, e);
-		}
-		
-	}
+	
 
 	@Override
 	public Categoria consultarcategoria(int id) throws PersistenceException {

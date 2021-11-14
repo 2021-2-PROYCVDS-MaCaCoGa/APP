@@ -25,6 +25,7 @@ import java.sql.DriverManager;
 public class LoginBean {
     @Inject
     private loginconnection logger ;
+    
     private String correo;
     private String contra;
     private Subject actual;
