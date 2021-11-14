@@ -6,7 +6,7 @@ import edu.eci.cvds.samples.entities.Oferta;
 
 public interface OfertaDao {
 	
-	public void agregarOferta(int id, String categoria, String descripcion, String nombre) throws PersistenceException;
+	public void agregarOferta(String categoria, String descripcion, String nombre) throws PersistenceException;
 	
 	public void actualizarEstado(int id, String estado) throws PersistenceException;
 	

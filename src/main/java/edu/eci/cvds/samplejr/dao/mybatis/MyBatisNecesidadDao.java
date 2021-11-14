@@ -15,10 +15,9 @@ public class MyBatisNecesidadDao implements NecesidadDao{
 	private NecesidadMapper necesidadMapper;
 
 	@Override
-	public void agregarNecesidad(int categoria, String nombre, String descripcion, int urgencia, String estado)
-			throws PersistenceException {
+            public void agregarNecesidad(String categoria, String nombre, String descripcion, int urgencia) throws PersistenceException {
 		try {
-			necesidadMapper.addNecesidad(categoria, nombre, descripcion, urgencia, estado);
+			necesidadMapper.addNecesidad(categoria, nombre, descripcion, urgencia);
 		}catch(org.apache.ibatis.exceptions.PersistenceException e) {
 			throw new PersistenceException("Error al agregar necesidad "+nombre, e);
 		}

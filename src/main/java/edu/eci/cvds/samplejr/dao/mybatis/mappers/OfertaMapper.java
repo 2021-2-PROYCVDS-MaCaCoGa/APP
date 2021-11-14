@@ -5,14 +5,10 @@ import edu.eci.cvds.samples.entities.Oferta;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
-/**
- *
- * @author crisa
- */
+
 public interface OfertaMapper {
     
-    public void addOferta(@Param("id") int id,
-                        @Param("categoria") String categoria,
+    public void addOferta(@Param("categoria") String categoria,
                         @Param("Descripcion") String Descripcion,
                         @Param("nombre") String nombre);
     

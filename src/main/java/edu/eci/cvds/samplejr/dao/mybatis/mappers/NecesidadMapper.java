@@ -11,11 +11,19 @@ import java.util.List;
 
 public interface NecesidadMapper {
     
-    public void addNecesidad(@Param("categoria") int categoria,
+    /**
+     * Se crea una necesidad de acuerdo a los parametros requeridos
+     * No se pidie id debido a que la llave principal se autoincrementa automaticamente
+     * las fechas son colocadas con disparadores SQL
+     * @param categoria
+     * @param nombre
+     * @param descripcion
+     * @param urgencia
+     */
+    public void addNecesidad(@Param("categoria") String categoria,
                             @Param("nombre") String nombre,
                             @Param("descripcion")String descripcion,
-                            @Param("urgencia") int urgencia,
-                            @Param("estado") String estado);
+                            @Param("urgencia") int urgencia);
 
     /**
      * Se consultan las necesidades de acuerdo a una categoria especifica
