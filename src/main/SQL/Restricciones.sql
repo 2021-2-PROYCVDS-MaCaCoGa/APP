@@ -32,6 +32,8 @@ ALTER TABLE CATEGORIA
         'NO ACTIVO'
     ));
 
+
+
 /*RESTRICCIONES NECESIDAD*/
 
 --Restriccion encargada de chequear de que una necesidad solo
@@ -46,3 +48,15 @@ ALTER TABLE NECESIDAD
 --este en el rango de numero entre 1 y 5.
 ALTER TABLE NECESIDAD 
     ADD CONSTRAINT ck_urgencia CHECK(URGENCIA BETWEEN 1 AND 5);
+
+
+
+/*RESTRICCIONES OFERTA*/
+
+--Restriccion encargada de chequear de que una oferta solo
+--puede tener dos estados
+ALTER TABLE OFERTA
+    ADD CONSTRAINT ck_estado_oferta CHECK(ESTADO IN(
+        'ACTIVO',
+        'NO ACTIVO'
+    ))
