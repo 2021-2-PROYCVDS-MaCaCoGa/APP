@@ -43,7 +43,7 @@ public class Categoria implements Serializable {
     
     @Override
     public String toString(){
-        return "Categoria{"+"id="+getId()+", nombre="+getNombre()+", descripcion="+getDescripcion()+", fechaCreacion= "+(java.util.Date)getFechaCreacion()+" estado="+estado+", fechaModificacion= "+getFechaModificacion()+"}\n";
+        return "Categoria{"+"id="+getId()+", nombre="+getNombre()+", descripcion="+getDescripcion()+", fechaCreacion= "+getFechaCreacion()+" estado="+estado+", fechaModificacion= "+getFechaModificacion()+"}\n";
     }
 
     

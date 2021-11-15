@@ -65,7 +65,7 @@ public class MyBatisExample {
         
         UsuarioMapper usuarioM = (UsuarioMapper)sqlss.getMapper(UsuarioMapper.class);
         CategoriaMapper categoriaM = (CategoriaMapper)sqlss.getMapper(CategoriaMapper.class);
-        //NecesidadMapper necesidadM = (NecesidadMapper)sqlss.getMapper(NecesidadMapper.class);
+        NecesidadMapper necesidadM = (NecesidadMapper)sqlss.getMapper(NecesidadMapper.class);
         System.out.println("-----------------------Consultar Clientes-------------------");
         System.out.println(usuarioM.consultarUsuarios());
         System.out.println("------------------------Consultar Cliente-------------------");
@@ -86,6 +86,19 @@ public class MyBatisExample {
         System.out.println("--------------------Consultar Categoria LENGUAJE-------------");
         System.out.println(categoriaM.consultarCategoriaNombre("LENGUAJE"));
         categoriaM.borrarCategoria("LENGUAJE");
+        System.out.println("---------------------Consultar Necesidades---------------------");
+        System.out.println(necesidadM.consultarNecesidades());
+        System.out.println("----------------------Agregando Necesidad Advertencia-------------------");
+        necesidadM.addNecesidad("SISTEMAS", "Advertencia", "Se hallo un problema en el dominio de la pagina", 5,"CristianC");
+        System.out.println("---------------------Consultar Advertencia-----------");
+        System.out.println(necesidadM.consultarNecesidad("Advertencia"));
+        System.out.println("--------------Necesidad en no Activo ---------------------");
+        necesidadM.actualizarEstado("Advertencia", "NO ACTIVO");
+        System.out.println(necesidadM.consultarNecesidad("Advertencia"));
+        System.out.println("--------------Necesidad advertencia eliminada-------------------");
+        necesidadM.eliminarNecesidad("Advertencia");
+        System.out.println("---------------------Consultar Advertencia-----------");
+        System.out.println(necesidadM.consultarNecesidad("Advertencia"));
 
         
  

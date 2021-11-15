@@ -4,23 +4,23 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="edu.eci.cvds.samplejr.dao.mybatis.mappers.NecesidadMapper">
-    <select parameterType="map" id="consultarNecesidades" resultMap="ReportesNecesidadesResult">
+    <select parameterType="map" id="consultarNecesidades" resultMap="ReporteNecesidadResult">
         SELECT 
             n.id as id,
             n.nombre as nombre,
             n.categoria as categoria,
             n.descripcion as descripcion ,
-            n.fechaCreacion as fCreacion,
             n.urgencia as urgencia,
-            n.esatdo as estado,
+            n.fechaCreacion as fCreacion,
+            n.estado as estado,
             n.fechaModificacion as fModificacion,
             u.nombre as usuario
         FROM Necesidad as n
-        LEFT JOIN Usuario as u ON u.id = n.usuario
-        GROUP BY n.estado
+        LEFT JOIN Usuario as u ON u.login = n.usuario
+        GROUP BY n.estado,n.id,u.nombre 
     </select>
     
-    <select parameterType="map" id="consultarNecesidades" resultMap="NecesidadResult">
+    <!--select parameterType="map" id="consultarNecesidades" resultMap="NecesidadResult">
         SELECT 
             n.id as id,
             n.nombre as nombre,
@@ -30,7 +30,7 @@
             n.urgencia as urgencia,
             n.estado as estado
         FROM Necesidad as n
-    </select>
+    </select-->
     
     <select parameterType="map" id="consultarNecesidadesCategoria" resultMap="NecesidadResult">
         SELECT 
@@ -51,29 +51,32 @@
             n.nombre as nombre,
             n.categoria as categoria,
             n.descripcion as descripcion ,
-            n.fechaCreacion as fCreacion,
             n.urgencia as urgencia,
+            n.fechaCreacion as fCreacion,
             n.estado as estado
         FROM Necesidad as n
-        WHERE n.id = #{id};
+        WHERE n.nombre = #{nombre};
     </select>
     
     <insert id = "addNecesidad">
-        INSERT INTO Necesidad (nombre, categoria, descripcion, fechaCreacion, urgencia)
-        VALUES (#{nombre},#{categoria},#{descripcion},CURRENT_TIMESTAMP,#{urgencia});
+        INSERT INTO Necesidad (nombre, categoria, descripcion, usuario, urgencia)
+        VALUES (#{nombre},#{categoria},#{descripcion},#{usuario},#{urgencia});
     </insert>
     
     <update id = "actualizarEstado">
         UPDATE Necesidad SET
-            n.estado = #{estado}
-        WHERE n.id = #{id};
+            estado = #{estado}
+        WHERE nombre = #{necesidad};
     </update>
+    
+    <delete id="eliminarNecesidad">
+        DELETE FROM Necesidad as n
+        WHERE n.nombre = #{necesidad}; 
+    </delete>
     
     <resultMap type="Necesidad" id="NecesidadResult">
         <id property="id" column="id"/>
-        <association property = "categoria" javaType="Categoria">
-            <id property="id" column="categoria"></id>
-        </association>
+        <result property = "categoria" column = "categoria" />
         <result property = "nombre" column = "nombre"/>
         <result property = "descripcion" column = "descripcion"/>
         <result property = "fechaCreacion" column = "fCreacion"/>
@@ -83,18 +86,16 @@
     
     <resultMap type="Necesidad" id="ReporteNecesidadResult">
         <id property="id" column="id"/>
-        <association property = "categoria" javaType="Categoria" select="edu.eci.cvds.samplejr.dao.mybatis.mappers.CategoriaMapper.consultarCategorias"></association>
+        <result property = "categoria" column = "categoria" />
+        <!--association property = "categoria" javaType="Categoria" select="edu.eci.cvds.samplejr.dao.mybatis.mappers.CategoriaMapper.consultarCategorias"></association-->
         <result property = "nombre" column = "nombre"/>
         <result property = "descripcion" column = "descripcion"/>
         <result property = "fechaCreacion" column = "fCreacion"/>
         <result property = "estado" column = "estado"/>
         <result property = "fechaModificacion" column = "fModificacion"/>
-        <association property = "usuario" javaType = "Usuario" select = "edu.eci.cvds.samplejr.dao.mybatis.mappers.UsuarioMapper.consultarUsuarios" ></association>
+        <result property = "usuario" column = "usuario" />
+        <!--association property = "usuario" javaType = "Usuario" select = "edu.eci.cvds.samplejr.dao.mybatis.mappers.UsuarioMapper.consultarUsuarios" ></association-->
     </resultMap>
-    
-<<<<<<< HEAD
-</mapper-->
-=======
+
 </mapper>
-        
->>>>>>> d3f468adf8e96667ff3662ef13591263b22e3437
+

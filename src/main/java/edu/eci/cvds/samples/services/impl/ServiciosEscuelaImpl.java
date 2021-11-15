@@ -63,9 +63,9 @@ public class ServiciosEscuelaImpl implements ServiciosEscuela {
      * @throws ExcepcionServiciosEscuela 
      */
     @Override
-    public void expresarNecesidad(String categoria, String nombre, String descripcion, int urgencia) throws ExcepcionServiciosEscuela {
+    public void expresarNecesidad(String categoria, String nombre, String descripcion, int urgencia, String usuario) throws ExcepcionServiciosEscuela {
         try{
-            necesidadDao.agregarNecesidad(categoria, nombre, descripcion, urgencia);
+            necesidadDao.agregarNecesidad(categoria, nombre, descripcion,usuario, urgencia);
         }
         catch(PersistenceException persistenceException){
             throw new ExcepcionServiciosEscuela("No se pudo crear la necesidad");
