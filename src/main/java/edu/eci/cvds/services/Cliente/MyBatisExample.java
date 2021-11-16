@@ -6,6 +6,7 @@ package edu.eci.cvds.services.Cliente;
 import com.mysql.jdbc.Connection;
 import edu.eci.cvds.samplejr.dao.mybatis.mappers.CategoriaMapper;
 import edu.eci.cvds.samplejr.dao.mybatis.mappers.NecesidadMapper;
+import edu.eci.cvds.samplejr.dao.mybatis.mappers.OfertaMapper;
 import edu.eci.cvds.samplejr.dao.mybatis.mappers.UsuarioMapper;
 import edu.eci.cvds.samples.entities.Perfil;
 import java.io.IOException;
@@ -66,17 +67,21 @@ public class MyBatisExample {
         UsuarioMapper usuarioM = (UsuarioMapper)sqlss.getMapper(UsuarioMapper.class);
         CategoriaMapper categoriaM = (CategoriaMapper)sqlss.getMapper(CategoriaMapper.class);
         NecesidadMapper necesidadM = (NecesidadMapper)sqlss.getMapper(NecesidadMapper.class);
-        System.out.println("-----------------------Consultar Clientes-------------------");
+        OfertaMapper ofertaM = (OfertaMapper)sqlss.getMapper(OfertaMapper.class);
+        //Prueba de funcionamiento de los mapper
+        //Prueba de funcionamiento de Usuarios
+        System.out.println("-----------------------Consultar Usuarios-------------------");
         System.out.println(usuarioM.consultarUsuarios());
-        System.out.println("------------------------Consultar Cliente-------------------");
+        System.out.println("------------------------Consultar Usuario-------------------");
         System.out.println(usuarioM.consultarUsuario("CristianC"));
         System.out.println("---------------------Ingresando usuario michael_mni------------------------");
         usuarioM.ingresarUsuario("Michael", "michael_mni", "14325mc", "michaelmni@gmail.com.co", Perfil.valueOf("ESTUDIANTE").toString());
-        System.out.println("--------------------------Consultar Cliente michael_mni------------");
+        System.out.println("--------------------------Consultar usuario michael_mni------------");
         System.out.println(usuarioM.consultarUsuario("michael_mni"));
-        usuarioM.deleteUsuario("michael_mni","14325mc");
-        System.out.println("-----------------------Consultar Clientes-------------------");
+        //usuarioM.deleteUsuario("michael_mni","14325mc");
+        System.out.println("-----------------------Consultar Usuarios-------------------");
         System.out.println(usuarioM.consultarUsuarios());     
+        //Prueba de funcionamiento de Categorias
         System.out.println("--------------------Consultar Categorias-------------------");
         System.out.println(categoriaM.consultarCategorias());
         categoriaM.agregarCategoria("LENGUAS", "Se expresan dudas de cualquier materia de lenguas extranjeras");
@@ -85,7 +90,8 @@ public class MyBatisExample {
         categoriaM.modificarCategoria("LENGUAS","LENGUAJE", "Se expresan dudas de cualquier tema", "ACTIVO");
         System.out.println("--------------------Consultar Categoria LENGUAJE-------------");
         System.out.println(categoriaM.consultarCategoriaNombre("LENGUAJE"));
-        categoriaM.borrarCategoria("LENGUAJE");
+        //categoriaM.borrarCategoria("LENGUAJE");
+        //Prueba de funcionamient de Necesidades
         System.out.println("---------------------Consultar Necesidades---------------------");
         System.out.println(necesidadM.consultarNecesidades());
         System.out.println("----------------------Agregando Necesidad Advertencia-------------------");
@@ -96,12 +102,31 @@ public class MyBatisExample {
         necesidadM.actualizarEstado("Advertencia", "NO ACTIVO");
         System.out.println(necesidadM.consultarNecesidad("Advertencia"));
         System.out.println("--------------Necesidad advertencia eliminada-------------------");
-        necesidadM.eliminarNecesidad("Advertencia");
+        //necesidadM.eliminarNecesidad("Advertencia");
         System.out.println("---------------------Consultar Advertencia-----------");
         System.out.println(necesidadM.consultarNecesidad("Advertencia"));
-
+        //Prueba funcionamiento de Ofertas
+        System.out.println("---------------------Consultar ofertas-----------------");
+        System.out.println(ofertaM.consultarOfertas());
+        System.out.println("----------------------Agregar oferta LIBRO-GUIA---------");
+        ofertaM.addOferta("LENGUAJE", "Para el tema de la semana consultar el libro ...", "LIBRO-GUIA", "micahel_mni");
+        System.out.println("-------------------Oferta en no Activo------------------");
+        ofertaM.actualizarEstado("LIBRO-GUIA", "NO ACTIVO");
+        System.out.println("-----------------------Consultar LIBRO-GUIA----------------");
+        // ELiminacion de pruebas
+        ofertaM.deleteOferta("LIBRO-GUIA");
+        System.out.println("------------------Eliminar LIBRO-GUIA---------------------");
+        System.out.println(ofertaM.consultarOferta("LIBRO-GUIA"));
+        necesidadM.eliminarNecesidad("Advertencia");
+        System.out.println("--------------Necesidad advertencia eliminada-------------------");
+        System.out.println(necesidadM.consultarNecesidad("Advertencia"));
+        categoriaM.borrarCategoria("LENGUAJE");
+        System.out.println("----------------Categoria LENGUAJE eliminada");
+        System.out.println(categoriaM.consultarCategoriaNombre("LENGUAJE"));
+        usuarioM.deleteUsuario("michael_mni","14325mc");
+        System.out.println("-----------------------Usuario michael_mni eliminado------------");
+        System.out.println(usuarioM.consultarUsuario("michael_mni"));
         
- 
         sqlss.commit();
         sqlss.close();
     }

@@ -80,9 +80,9 @@ public class ServiciosEscuelaImpl implements ServiciosEscuela {
      * @throws ExcepcionServiciosEscuela 
      */
     @Override
-    public void registrarOferta(String categoria, String nombre, String descripcion) throws ExcepcionServiciosEscuela {
+    public void registrarOferta(String categoria, String nombre, String descripcion, String usuario) throws ExcepcionServiciosEscuela {
         try{
-            ofertaDao.agregarOferta(categoria, descripcion, nombre);
+            ofertaDao.agregarOferta(categoria, descripcion, nombre, usuario);
         }
         catch(PersistenceException persistenceException){
             throw new ExcepcionServiciosEscuela("No se pudo registrar la oferta del estudiante");

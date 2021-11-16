@@ -22,6 +22,7 @@ public class OfertaBean {
     private String nombreOferta;
     private String descripcionOferta;
     private String mensaje;
+    private String usuarioOferta; //--> Ocurre lo mismo que en el caso de necesidad
     private FacesMessage.Severity estadoSolicitud;
     
     /**
@@ -31,7 +32,7 @@ public class OfertaBean {
      */
     public void registrarOferta(){
         try{
-            serviciosEscuela.registrarOferta(categoriaOferta, nombreOferta, descripcionOferta);
+            serviciosEscuela.registrarOferta(categoriaOferta, nombreOferta, descripcionOferta, usuarioOferta);
             mensajeSinErrores();
         }
         catch(Exception exception){

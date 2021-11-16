@@ -6,28 +6,28 @@
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this template
 -->
-
-
-
 <mapper namespace="edu.eci.cvds.samplejr.dao.mybatis.mappers.OfertaMapper">
     
     <insert id="addOferta">
-        INSERT INTO Oferta (id, categoria, nombre, descripcion, fCreacion)
-        VALUES (#{oferta.id},#{oferta.categoria},#{oferta.nombre},#{oferta.descripcion},CURRENT_TIMESTAMP);
+        INSERT INTO Oferta (CATEGORIA, NOMBRE, DESCRIPCION, USUARIO)
+        VALUES (#{categoria}, #{nombre}, #{descripcion}, #{usuario});
     </insert>
     <!--ARREGLAR MAPPER DE AÑADIR OFERTA DE ACUERDO AL MAPPER DE JAVA-->
     
-    <select parameterType="map" id="ConsultarOfertas" resultMap="ResultadoOfertasResult">
+    <select parameterType="map" id="consultarOfertas" resultMap="OfertaResult">
         SELECT 
+            o.id as id,
             o.categoria as categoria,
             o.nombre as nombre,
             o.descripcion as descripcion,
+            o.estado as estado,
+            o.usuario as usuario,
             o.fechaCreacion as fCreacion,
-            o.estado as estado
-        FROM Oferta;
+            o.fechaModificacion as fModificacion
+        FROM Oferta as o;
     </select> 
     
-    <select parameterType="map" id="ConsultarOfertas" resultMap="OfertaResult">
+    <select parameterType="map" id="ConsultarOfertasXcategoria" resultMap="OfertaResult">
         SELECT 
             o.categoria as categoria,
             o.nombre as nombre,
@@ -46,25 +46,32 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
             o.fechaCreacion as fCreacion,
             o.estado as estado
         FROM Oferta
-        WHERE o.id = #{id};
+        WHERE o.nombre = #{Oferta};
     </select>
     
     <update id = "actualizarEstado">
         UPDATE Oferta as o SET
             o.estado = #{estado}
-        WHERE o.id = #{id};
+        WHERE o.nombre = #{oferta};
     </update>
     
-    <resultMap type="Categoria" id="OfertaResult">
+    <delete id="deleteOferta">
+        DLEETE FROM Oferta as o
+        WHERE o.nombre = #{oferta};
+    </delete>
+    
+    <resultMap type="Oferta" id="OfertaResult">
         <id property="id" column="id"/>
         <result property="categoria" column="categoria"/>
         <result property="nombre" column="nombre"/>
         <result property="descripcion" column="descripcion"/>
-        <result property="fechaCreacion" column="fCreacion"/>
         <result property="estado" column="estado"/>
+        <result property="fechaCreacion" column="fCreacion"/>
+        <result property="fechaModificacion" column="fModificacion"/>
+        <result property="usuario" column="usuario"/>
     </resultMap>
     
-    <resultMap type="Categoria" id="ResultadoOfertasResult">
+    <resultMap type="Oferta" id="ResultadoOfertasResult">
         <id property="id" column="id"/>
         <result property="categoria" column="categoria"/>
         <result property="nombre" column="nombre"/>
@@ -72,9 +79,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
         <result property="fechaCreacion" column="fCreacion"/>
         <result property="estado" column="estado"/>
         <result property="fechaModificacion" column="fModificacion"/>
-        <association  property="usuario" javaType="Usuario">
-            <result property="nombre" column="usuario"/>
-        </association>
     </resultMap>
     
     
