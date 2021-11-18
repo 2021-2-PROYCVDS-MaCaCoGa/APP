@@ -15,9 +15,9 @@ public class MyBatisOfertaDao implements OfertaDao{
 	private OfertaMapper ofertaMapper;
 
 	@Override
-	public void agregarOferta(String categoria, String descripcion, String nombre) throws PersistenceException {
+	public void agregarOferta(String categoria, String descripcion, String nombre, String usuario) throws PersistenceException {
 		try {
-			ofertaMapper.addOferta(categoria, descripcion, nombre);
+			ofertaMapper.addOferta(categoria, descripcion, nombre, usuario);
 		}catch(org.apache.ibatis.exceptions.PersistenceException e) {
 			throw new PersistenceException("Error al agregar oferta: "+nombre, e);
 		}
@@ -25,29 +25,29 @@ public class MyBatisOfertaDao implements OfertaDao{
 	}
 
 	@Override
-	public void actualizarEstado(int id, String estado) throws PersistenceException {
+	public void actualizarEstado(String oferta, String estado) throws PersistenceException {
 		try {
-			ofertaMapper.actualizarEstado(id, estado);
+			ofertaMapper.actualizarEstado(oferta, estado);
 		}catch(org.apache.ibatis.exceptions.PersistenceException e) {
-			throw new PersistenceException("Error al actualizar estado: "+id, e);
+			throw new PersistenceException("Error al actualizar estado: "+oferta, e);
 		}
 		
 	}
 
 	@Override
-	public Oferta consultaroferta(int id) throws PersistenceException {
+	public Oferta consultaroferta(String oferta) throws PersistenceException {
 		try {
-			return ofertaMapper.consultarOferta(id);
+			return ofertaMapper.consultarOferta(oferta);
 		}catch(org.apache.ibatis.exceptions.PersistenceException e) {
-			throw new PersistenceException("Error al consultar oferta: "+id, e);
+			throw new PersistenceException("Error al consultar oferta: "+oferta, e);
 		}
 		
 	}
 
 	@Override
-	public List<Oferta> consultarOfertas(int categoria) throws PersistenceException {
+	public List<Oferta> consultarOfertas(String categoria) throws PersistenceException {
 		try {
-			return ofertaMapper.consultarOfertas(categoria);
+			return ofertaMapper.consultarOfertasXcategoria(categoria);
 		}catch(org.apache.ibatis.exceptions.PersistenceException e) {
 			throw new PersistenceException("Error al consultar ofertas: "+categoria, e);
 		}

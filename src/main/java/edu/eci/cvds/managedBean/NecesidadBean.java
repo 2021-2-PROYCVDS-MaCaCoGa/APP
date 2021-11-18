@@ -19,6 +19,7 @@ public class NecesidadBean {
     private String nombreNecesidad;
     private String descripcionNecesidad;
     private int urgenciaNecesidad;
+    private String UsuarioNecesidad; //--> No sabria en que espacio ponerlo...
     private String mensaje;
     private FacesMessage.Severity estadoSolicitud;
     
@@ -30,7 +31,7 @@ public class NecesidadBean {
      */
     public void agregarNecesidad(){
         try{
-            serviciosEscuela.expresarNecesidad(categoriaNecesidad, nombreNecesidad, descripcionNecesidad, urgenciaNecesidad);
+            serviciosEscuela.expresarNecesidad(categoriaNecesidad, nombreNecesidad, descripcionNecesidad, urgenciaNecesidad,UsuarioNecesidad);
             mensajeSinErrores();
         }
         catch(Exception exception){

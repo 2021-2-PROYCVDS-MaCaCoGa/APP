@@ -18,10 +18,11 @@ public interface CategoriaMapper {
     public void agregarCategoria(@Param("nombre") String nombre, @Param("descripcion")String descripcion);
 
 
-    public void modificarCategoria(@Param("nombre") String nombre,
+    public void modificarCategoria(@Param("categoria") String categoria,
+                                   @Param("nombre") String nombre,
                                    @Param("descripcion") String descripcion,
                                    @Param("estado") String estado);
-    public void borrarCategoria(@Param("id")int id);
+    public void borrarCategoria(@Param("NOMBRE")String nombre);
 
     public List<Categoria> consultarCategorias();
 

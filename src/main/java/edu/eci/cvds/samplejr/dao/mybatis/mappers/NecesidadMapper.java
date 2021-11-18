@@ -23,7 +23,8 @@ public interface NecesidadMapper {
     public void addNecesidad(@Param("categoria") String categoria,
                             @Param("nombre") String nombre,
                             @Param("descripcion")String descripcion,
-                            @Param("urgencia") int urgencia);
+                            @Param("urgencia") int urgencia,
+                            @Param("usuario") String usuario);
 
     /**
      * Se consultan las necesidades de acuerdo a una categoria especifica
@@ -32,10 +33,10 @@ public interface NecesidadMapper {
     public List<Necesidad> consultarNecesidadesCategoria(@Param("categoria") int categoria);
     public List<Necesidad> consultarNecesidades();
     
-    public Necesidad consultarNecesidad(@Param("id") int id);
+    public Necesidad consultarNecesidad(@Param("nombre") String nombre);
     
-    public void actualizarEstado (@Param("id") int id,
+    public void actualizarEstado (@Param("necesidad") String necesidad,
                                     @Param("estado") String estado);
-    
+    public void eliminarNecesidad(@Param("necesidad") String necesidad);
    
 }

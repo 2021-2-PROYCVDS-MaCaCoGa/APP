@@ -10,14 +10,17 @@ public interface OfertaMapper {
     
     public void addOferta(@Param("categoria") String categoria,
                         @Param("Descripcion") String Descripcion,
-                        @Param("nombre") String nombre);
+                        @Param("nombre") String nombre,
+                        @Param("usuario") String usuario);
     
     
-    public void actualizarEstado(@Param("id") int id,
+    public void actualizarEstado(@Param("oferta") String categoria,
                                 @Param("estado") String estado);
     
-    public Oferta consultarOferta(@Param("id") int id);
-    public List<Oferta> consultarOfertas(@Param("categoria") int categoria);
+    public Oferta consultarOferta(@Param("Oferta") String oferta);
+    public List<Oferta> consultarOfertasXcategoria(@Param("categoria") String categoria);
     public List<Oferta> consultarOfertas();
+    
+    public void deleteOferta(@Param("oferta") String oferta);
     
 }

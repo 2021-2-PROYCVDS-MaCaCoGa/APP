@@ -49,9 +49,9 @@ public class ServiciosEscuelaImpl implements ServiciosEscuela {
      * @throws ExcepcionServiciosEscuela 
      */
     @Override
-    public void actualizarCategoria(String nuevoNombre, String nuevaDescripcion, String nuevoEstado) throws ExcepcionServiciosEscuela{
+    public void actualizarCategoria(String categoria, String nuevoNombre, String nuevaDescripcion, String nuevoEstado) throws ExcepcionServiciosEscuela{
         try{
-            categoriaDao.modificarCategoria(nuevoNombre, nuevaDescripcion, nuevoEstado);
+            categoriaDao.modificarCategoria(categoria, nuevoNombre, nuevaDescripcion, nuevoEstado);
         }
         catch(PersistenceException persistenceException){
             throw new ExcepcionServiciosEscuela("No se pudo actualizar la categoria");
@@ -68,9 +68,9 @@ public class ServiciosEscuelaImpl implements ServiciosEscuela {
      * @throws ExcepcionServiciosEscuela 
      */
     @Override
-    public void expresarNecesidad(String categoria, String nombre, String descripcion, int urgencia) throws ExcepcionServiciosEscuela {
+    public void expresarNecesidad(String categoria, String nombre, String descripcion, int urgencia, String usuario) throws ExcepcionServiciosEscuela {
         try{
-            necesidadDao.agregarNecesidad(categoria, nombre, descripcion, urgencia);
+            necesidadDao.agregarNecesidad(categoria, nombre, descripcion,usuario, urgencia);
         }
         catch(PersistenceException persistenceException){
             throw new ExcepcionServiciosEscuela("No se pudo crear la necesidad");
@@ -85,9 +85,9 @@ public class ServiciosEscuelaImpl implements ServiciosEscuela {
      * @throws ExcepcionServiciosEscuela 
      */
     @Override
-    public void registrarOferta(String categoria, String nombre, String descripcion) throws ExcepcionServiciosEscuela {
+    public void registrarOferta(String categoria, String nombre, String descripcion, String usuario) throws ExcepcionServiciosEscuela {
         try{
-            ofertaDao.agregarOferta(categoria, descripcion, nombre);
+            ofertaDao.agregarOferta(categoria, descripcion, nombre, usuario);
         }
         catch(PersistenceException persistenceException){
             throw new ExcepcionServiciosEscuela("No se pudo registrar la oferta del estudiante");

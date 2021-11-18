@@ -16,16 +16,15 @@ public interface UsuarioMapper {
 
     public List<Usuario> consultarUsuarios();
 
-    public void ingresarUsuario(@Param("ID") int id,
-                                @Param("NOMBRE") String nombre,
+    public void ingresarUsuario(@Param("NOMBRE") String nombre,
                                 @Param("LOGIN") String login,
                                 @Param("PASSWORD") String contraseña,
                                 @Param("CORREO") String correo,
-                                @Param("PERFIL") String perfil);
+                                @Param("ROL") String rol);
 
     public int ExistenciaUsuario(@Param("USUARIO") String nombre,
                                  @Param("CONTRA") String contraseña);
     
-    public void deleteUsuario(@Param("ID") int id);
+    public void deleteUsuario(@Param("LOGIN") String login,@Param("PASSWORD") String password);
     
 }

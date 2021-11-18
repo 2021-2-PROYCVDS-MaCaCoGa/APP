@@ -15,7 +15,7 @@ public interface UsuarioDao {
     
     public List<Usuario> consultarUsuarios()throws PersistenceException;
     
-    public void ingresarUsuario(int id,String nombre, String log, String contraseña, String correo , String perfil)throws PersistenceException;
+    public void ingresarUsuario(String nombre, String log, String contraseña, String correo , String perfil)throws PersistenceException;
     
     public int existenciaSusuario(String nombre, String contraseña)throws PersistenceException;
 }

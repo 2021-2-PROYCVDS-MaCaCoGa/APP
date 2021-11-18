@@ -15,9 +15,9 @@ public class MyBatisNecesidadDao implements NecesidadDao{
 	private NecesidadMapper necesidadMapper;
 
 	@Override
-            public void agregarNecesidad(String categoria, String nombre, String descripcion, int urgencia) throws PersistenceException {
+            public void agregarNecesidad(String categoria, String nombre, String descripcion,String usuario, int urgencia) throws PersistenceException {
 		try {
-			necesidadMapper.addNecesidad(categoria, nombre, descripcion, urgencia);
+			necesidadMapper.addNecesidad(categoria, nombre, descripcion,urgencia,usuario);
 		}catch(org.apache.ibatis.exceptions.PersistenceException e) {
 			throw new PersistenceException("Error al agregar necesidad "+nombre, e);
 		}
@@ -43,20 +43,20 @@ public class MyBatisNecesidadDao implements NecesidadDao{
 	}
 
 	@Override
-	public Necesidad consultarNecesidad(int id) throws PersistenceException {
+	public Necesidad consultarNecesidad(String necesidad) throws PersistenceException {
 		try {
-			return necesidadMapper.consultarNecesidad(id);
+			return necesidadMapper.consultarNecesidad(necesidad);
 		}catch(org.apache.ibatis.exceptions.PersistenceException e) {
-			throw new PersistenceException("Error al consultar necesidad"+id, e);
+			throw new PersistenceException("Error al consultar necesidad"+necesidad, e);
 		}
 	}
 
 	@Override
-	public void actualizarEstado(int id, String estado) throws PersistenceException {
+	public void actualizarEstado(String necesidad, String estado) throws PersistenceException {
 		try {
-			necesidadMapper.actualizarEstado(id, estado);
+			necesidadMapper.actualizarEstado(necesidad, estado);
 		}catch(org.apache.ibatis.exceptions.PersistenceException e) {
-			throw new PersistenceException("Error al actualizar estado: "+id, e);
+			throw new PersistenceException("Error al actualizar estado: "+necesidad, e);
 		}
 		
 	}

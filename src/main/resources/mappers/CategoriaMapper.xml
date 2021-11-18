@@ -9,7 +9,7 @@
             c.ID as id,
             c.NOMBRE as nombre,
             c.DESCRIPCION as descripcion,
-            c.FECHACREACION as fCreacion ,
+            c.FECHACREACION as fCreacion,
             c.ESTADO as estado ,
             c.FECHAMODIFICACION as fModificacion
         FROM CATEGORIA as c
@@ -40,26 +40,24 @@
        </select>
     
     <insert id="agregarCategoria">
-            INSERT INTO Categoria (ID, NOMBRE, DESCRIPCION, FECHACREACION, ESTADO)
+            INSERT INTO CATEGORIA (NOMBRE, DESCRIPCION)
             VALUES (#{nombre},#{descripcion});
     </insert>
     
     
     
     <update id="modificarCategoria">
-        UPDATE CATEGORIA as c SET
-            c.NOMBRE = #{nombre},
-            c.DESCRIPCION = #{descripcion},
-            c.ESTADO = #{estado},
-            c.FECHAMODIFICACION = CURRENT_TIMESTAMP
-            <!--NECESITO UN CAMBIO ACA, NECESITO QUE EL WHERE QUEDE
-            EN CUESTION DE EL NOMBRE VIEJO, PUES NOMBRE ES UNA LLLAVE UNICA-->
-        WHERE c.ID = #{id};
+        UPDATE CATEGORIA
+        SET
+            NOMBRE = #{nombre},
+            DESCRIPCION = #{descripcion},
+            ESTADO = #{estado}
+        WHERE NOMBRE = #{categoria};
     </update>
     
     <delete id = "borrarCategoria">
     	DELETE FROM CATEGORIA as c
-    	WHERE c.ID = #{id};
+    	WHERE c.NOMBRE = #{NOMBRE};
     </delete>
 
     <resultMap type = "Categoria" id="CategoriaResult">

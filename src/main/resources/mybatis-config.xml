@@ -6,7 +6,6 @@
     <!--<settings>
         <setting name="logImpl" value="LOG4J"/>        
     </settings>-->
-    
     <properties resource="config.properties">
     </properties>
     <typeAliases>
@@ -31,10 +30,10 @@
         
     <mappers>
         <mapper resource="mappers/UsuarioMapper.xml"></mapper>
-        <mapper resource="mappers/NecesidadMapper.xml"></mapper> 
         <mapper resource="mappers/CategoriaMapper.xml"></mapper> 
+        <mapper resource="mappers/NecesidadMapper.xml"></mapper> 
         <mapper resource="mappers/OfertaMapper.xml"></mapper>  
-        <mapper resource="mappers/RespuestaMapper.xml"></mapper>
+        <!--mapper resource="mappers/RespuestaMapper.xml"></mapper-->
     </mappers> 
         
         

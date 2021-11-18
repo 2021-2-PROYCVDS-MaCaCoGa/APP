@@ -6,8 +6,9 @@
 <mapper namespace="edu.eci.cvds.samplejr.dao.mybatis.mappers.UsuarioMapper">
     <select parameterType="map" id="consultarUsuarios" resultMap="UsuarioResult">
         SELECT
+            u.ID as id,
             u.NOMBRE as nombre,
-            u.PERFIL as perfil,
+            u.ROL as rol,
             u.CORREO as correo,
             u.PASSWORD as contraseña,
             u.LOGIN as login
@@ -17,7 +18,7 @@
     <select parameterType="map" id="consultarUsuario" resultMap="UsuarioResult">
         SELECT
             u.NOMBRE as nombre,
-            u.PERFIL as perfil,
+            u.ROL as rol,
             u.CORREO as correo,
             u.PASSWORD as contraseña,
             u.LOGIN as login
@@ -26,19 +27,20 @@
     </select> 
     
     <insert id="ingresarUsuario">
-        INSERT INTO Usuario (ID, NOMBRE, PERFIL, CORREO, PASSWORD, LOGIN)
-        VALUES (#{ID}, #{NOMBRE},#{PERFIL},#{CORREO},#{PASSWORD},#{LOGIN});
+        INSERT INTO Usuario (NOMBRE, ROL, CORREO, PASSWORD, LOGIN)
+        VALUES (#{NOMBRE},#{ROL},#{CORREO},#{PASSWORD},#{LOGIN});
         
     </insert>
     
     <delete id="deleteUsuario">
         DELETE FROM Usuario as u
-        WHERE u.id = #{ID};
+        WHERE u.LOGIN = #{LOGIN} and u.PASSWORD = #{PASSWORD};
     </delete>
  
     <resultMap type="Usuario" id="UsuarioResult">
-        <id property="nombre" column="nombre"/>
-        <result property="perfil" column="perfil"/>
+        <id property="id" column="id"/>
+        <result property="nombre" column="nombre" />
+        <result property="rol" column="rol"/>
         <result property="correo" column="correo"/>
         <result property="password" column="contraseña"/>
         <result property="login" column="login"/>
