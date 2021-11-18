@@ -5,7 +5,7 @@ import java.util.List;
 import edu.eci.cvds.samples.entities.Respuesta;
 
 public interface RespuestaDao {
-	public void agregarRespuesta(int id, String nombre, List<String> comentarios) throws PersistenceException;
+	public void agregarRespuesta(String nombre, List<String> comentarios, String oferta_respondida) throws PersistenceException;
 	
 	public List<Respuesta> consultarRespuestas() throws PersistenceException;
 	

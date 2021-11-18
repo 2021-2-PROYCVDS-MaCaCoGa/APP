@@ -1,6 +1,7 @@
 package edu.eci.cvds.samples.services;
 
 import edu.eci.cvds.samples.entities.Usuario;
+import java.util.List;
 
 public interface ServiciosEscuela {
     
@@ -12,4 +13,6 @@ public interface ServiciosEscuela {
     public abstract void expresarNecesidad(String categoria, String nombre, String descripcion, int urgencia)throws ExcepcionServiciosEscuela;
     
     public abstract void registrarOferta(String categoria, String nombre, String descripcion)throws ExcepcionServiciosEscuela;
+    
+    public abstract void registrarRespuesta(String nombre, List<String> comentarios, String oferta_respondida) throws ExcepcionServiciosEscuela;
 }

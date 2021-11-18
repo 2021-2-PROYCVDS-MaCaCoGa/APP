@@ -15,11 +15,11 @@ public class MyBatisRespuestaDao implements RespuestaDao{
 	private RespuestaMapper respuestaMapper;
 
 	@Override
-	public void agregarRespuesta(int id, String nombre, List<String> comentarios) throws PersistenceException {
+	public void agregarRespuesta(String nombre, List<String> comentarios, String oferta_respondida) throws PersistenceException {
 		try {
-			respuestaMapper.addRespuesta(id, nombre, comentarios);
+			respuestaMapper.addRespuesta(nombre, comentarios, oferta_respondida);
 		}catch(org.apache.ibatis.exceptions.PersistenceException e) {
-			throw new PersistenceException("Error al agregar Respuesta: "+id, e);
+			throw new PersistenceException("Error al agregar Respuesta: ", e);
 		}
 		
 	}

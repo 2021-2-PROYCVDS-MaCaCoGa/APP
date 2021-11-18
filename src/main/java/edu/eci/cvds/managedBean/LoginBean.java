@@ -51,7 +51,7 @@ public class LoginBean {
             System.out.println(contra);
             System.out.println("SIN ERRORES EN EL CORREO Y PASSWORD");
             this.logger.log(correo, contra);
-            System.out.println("PROBLEMAS CON EL LOG DE LOGGINCONNECTION");
+            System.out.println("PROBLEMAS CON EL LOG DE LOGINCONNECTION");
             
             
         } catch(Exception exception){
@@ -76,7 +76,7 @@ public class LoginBean {
         try{
             System.out.println("entra a la redireccion");
             FacesContext facesContext = FacesContext.getCurrentInstance();
-            /**if(rolEstudiante()){
+            if(rolEstudiante()){
                 //En esta parte decimos que el estudiante se pudo loguear, y se redirije a la pagina estudiante.xhtml
                 HttpSession sesion = (HttpSession)facesContext.getExternalContext().getSession(true);
                 sesion.setAttribute("correo", correo);
@@ -87,7 +87,7 @@ public class LoginBean {
                 HttpSession sesion = (HttpSession)facesContext.getExternalContext().getSession(true);
                 sesion.setAttribute("correo", correo);
                 facesContext.getExternalContext().redirect("../roles/administrador.xhtml");
-            }*/
+            }
            
         } catch(Exception exception){
             System.out.print("Problemas en el login,");

@@ -50,3 +50,13 @@ CREATE TABLE IF NOT EXISTS `OFERTA`(
     `ESTADO` VARCHAR(10) NOT NULL,
     `FECHAMODIFICACION` DATE,
     `USUARIO` VARCHAR(20) NOT NULL);
+
+    -- ------------------------------------------------
+-- Table "Respuesta"
+-- ------------------------------------------------
+CREATE TABLE IF NOT EXISTS `RESPUESTA`(
+    `ID` SERIAL PRIMARY KEY NOT NULL,
+    `NOMBRE` VARCHAR(100) NOT NULL,
+    `COMENTARIO` VARCHAR(250) NOT NULL,
+    `FECHACREACION` DATE NOT NULL,
+    `OFERTA_RESPONDIDA` VARCHAR(20) NOT NULl);

@@ -10,9 +10,9 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface RespuestaMapper {
     
-    public void addRespuesta(@Param("id") int id,
-                        @Param("nombre") String nombre,
-                        @Param("comentarios") List<String> comentarios);
+    public void addRespuesta(@Param("nombre") String nombre,
+                        @Param("comentarios") List<String> comentarios,
+                        @Param("oferta_respondida") String oferta_respondida);
     
     public List<Respuesta> consultarRespuestas();
     
