@@ -12,11 +12,7 @@ public interface ServiciosEscuela {
     
     public abstract void expresarNecesidad(String categoria, String nombre, String descripcion, int urgencia, String usuario)throws ExcepcionServiciosEscuela;
     
-<<<<<<< HEAD
-    public abstract void registrarOferta(String categoria, String nombre, String descripcion)throws ExcepcionServiciosEscuela;
+    public abstract void registrarOferta(String categoria, String nombre, String descripcion, String usuario)throws ExcepcionServiciosEscuela;
     
     public abstract void registrarRespuesta(String nombre, List<String> comentarios, String oferta_respondida) throws ExcepcionServiciosEscuela;
-=======
-    public abstract void registrarOferta(String categoria, String nombre, String descripcion, String usuario)throws ExcepcionServiciosEscuela;
->>>>>>> 9774820b9bec3426f10f63357fed496ccbac9e73
 }
