@@ -58,4 +58,8 @@ public class NecesidadBean {
         this.estadoSolicitud = FacesMessage.SEVERITY_WARN;  
     }
     
+    public void setNombreCategoria(){
+        
+    }
+    
 }

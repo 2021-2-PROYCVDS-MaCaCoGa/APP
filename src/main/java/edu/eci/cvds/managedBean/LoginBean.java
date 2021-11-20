@@ -43,9 +43,7 @@ public class LoginBean {
      */
     public void loguear(){
         System.out.println("Entra al metodo loguear");
-        try{
-            
-            
+        try{   
             System.out.println("SE INTENTA DE MANERA BRUSCA");
             System.out.println(correo);
             System.out.println(contra);
