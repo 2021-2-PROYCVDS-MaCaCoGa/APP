@@ -16,15 +16,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
     
     <select parameterType="map" id="consultarOfertas" resultMap="OfertaResult">
         SELECT 
-            o.id as id,
-            o.categoria as categoria,
-            o.nombre as nombre,
-            o.descripcion as descripcion,
-            o.estado as estado,
-            o.usuario as usuario,
-            o.fechaCreacion as fCreacion,
-            o.fechaModificacion as fModificacion
-        FROM Oferta as o;
+            id,
+            categoria,
+            nombre,
+            descripcion,
+            estado,
+            fechaCreacion,
+            usuario
+        FROM Oferta;
     </select> 
     
     <select parameterType="map" id="ConsultarOfertasXcategoria" resultMap="OfertaResult">
@@ -43,20 +42,22 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
             o.categoria as categoria,
             o.nombre as nombre,
             o.descripcion as descripcion,
+            o.estado as estado,
             o.fechaCreacion as fCreacion,
-            o.estado as estado
-        FROM Oferta
+            o.usuario as usuario
+        FROM Oferta as o
         WHERE o.nombre = #{Oferta};
     </select>
     
     <update id = "actualizarEstado">
-        UPDATE Oferta as o SET
-            o.estado = #{estado}
-        WHERE o.nombre = #{oferta};
+        UPDATE Oferta 
+        SET
+            estado = #{estado}
+        WHERE nombre = #{oferta};
     </update>
     
     <delete id="deleteOferta">
-        DLEETE FROM Oferta as o
+        DELETE FROM Oferta as o
         WHERE o.nombre = #{oferta};
     </delete>
     
@@ -65,8 +66,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
         <result property="categoria" column="categoria"/>
         <result property="nombre" column="nombre"/>
         <result property="descripcion" column="descripcion"/>
-        <result property="estado" column="estado"/>
         <result property="fechaCreacion" column="fCreacion"/>
+        <result property="estado" column="estado"/>
         <result property="fechaModificacion" column="fModificacion"/>
         <result property="usuario" column="usuario"/>
     </resultMap>

@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Param;
 public interface OfertaMapper {
     
     public void addOferta(@Param("categoria") String categoria,
-                        @Param("Descripcion") String Descripcion,
+                        @Param("descripcion") String Descripcion,
                         @Param("nombre") String nombre,
                         @Param("usuario") String usuario);
     

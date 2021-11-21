@@ -11,9 +11,8 @@
             n.categoria as categoria,
             n.descripcion as descripcion ,
             n.urgencia as urgencia,
-            n.fechaCreacion as fCreacion,
             n.estado as estado,
-            n.fechaModificacion as fModificacion,
+            n.fechaCreacion as fCreacion,
             u.nombre as usuario
         FROM Necesidad as n
         LEFT JOIN Usuario as u ON u.login = n.usuario
@@ -52,8 +51,9 @@
             n.categoria as categoria,
             n.descripcion as descripcion ,
             n.urgencia as urgencia,
+            n.estado as estado,
             n.fechaCreacion as fCreacion,
-            n.estado as estado
+            n.usuario as usuario
         FROM Necesidad as n
         WHERE n.nombre = #{nombre};
     </select>
@@ -82,6 +82,7 @@
         <result property = "fechaCreacion" column = "fCreacion"/>
         <result property = "urgencia" column = "urgencia"/>
         <result property = "estado" column = "estado"/>
+        <result property = "usuario" column = "usuario"/>
     </resultMap>
     
     <resultMap type="Necesidad" id="ReporteNecesidadResult">

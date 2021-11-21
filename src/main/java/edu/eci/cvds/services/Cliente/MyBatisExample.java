@@ -78,6 +78,7 @@ public class MyBatisExample {
         usuarioM.ingresarUsuario("Michael", "michael_mni", "14325mc", "michaelmni@gmail.com.co", Perfil.valueOf("ESTUDIANTE").toString());
         System.out.println("--------------------------Consultar usuario michael_mni------------");
         System.out.println(usuarioM.consultarUsuario("michael_mni"));
+        //sqlss.commit();
         //usuarioM.deleteUsuario("michael_mni","14325mc");
         System.out.println("-----------------------Consultar Usuarios-------------------");
         System.out.println(usuarioM.consultarUsuarios());     
@@ -91,6 +92,7 @@ public class MyBatisExample {
         System.out.println("--------------------Consultar Categoria LENGUAJE-------------");
         System.out.println(categoriaM.consultarCategoriaNombre("LENGUAJE"));
         //categoriaM.borrarCategoria("LENGUAJE");
+        //sqlss.commit();
         //Prueba de funcionamient de Necesidades
         System.out.println("---------------------Consultar Necesidades---------------------");
         System.out.println(necesidadM.consultarNecesidades());
@@ -103,16 +105,18 @@ public class MyBatisExample {
         System.out.println(necesidadM.consultarNecesidad("Advertencia"));
         System.out.println("--------------Necesidad advertencia eliminada-------------------");
         //necesidadM.eliminarNecesidad("Advertencia");
+        //sqlss.commit();
         System.out.println("---------------------Consultar Advertencia-----------");
         System.out.println(necesidadM.consultarNecesidad("Advertencia"));
         //Prueba funcionamiento de Ofertas
         System.out.println("---------------------Consultar ofertas-----------------");
         System.out.println(ofertaM.consultarOfertas());
         System.out.println("----------------------Agregar oferta LIBRO-GUIA---------");
-        ofertaM.addOferta("LENGUAJE", "Para el tema de la semana consultar el libro ...", "LIBRO-GUIA", "micahel_mni");
+        ofertaM.addOferta("LENGUAJE", "Para el tema de la semana consultar el libro ...", "LIBRO-GUIA", "michael_mni");
         System.out.println("-------------------Oferta en no Activo------------------");
         ofertaM.actualizarEstado("LIBRO-GUIA", "NO ACTIVO");
         System.out.println("-----------------------Consultar LIBRO-GUIA----------------");
+        //sqlss.commit();
         // ELiminacion de pruebas
         ofertaM.deleteOferta("LIBRO-GUIA");
         System.out.println("------------------Eliminar LIBRO-GUIA---------------------");

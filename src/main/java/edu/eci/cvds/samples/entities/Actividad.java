@@ -5,20 +5,21 @@
 package edu.eci.cvds.samples.entities;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 /**
  *
  * @author crisa
  */
-public class Actividad {
+public abstract class Actividad {
     
     protected int id;
     protected String categoria;
     protected String nombre;
     protected String descripcion;
-    protected Date fechaCreacion;
+    protected LocalDate fechaCreacion;
     protected String estado;
-    protected Date fechaModificacion;
+    protected LocalDate fechaModificacion;
     protected String usuario;
     public static  int nSolicitudes;
     public final static String ACTIVA = "Activa";
@@ -26,12 +27,14 @@ public class Actividad {
     public final static String RESUELTA = "Resuelta";
     public final static String CERRADA = "Cerrada";
     
-    public Actividad(int id, String categoria, String nombre, String descripcion,String estado ){
+    public Actividad(int id, String categoria, String nombre, String descripcion,LocalDate fechaCreacion,String estado, String usuario){
         this.id = id;
         this.categoria = categoria;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.estado = estado;
+        this.fechaCreacion = fechaCreacion;
+        this.usuario = usuario;
     }
         
 
@@ -51,7 +54,7 @@ public class Actividad {
         return descripcion;
     }
 
-    public Date getFechaCreacion() {
+    public LocalDate getFechaCreacion() {
         return fechaCreacion;
     }
 
@@ -59,7 +62,7 @@ public class Actividad {
         return estado;
     }
 
-    public Date getFechaModificacion() {
+    public LocalDate getFechaModificacion() {
         return fechaModificacion;
     }
     
@@ -87,7 +90,7 @@ public class Actividad {
         this.descripcion = descripcion;
     }
 
-    public void setFechaCreacion(Date fechaCreacion) {
+    public void setFechaCreacion(LocalDate fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
 
@@ -95,7 +98,7 @@ public class Actividad {
         this.estado = estado;
     }
 
-    public void setFechaModificacion(Date fechaModificacion) {
+    public void setFechaModificacion(LocalDate fechaModificacion) {
         this.fechaModificacion = fechaModificacion;
     }
 
