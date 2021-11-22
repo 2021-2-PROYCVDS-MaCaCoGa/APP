@@ -7,16 +7,18 @@
     <select parameterType="map" id="consultarNecesidades" resultMap="ReporteNecesidadResult">
         SELECT 
             n.id as id,
-            n.nombre as nombre,
-            n.categoria as categoria,
-            n.descripcion as descripcion ,
+            a.nombre as nombre,
+            a.categoria as categoria,
+            a.descripcion as descripcion ,
             n.urgencia as urgencia,
-            n.estado as estado,
-            n.fechaCreacion as fCreacion,
+            a.estado as estado,
+            a.fechaCreacion as fCreacion,
+            a.fechaModificacion as fModificacion,
             u.nombre as usuario
-        FROM Necesidad as n
-        LEFT JOIN Usuario as u ON u.login = n.usuario
-        GROUP BY n.estado,n.id,u.nombre 
+        FROM Actividad as a
+        LEFT JOIN Usuario as u ON u.login = a.usuario
+        LEFT JOIN Necesidad as n ON a.nombre = n.actividad
+        WHERE a.actividad = 'NECESIDAD'
     </select>
     
     <!--select parameterType="map" id="consultarNecesidades" resultMap="NecesidadResult">
@@ -34,44 +36,54 @@
     <select parameterType="map" id="consultarNecesidadesCategoria" resultMap="NecesidadResult">
         SELECT 
             n.id as id,
-            n.nombre as nombre,
-            n.categoria as categoria,
-            n.descripcion as descripcion,
-            n.fechaCreacion as fCreacion,
+            a.nombre as nombre,
+            a.categoria as categoria,
+            a.descripcion as descripcion ,
             n.urgencia as urgencia,
-            n.estado as estado
-        FROM Necesidad as n
-        WHERE n.categoria = #{categoria};
+            a.estado as estado,
+            a.fechaCreacion as fCreacion,
+            a.fechaModificacion as fModificacion,
+            u.nombre as usuario
+        FROM Actividad as a
+        LEFT JOIN Usuario as u ON u.login = a.usuario
+        LEFT JOIN Necesidad as n ON a.nombre = n.actividad
+        WHERE a.categoria = #{categoria};
     </select> 
     
     <select parameterType="map" id="consultarNecesidad" resultMap="NecesidadResult">
         SELECT 
             n.id as id,
-            n.nombre as nombre,
-            n.categoria as categoria,
-            n.descripcion as descripcion ,
+            a.nombre as nombre,
+            a.categoria as categoria,
+            a.descripcion as descripcion ,
             n.urgencia as urgencia,
-            n.estado as estado,
-            n.fechaCreacion as fCreacion,
-            n.usuario as usuario
-        FROM Necesidad as n
-        WHERE n.nombre = #{nombre};
+            a.estado as estado,
+            a.fechaCreacion as fCreacion,
+            a.fechaModificacion as fModificacion,
+            u.nombre as usuario
+        FROM Actividad as a
+        LEFT JOIN Usuario as u ON u.login = a.usuario
+        LEFT JOIN Necesidad as n ON a.nombre = n.actividad
+        WHERE a.nombre = #{nombre};
     </select>
     
     <insert id = "addNecesidad">
-        INSERT INTO Necesidad (nombre, categoria, descripcion, usuario, urgencia)
-        VALUES (#{nombre},#{categoria},#{descripcion},#{usuario},#{urgencia});
+        INSERT INTO ACTIVIDAD (CATEGORIA, NOMBRE, DESCRIPCION, USUARIO, ACTIVIDAD)
+        VALUES (#{categoria},#{nombre},#{descripcion},#{usuario},'NECESIDAD');
+        
+        INSERT INTO NECESIDAD (ACTIVIDAD, URGENCIA)
+        VALUES (#{nombre},#{urgencia});
     </insert>
     
     <update id = "actualizarEstado">
-        UPDATE Necesidad SET
+        UPDATE ACTIVIDAD SET
             estado = #{estado}
         WHERE nombre = #{necesidad};
     </update>
     
     <delete id="eliminarNecesidad">
-        DELETE FROM Necesidad as n
-        WHERE n.nombre = #{necesidad}; 
+        DELETE FROM ACTIVIDAD as a
+        WHERE a.nombre = #{necesidad}; 
     </delete>
     
     <resultMap type="Necesidad" id="NecesidadResult">
@@ -88,14 +100,13 @@
     <resultMap type="Necesidad" id="ReporteNecesidadResult">
         <id property="id" column="id"/>
         <result property = "categoria" column = "categoria" />
-        <!--association property = "categoria" javaType="Categoria" select="edu.eci.cvds.samplejr.dao.mybatis.mappers.CategoriaMapper.consultarCategorias"></association-->
         <result property = "nombre" column = "nombre"/>
         <result property = "descripcion" column = "descripcion"/>
         <result property = "fechaCreacion" column = "fCreacion"/>
         <result property = "estado" column = "estado"/>
+        <result property = "urgencia" column = "urgencia"/>
         <result property = "fechaModificacion" column = "fModificacion"/>
         <result property = "usuario" column = "usuario" />
-        <!--association property = "usuario" javaType = "Usuario" select = "edu.eci.cvds.samplejr.dao.mybatis.mappers.UsuarioMapper.consultarUsuarios" ></association-->
     </resultMap>
 
 </mapper>

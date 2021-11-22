@@ -9,32 +9,45 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
 <mapper namespace="edu.eci.cvds.samplejr.dao.mybatis.mappers.OfertaMapper">
     
     <insert id="addOferta">
-        INSERT INTO Oferta (CATEGORIA, NOMBRE, DESCRIPCION, USUARIO)
-        VALUES (#{categoria}, #{nombre}, #{descripcion}, #{usuario});
+        INSERT INTO ACTIVIDAD (CATEGORIA, NOMBRE, DESCRIPCION, USUARIO, ACTIVIDAD)
+        VALUES (#{categoria},#{nombre},#{descripcion},#{usuario},'OFERTA');
+        
+        INSERT INTO OFERTA (ACTIVIDAD)
+        VALUES (#{nombre});
     </insert>
     <!--ARREGLAR MAPPER DE AÑADIR OFERTA DE ACUERDO AL MAPPER DE JAVA-->
     
     <select parameterType="map" id="consultarOfertas" resultMap="OfertaResult">
         SELECT 
-            id,
-            categoria,
-            nombre,
-            descripcion,
-            estado,
-            fechaCreacion,
-            usuario
-        FROM Oferta;
+            o.id as id,
+            a.nombre as nombre,
+            a.categoria as categoria,
+            a.descripcion as descripcion ,
+            a.estado as estado,
+            a.fechaCreacion as fCreacion,
+            a.fechaModificacion as fModificacion,
+            u.nombre as usuario
+        FROM Actividad as a
+        LEFT JOIN Usuario as u ON u.login = a.usuario
+        LEFT JOIN Oferta as o ON a.nombre = o.actividad
+        WHERE a.actividad = 'OFERTA'
     </select> 
     
     <select parameterType="map" id="ConsultarOfertasXcategoria" resultMap="OfertaResult">
         SELECT 
-            o.categoria as categoria,
-            o.nombre as nombre,
-            o.descripcion as descripcion,
-            o.fechaCreacion as fCreacion,
-            o.estado as estado
-        FROM Oferta;
-        WHERE o.categoria = #{categoria};
+            o.id as id,
+            a.nombre as nombre,
+            a.categoria as categoria,
+            a.descripcion as descripcion ,
+            a.estado as estado,
+            a.fechaCreacion as fCreacion,
+            a.fechaModificacion as fModificacion,
+            u.nombre as usuario
+        FROM Actividad as a
+        LEFT JOIN Usuario as u ON u.login = a.usuario
+        LEFT JOIN Oferta as o ON a.nombre = o.actividad
+        WHERE a.actividad = 'OFERTA' AND
+              a.categoria = #{categoria};
     </select> 
     
     <select parameterType="map" id="consultarOferta" resultMap="OfertaResult">
@@ -50,15 +63,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
     </select>
     
     <update id = "actualizarEstado">
-        UPDATE Oferta 
+        UPDATE ACTIVIDAD 
         SET
             estado = #{estado}
         WHERE nombre = #{oferta};
     </update>
     
     <delete id="deleteOferta">
-        DELETE FROM Oferta as o
-        WHERE o.nombre = #{oferta};
+        DELETE FROM ACTIVIDAD as a
+        WHERE a.nombre = #{oferta};
     </delete>
     
     <resultMap type="Oferta" id="OfertaResult">

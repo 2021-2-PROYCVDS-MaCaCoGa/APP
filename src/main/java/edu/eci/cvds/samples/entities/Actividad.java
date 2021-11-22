@@ -21,20 +21,14 @@ public abstract class Actividad {
     protected String estado;
     protected LocalDate fechaModificacion;
     protected String usuario;
+    protected String actividad;
     public static  int nSolicitudes;
     public final static String ACTIVA = "Activa";
     public final static String ENPROCESO = "En Proceso";
     public final static String RESUELTA = "Resuelta";
     public final static String CERRADA = "Cerrada";
     
-    public Actividad(int id, String categoria, String nombre, String descripcion,LocalDate fechaCreacion,String estado, String usuario){
-        this.id = id;
-        this.categoria = categoria;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.estado = estado;
-        this.fechaCreacion = fechaCreacion;
-        this.usuario = usuario;
+    public Actividad(){
     }
         
 

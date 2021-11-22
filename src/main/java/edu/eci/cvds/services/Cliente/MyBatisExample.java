@@ -88,7 +88,7 @@ public class MyBatisExample {
         categoriaM.agregarCategoria("LENGUAS", "Se expresan dudas de cualquier materia de lenguas extranjeras");
         System.out.println("--------------------Consultar Categoria LENGUAS-------------");
         System.out.println(categoriaM.consultarCategoriaNombre("LENGUAS"));
-        categoriaM.modificarCategoria("LENGUAS","LENGUAJE", "Se expresan dudas de cualquier tema", "ACTIVO");
+        categoriaM.modificarCategoria("LENGUAS","LENGUAJE", "Se expresan dudas de cualquier tema", "ACTIVA");
         System.out.println("--------------------Consultar Categoria LENGUAJE-------------");
         System.out.println(categoriaM.consultarCategoriaNombre("LENGUAJE"));
         //categoriaM.borrarCategoria("LENGUAJE");
@@ -101,7 +101,7 @@ public class MyBatisExample {
         System.out.println("---------------------Consultar Advertencia-----------");
         System.out.println(necesidadM.consultarNecesidad("Advertencia"));
         System.out.println("--------------Necesidad en no Activo ---------------------");
-        necesidadM.actualizarEstado("Advertencia", "NO ACTIVO");
+        necesidadM.actualizarEstado("Advertencia", "CERRADA");
         System.out.println(necesidadM.consultarNecesidad("Advertencia"));
         System.out.println("--------------Necesidad advertencia eliminada-------------------");
         //necesidadM.eliminarNecesidad("Advertencia");
@@ -114,9 +114,9 @@ public class MyBatisExample {
         System.out.println("----------------------Agregar oferta LIBRO-GUIA---------");
         ofertaM.addOferta("LENGUAJE", "Para el tema de la semana consultar el libro ...", "LIBRO-GUIA", "michael_mni");
         System.out.println("-------------------Oferta en no Activo------------------");
-        ofertaM.actualizarEstado("LIBRO-GUIA", "NO ACTIVO");
+        ofertaM.actualizarEstado("LIBRO-GUIA", "CERRADA");
         System.out.println("-----------------------Consultar LIBRO-GUIA----------------");
-        //sqlss.commit();
+        sqlss.commit();
         // ELiminacion de pruebas
         ofertaM.deleteOferta("LIBRO-GUIA");
         System.out.println("------------------Eliminar LIBRO-GUIA---------------------");

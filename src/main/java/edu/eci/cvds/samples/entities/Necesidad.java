@@ -1,4 +1,4 @@
-package edu.eci.cvds.samples.entities;
+    package edu.eci.cvds.samples.entities;
 
 import java.io.Serializable;
 import java.sql.Date;
@@ -7,11 +7,9 @@ import java.time.LocalDate;
 public class Necesidad extends Actividad implements Serializable {
     
     private Integer urgencia;
-    //private int actividad;
+    //private String actividad;
 
-    public Necesidad(int id, String categoria, String nombre, String descripcion, Integer urgencia, String estado, LocalDate fechaCreacion, String usuario){
-        super(id, categoria, nombre, descripcion, fechaCreacion,estado,usuario);
-        this.urgencia = urgencia;
+    public Necesidad(){
     }
 
     public Integer getUrgencia(){return this.urgencia;}
