@@ -15,9 +15,9 @@ public class MyBatisRespuestaDao implements RespuestaDao{
 	private RespuestaMapper respuestaMapper;
 
 	@Override
-	public void agregarRespuesta(String nombre, List<String> comentarios, String oferta_respondida) throws PersistenceException {
+	public void agregarRespuesta(String nombre, String comentario, String nombreComentario, String actividad, String usuario) throws PersistenceException {
 		try {
-			respuestaMapper.addRespuesta(nombre, comentarios, oferta_respondida);
+			respuestaMapper.addRespuesta(nombre, comentario, nombreComentario,actividad,usuario);
 		}catch(org.apache.ibatis.exceptions.PersistenceException e) {
 			throw new PersistenceException("Error al agregar Respuesta: ", e);
 		}
@@ -34,11 +34,11 @@ public class MyBatisRespuestaDao implements RespuestaDao{
 	}
 
 	@Override
-	public Respuesta consultarrespuesta(int id) throws PersistenceException {
+	public List<Respuesta> consultarrespuesta(String respuesta)throws PersistenceException {
 		try {
-			return respuestaMapper.consultarRespuesta(id);
+			return respuestaMapper.consultarRespuesta(respuesta);
 		}catch(org.apache.ibatis.exceptions.PersistenceException e) {
-			throw new PersistenceException("Error al consultar respuesta: "+id, e);
+			throw new PersistenceException("Error al consultar respuesta: "+respuesta, e);
 		}
 	}
 

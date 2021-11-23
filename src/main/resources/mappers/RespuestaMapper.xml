@@ -1,4 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this template
@@ -6,32 +9,66 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
 
 
 
-<Mapper nameSpace="edu.eci.cvds.samplejr.dao.mybatis.mappers.RespuestaMapper">
+<mapper namespace="edu.eci.cvds.samplejr.dao.mybatis.mappers.RespuestaMapper">
 
+    <select id = "consultarComentarios" resultType = "Comentario" >
+        SELECT comentario, usuario FROM COMENTARIO
+    </select>
+    
     <select parameterType="map" id="consultarRespuestas" resultMap="RespuestaResult">
         SELECT 
             r.id as id,
             r.nombre as nombre,
-            r.descripcion as descripcion,
             r.fechaCreacion as fCreacion,
-            r.estado as estado,
-            r.actividad as actividad
-        FROM Respuesta as r;
+            r.actividad as actividad,
+            c.comentario as comentario,
+            c.usuario as usuario
+        FROM Respuesta as r
+        LEFT JOIN Comentario as c ON c.nombre = r.comentario;
     </select>
+    
+    <insert id = "addRespuesta">
+        INSERT INTO COMENTARIO (nombre, comentario, usuario)
+        VALUES (#{nComentario},#{comentario},#{usuario});
+        
+        INSERT INTO RESPUESTA (nombre, comentario, actividad)
+        VALUES (#{nombre},#{nComentario},#{actividad})
+    </insert>
+    
+    <insert id= "addComentario">
+        INSERT INTO COMENTARIO (nombre, comentario, usuario)
+        VALUES (#{nombre},#{comentario},#{usuario});
+        
+        INSERT INTO RESPUESTA (nombre, comentario, actividad)
+        VALUES (#{respuesta}, #{nombre}, 
+            (SELECT actividad 
+            FROM RESPUESTA
+            WHERE nombre = #{respuesta}));
+    </insert>
+    
+    <delete id="deleteRespuesta">
+        DELETE FROM RESPUESTA
+        WHERE nombre = #{respuesta};
+    </delete>
+    
+    <delete id="deleteComentario">
+        DELETE FROM COMENTARIO
+        WHERE nombre = #{comentario};
+    </delete>
     
     <select parameterType="map" id="consultarRespuesta" resultMap="RespuestaResult">
         SELECT 
-            r.id as id,
             r.nombre as nombre,
-            r.descripcion as descripcion,
             r.fechaCreacion as fCreacion,
-            r.estado as estado,
             r.actividad as actividad,
+            c.comentario as comentario,
+            c.usuario as usuario
         FROM Respuesta as r
-        WHERE r.id = #{id};
+        LEFT JOIN Comentario as c ON c.nombre = r.comentario
+        WHERE r.nombre = #{respuesta};
     </select>    
     
-    <select parameterType="map" id="informeRespuestas" resultMap="informeRespuestasResult">
+    <!--select parameterType="map" id="informeRespuestas" resultMap="informeRespuestasResult">
         SELECT 
             r.descripcion as descripcion,
             r.actividad as idActividad,
@@ -39,27 +76,27 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
                 WHEN r.actividad LIKE '%O%' THEN "Oferta"
                 WHEN r.actividad LIKE '%N%' THEN "Necesidad"
         FROM Respuesta as r;        
-    </select>
+    </select-->
     
-    <ResultMap type="Respuesta" id="RespuestaResult">
+    <resultMap type="Respuesta" id="RespuestaResult">
         <id property="id" column="id"/>
         <result property="nombre" column="nombre"/>
-        <result property="descripcion" column="descripcion"/>
         <result property="fechaCreacion" column="fCreacion"/>
-        <result property="estado" column="estado"/>
-        <association property = "actividad" javaType="Actividad">
-            <result property = "id" column = "actividad"/>
-        </association>
-    </ResultMap>
-    
-    <resultMap type="Respuesta" id="InformeRespuestaResult">
+        <result property = "actividad" column = "actividad" />
+        <collection property ="comentarios" ofType="Comentario">
+            <result property = "comentario" column = "comentario"/>
+            <result property = "usuario" column = "usuario" />
+        </collection>
+    </resultMap>
+   
+    <!--resultMap type="Respuesta" id="InformeRespuestaResult">
         <result property="descripcion" column="descripcion"/>
         <association property="actividad" javaType="Actividad">
             <result property = "id" column = "idActividad"/>
         </association>
-    </resultMap>
+    </resultMap-->
     
-</Mapper>
+</mapper>
 
     
 

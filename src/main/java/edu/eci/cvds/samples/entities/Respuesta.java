@@ -12,16 +12,12 @@ public class Respuesta {
     
     private int id;
     private String nombre;
-    private List<String> comentarios;
+    private List<Comentario> comentarios;
     private Date fechaCreacion;
-    private Actividad actividad;
+    private String actividad;
     
-    public Respuesta(int id, String nombre, List<String> comentarios, Date fechaCreacion, Actividad actividad){
-        this.id = id;
-        this.nombre = nombre;
-        this.comentarios = comentarios;
-        this.fechaCreacion = new Date(Calendar.getInstance().getTime().getTime());
-        this.actividad = actividad;
+    public Respuesta(){
+
     }
         
     public int getId() {
@@ -36,7 +32,7 @@ public class Respuesta {
         return nombre;
     }
 
-    public List<String> getComentarios() {
+    public List<Comentario> getComentarios() {
         return comentarios;
     }
 
@@ -48,14 +44,28 @@ public class Respuesta {
         this.nombre = nombre;
     }
 
-    public void setComentarios(List<String> comentarios) {
+    public void setComentarios(List<Comentario> comentarios) {
         this.comentarios = comentarios;
     }
 
     public void setFechaCreacion(Date fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
+
+    public String getActividad() {
+        return actividad;
+    }
+
+    public void setActividad(String actividad) {
+        this.actividad = actividad;
+    }
     
+    
+    
+    @Override
+    public String toString(){
+        return "Respuesta{ id="+getId()+", nombre= "+getNombre()+", comentarios = ["+ getComentarios()+ "], fechaCreacion= "+getFechaCreacion()+",actividad"+getActividad()+"}";
+    }
     
     
     

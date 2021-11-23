@@ -52,14 +52,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
     
     <select parameterType="map" id="consultarOferta" resultMap="OfertaResult">
         SELECT 
-            o.categoria as categoria,
-            o.nombre as nombre,
-            o.descripcion as descripcion,
-            o.estado as estado,
-            o.fechaCreacion as fCreacion,
-            o.usuario as usuario
-        FROM Oferta as o
-        WHERE o.nombre = #{Oferta};
+            o.id as id,
+            a.nombre as nombre,
+            a.categoria as categoria,
+            a.descripcion as descripcion ,
+            a.estado as estado,
+            a.fechaCreacion as fCreacion,
+            a.fechaModificacion as fModificacion,
+            u.nombre as usuario
+        FROM Actividad as a
+        LEFT JOIN Usuario as u ON u.login = a.usuario
+        LEFT JOIN Oferta as o ON a.nombre = o.actividad
+        WHERE a.nombre = #{Oferta}
     </select>
     
     <update id = "actualizarEstado">

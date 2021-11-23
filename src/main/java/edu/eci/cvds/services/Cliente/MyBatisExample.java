@@ -7,6 +7,7 @@ import com.mysql.jdbc.Connection;
 import edu.eci.cvds.samplejr.dao.mybatis.mappers.CategoriaMapper;
 import edu.eci.cvds.samplejr.dao.mybatis.mappers.NecesidadMapper;
 import edu.eci.cvds.samplejr.dao.mybatis.mappers.OfertaMapper;
+import edu.eci.cvds.samplejr.dao.mybatis.mappers.RespuestaMapper;
 import edu.eci.cvds.samplejr.dao.mybatis.mappers.UsuarioMapper;
 import edu.eci.cvds.samples.entities.Perfil;
 import java.io.IOException;
@@ -68,6 +69,8 @@ public class MyBatisExample {
         CategoriaMapper categoriaM = (CategoriaMapper)sqlss.getMapper(CategoriaMapper.class);
         NecesidadMapper necesidadM = (NecesidadMapper)sqlss.getMapper(NecesidadMapper.class);
         OfertaMapper ofertaM = (OfertaMapper)sqlss.getMapper(OfertaMapper.class);
+        RespuestaMapper respuestaM = (RespuestaMapper)sqlss.getMapper(RespuestaMapper.class);
+        
         //Prueba de funcionamiento de los mapper
         //Prueba de funcionamiento de Usuarios
         System.out.println("-----------------------Consultar Usuarios-------------------");
@@ -116,7 +119,6 @@ public class MyBatisExample {
         System.out.println("-------------------Oferta en no Activo------------------");
         ofertaM.actualizarEstado("LIBRO-GUIA", "CERRADA");
         System.out.println("-----------------------Consultar LIBRO-GUIA----------------");
-        sqlss.commit();
         // ELiminacion de pruebas
         ofertaM.deleteOferta("LIBRO-GUIA");
         System.out.println("------------------Eliminar LIBRO-GUIA---------------------");
@@ -130,6 +132,19 @@ public class MyBatisExample {
         usuarioM.deleteUsuario("michael_mni","14325mc");
         System.out.println("-----------------------Usuario michael_mni eliminado------------");
         System.out.println(usuarioM.consultarUsuario("michael_mni"));
+        sqlss.commit();
+        //Prueba funcionamiento de Respuesta
+        System.out.println("-------------------------Consultar Respuestas----------------------");
+        System.out.println(respuestaM.consultarRespuestas());
+        System.out.println("--------------------------Insertar Respuesta------------------------");
+        respuestaM.addRespuesta("RCuidado", "En el parrafo 10 se encuentra el error...", "RCuidado", "CUIDADO", "CristianC");
+        respuestaM.addComentario("Si efectivamente, en ese parrafo se encuentra lo que les digo", "DiegoG", "RCuidado", "RRCuidado");
+        System.out.println("--------------------------Consultar Respuesta RCuidado----------------------------------------");
+        System.out.println(respuestaM.consultarRespuesta("RCuidado"));
+        respuestaM.deleteComentario("RRCuidado");
+        respuestaM.deleteRespuesta("RCuidado");
+        System.out.println("-------------------------Respuesta Eliminada-------------------------");
+        
         
         sqlss.commit();
         sqlss.close();
