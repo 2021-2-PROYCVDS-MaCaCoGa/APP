@@ -16,7 +16,9 @@ public interface ServiciosEscuela {
     
     public abstract void registrarOferta(String categoria, String nombre, String descripcion, String usuario)throws ExcepcionServiciosEscuela;
     
-    public abstract void registrarRespuesta(String nombre, List<String> comentarios, String oferta_respondida) throws ExcepcionServiciosEscuela;
+    public abstract void registrarRespuesta(String nombre, String comentario, String nombreComentario, String actividad, String usuario) throws ExcepcionServiciosEscuela;
     
     public abstract void actualizarEstadoNecesidad(String necesidad, String nuevoEstado) throws ExcepcionServiciosEscuela;
+    
+    public abstract void actualizarEstadoOferta(String oferta, String nuevoEstado) throws ExcepcionServiciosEscuela;
 }

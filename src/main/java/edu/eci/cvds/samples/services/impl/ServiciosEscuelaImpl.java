@@ -111,20 +111,58 @@ public class ServiciosEscuelaImpl implements ServiciosEscuela {
     }
 
     /**
-     * Se encarga de crear a una oferta, una respuesta. Se pide el nombre de la respuesta, el comentario
-     * de respuesta y cual es la oferta que esta respondiendo
-     * @param nombre
-     * @param comentarios
-     * @param oferta_respondida
+     * Se encarga de actualizar el estado de la necesidad. Se pide el nombre de la necesidad para revisar
+     * en la base si existe. En caso de encontrarla, se genera el nuevo estado
+     * Recordar que solo hay 4 estados disponibles 
+     * @param necesidad
+     * @param nuevoEstado
      * @throws ExcepcionServiciosEscuela 
      */
     @Override
-    public void registrarRespuesta(String nombre, List<String> comentarios, String oferta_respondida) throws ExcepcionServiciosEscuela {
-        
-    }
-    
-    @Override
     public void actualizarEstadoNecesidad(String necesidad, String nuevoEstado) throws ExcepcionServiciosEscuela{
+        try{
+            necesidadDao.actualizarEstado(necesidad, nuevoEstado);
+        }
+        catch(PersistenceException persistenceException){
+            throw new ExcepcionServiciosEscuela("No se pudo actualizar la necesidad "+necesidad);
+        }
+    }
+
+    /**
+     * Se encarga de registrar una respuesta que de un usuario registrado en la base de datos de la escuela
+     * @param nombre
+     * @param comentarios
+     * @param nombreComentario
+     * @param actividad
+     * @param usuario
+     * @throws ExcepcionServiciosEscuela 
+     */
+    @Override
+    public void registrarRespuesta(String nombre, String comentario, String nombreComentario, String actividad, String usuario) throws ExcepcionServiciosEscuela {
+        try{
+            respuestaDao.agregarRespuesta(nombre, comentario, nombreComentario, actividad, usuario);
+        }
+        catch(PersistenceException persistenceException){
+            throw new ExcepcionServiciosEscuela("No se pudo crear la respuesta");
+        }
+    }
+
+    /**
+     * Metodo encargado de actualizar el estado de la oferta. Se pide el nombre de la oferta para revisar si
+     * esta se encuentra en la base, en caso que si, se actualiza el estado.
+     * Recordar que solo hay 4 estados posibles.
+     * @param oferta
+     * @param nuevoEstado
+     * @throws ExcepcionServiciosEscuela 
+     */
+    @Override
+    public void actualizarEstadoOferta(String oferta, String nuevoEstado) throws ExcepcionServiciosEscuela {
+        try{
+            ofertaDao.actualizarEstado(oferta, nuevoEstado);
+        }
+        catch(PersistenceException persistenceException){
+            throw new ExcepcionServiciosEscuela("No se pudo actualizar el estado de la oferta "+oferta);
+        }
     }
 }
 

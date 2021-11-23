@@ -15,7 +15,7 @@ public interface RespuestaDao {
          * @param usuario Usuario que realiza la respuesta
          * @throws PersistenceException 
          */
-	public void agregarRespuesta(String nombre, String comentario, String nombreComentario,String actividad, String usuario) throws PersistenceException;
+	public void agregarRespuesta(String nombre, String comentarios, String nombreComentario,String actividad, String usuario) throws PersistenceException;
 	
         /**
          * Inserta en la base de datos un nuevo comentario a una respuesta
