@@ -9,55 +9,73 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
 <mapper namespace="edu.eci.cvds.samplejr.dao.mybatis.mappers.OfertaMapper">
     
     <insert id="addOferta">
-        INSERT INTO Oferta (CATEGORIA, NOMBRE, DESCRIPCION, USUARIO)
-        VALUES (#{categoria}, #{nombre}, #{descripcion}, #{usuario});
+        INSERT INTO ACTIVIDAD (CATEGORIA, NOMBRE, DESCRIPCION, USUARIO, ACTIVIDAD)
+        VALUES (#{categoria},#{nombre},#{descripcion},#{usuario},'OFERTA');
+        
+        INSERT INTO OFERTA (ACTIVIDAD)
+        VALUES (#{nombre});
     </insert>
     <!--ARREGLAR MAPPER DE AÑADIR OFERTA DE ACUERDO AL MAPPER DE JAVA-->
     
     <select parameterType="map" id="consultarOfertas" resultMap="OfertaResult">
         SELECT 
             o.id as id,
-            o.categoria as categoria,
-            o.nombre as nombre,
-            o.descripcion as descripcion,
-            o.estado as estado,
-            o.usuario as usuario,
-            o.fechaCreacion as fCreacion,
-            o.fechaModificacion as fModificacion
-        FROM Oferta as o;
+            a.nombre as nombre,
+            a.categoria as categoria,
+            a.descripcion as descripcion ,
+            a.estado as estado,
+            a.fechaCreacion as fCreacion,
+            a.fechaModificacion as fModificacion,
+            u.nombre as usuario
+        FROM Actividad as a
+        LEFT JOIN Usuario as u ON u.login = a.usuario
+        LEFT JOIN Oferta as o ON a.nombre = o.actividad
+        WHERE a.actividad = 'OFERTA'
     </select> 
     
     <select parameterType="map" id="ConsultarOfertasXcategoria" resultMap="OfertaResult">
         SELECT 
-            o.categoria as categoria,
-            o.nombre as nombre,
-            o.descripcion as descripcion,
-            o.fechaCreacion as fCreacion,
-            o.estado as estado
-        FROM Oferta;
-        WHERE o.categoria = #{categoria};
+            o.id as id,
+            a.nombre as nombre,
+            a.categoria as categoria,
+            a.descripcion as descripcion ,
+            a.estado as estado,
+            a.fechaCreacion as fCreacion,
+            a.fechaModificacion as fModificacion,
+            u.nombre as usuario
+        FROM Actividad as a
+        LEFT JOIN Usuario as u ON u.login = a.usuario
+        LEFT JOIN Oferta as o ON a.nombre = o.actividad
+        WHERE a.actividad = 'OFERTA' AND
+              a.categoria = #{categoria};
     </select> 
     
     <select parameterType="map" id="consultarOferta" resultMap="OfertaResult">
         SELECT 
-            o.categoria as categoria,
-            o.nombre as nombre,
-            o.descripcion as descripcion,
-            o.fechaCreacion as fCreacion,
-            o.estado as estado
-        FROM Oferta
-        WHERE o.nombre = #{Oferta};
+            o.id as id,
+            a.nombre as nombre,
+            a.categoria as categoria,
+            a.descripcion as descripcion ,
+            a.estado as estado,
+            a.fechaCreacion as fCreacion,
+            a.fechaModificacion as fModificacion,
+            u.nombre as usuario
+        FROM Actividad as a
+        LEFT JOIN Usuario as u ON u.login = a.usuario
+        LEFT JOIN Oferta as o ON a.nombre = o.actividad
+        WHERE a.nombre = #{Oferta}
     </select>
     
     <update id = "actualizarEstado">
-        UPDATE Oferta as o SET
-            o.estado = #{estado}
-        WHERE o.nombre = #{oferta};
+        UPDATE ACTIVIDAD 
+        SET
+            estado = #{estado}
+        WHERE nombre = #{oferta};
     </update>
     
     <delete id="deleteOferta">
-        DLEETE FROM Oferta as o
-        WHERE o.nombre = #{oferta};
+        DELETE FROM ACTIVIDAD as a
+        WHERE a.nombre = #{oferta};
     </delete>
     
     <resultMap type="Oferta" id="OfertaResult">
@@ -65,8 +83,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
         <result property="categoria" column="categoria"/>
         <result property="nombre" column="nombre"/>
         <result property="descripcion" column="descripcion"/>
-        <result property="estado" column="estado"/>
         <result property="fechaCreacion" column="fCreacion"/>
+        <result property="estado" column="estado"/>
         <result property="fechaModificacion" column="fModificacion"/>
         <result property="usuario" column="usuario"/>
     </resultMap>

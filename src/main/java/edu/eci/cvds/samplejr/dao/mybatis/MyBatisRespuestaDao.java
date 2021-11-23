@@ -15,14 +15,23 @@ public class MyBatisRespuestaDao implements RespuestaDao{
 	private RespuestaMapper respuestaMapper;
 
 	@Override
-	public void agregarRespuesta(String nombre, List<String> comentarios, String oferta_respondida) throws PersistenceException {
+	public void agregarRespuesta(String nombre, String comentario, String nombreComentario, String actividad, String usuario) throws PersistenceException {
 		try {
-			respuestaMapper.addRespuesta(nombre, comentarios, oferta_respondida);
+			respuestaMapper.addRespuesta(nombre, comentario, nombreComentario,actividad,usuario);
 		}catch(org.apache.ibatis.exceptions.PersistenceException e) {
-			throw new PersistenceException("Error al agregar Respuesta: ", e);
+			throw new PersistenceException("Error al agregar Respuesta: "+nombre, e);
 		}
 		
 	}
+        
+        @Override
+        public void agregarComentario(String comentario, String usuario, String respuesta,String nombre) throws PersistenceException {
+                try{
+                    respuestaMapper.addComentario(comentario, usuario, respuesta, nombre);
+                }catch(org.apache.ibatis.exceptions.PersistenceException e){
+                        throw new PersistenceException("Error al agregar Comentario: "+nombre,e);
+                }
+        }
 
 	@Override
 	public List<Respuesta> consultarRespuestas() throws PersistenceException {
@@ -34,12 +43,30 @@ public class MyBatisRespuestaDao implements RespuestaDao{
 	}
 
 	@Override
-	public Respuesta consultarrespuesta(int id) throws PersistenceException {
+	public List<Respuesta> consultarrespuesta(String respuesta)throws PersistenceException {
 		try {
-			return respuestaMapper.consultarRespuesta(id);
+			return respuestaMapper.consultarRespuesta(respuesta);
 		}catch(org.apache.ibatis.exceptions.PersistenceException e) {
-			throw new PersistenceException("Error al consultar respuesta: "+id, e);
+			throw new PersistenceException("Error al consultar respuesta: "+respuesta, e);
 		}
 	}
+        
+        @Override
+        public void eliminarComentario(String comentario) throws PersistenceException{
+                try{
+                    respuestaMapper.deleteComentario(comentario);
+                }catch(org.apache.ibatis.exceptions.PersistenceException e){
+                    throw new PersistenceException("Error al eliminar comentario"+comentario,e);
+                }
+        }
+        
+        @Override
+        public void eliminarRespuesta(String respuesta) throws PersistenceException{
+                try{
+                    respuestaMapper.deleteRespuesta(respuesta);
+                }catch(org.apache.ibatis.exceptions.PersistenceException e){
+                    throw new PersistenceException("Error al eliminar respuesta "+respuesta,e);
+                }
+        }
 
 }

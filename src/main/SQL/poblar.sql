@@ -15,3 +15,22 @@ INSERT INTO OFERTA (CATEGORIA, NOMBRE, FECHACREACION, DESCRIPCION, USUARIO, ESTA
 VALUES ('SISTEMAS', 'IMPORTANTE', CURDATE(), 'Cuando esten haciendo un trbajo deben tener en cuenta...', 'CristianC', 'ACTIVO' );
 INSERT INTO OFERTA (CATEGORIA, NOMBRE, FECHACREACION, DESCRIPCION, USUARIO, ESTADO)
 VALUES ('CIENCIAS', 'CUIDADO' , CURDATE(), 'Cuando esten haciendo las practicas, lean muy bien ...', 'DiegoG', 'ACTIVO');
+
+
+-- INSERT INTO ACTIVIDAD (CATEGORIA, NOMBRE, DESCRIPCION, USUARIO, ACTIVIDAD)
+-- VALUES ('SISTEMAS','PROBLEMA','Necesito ayuda con un problema en un codigo','CristianC','NECESIDAD');
+-- INSERT INTO ACTIVIDAD (CATEGORIA, NOMBRE, DESCRIPCION, USUARIO, actividad)
+-- VALUES ('CIENCIAS','PELIGRO','Sucedio un prblema!!', 'DiegoG','NECESIDAD');
+-- insert into necesidad (actividad, urgencia)
+-- values ('PROBLEMA',3);
+-- insert into necesidad (actividad, urgencia)
+-- values ('PELIGRO',5);
+-- 
+-- INSERT INTO ACTIVIDAD (CATEGORIA, NOMBRE, DESCRIPCION, USUARIO, ACTIVIDAD)
+-- VALUES ('SISTEMAS', 'IMPORTANTE', 'Cuando esten haciendo un trbajo deben tener en cuenta...', 'CristianC','OFERTA');
+-- INSERT INTO ACTIVIDAD (CATEGORIA, NOMBRE, DESCRIPCION, USUARIO, ACTIVIDAD)
+-- VALUES ('CIENCIAS', 'CUIDADO' , 'Cuando esten haciendo las practicas, lean muy bien ...', 'DiegoG','OFERTA');
+-- insert into oferta (actividad)
+-- values ('IMPORTANTE');
+-- insert into oferta (actividad)
+-- values ('CUIDADO');

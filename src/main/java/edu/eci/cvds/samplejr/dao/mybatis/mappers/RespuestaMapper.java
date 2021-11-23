@@ -11,11 +11,21 @@ import org.apache.ibatis.annotations.Param;
 public interface RespuestaMapper {
     
     public void addRespuesta(@Param("nombre") String nombre,
-                        @Param("comentarios") List<String> comentarios,
-                        @Param("oferta_respondida") String oferta_respondida);
+                        @Param("comentario") String comentario,
+                        @Param("nComentario") String nombreComentario,    
+                        @Param("actividad") String actividad,
+                        @Param("usuario") String usuario);
+    
+    public void addComentario(@Param("comentario") String comentario,
+                            @Param("usuario") String usuario,
+                            @Param("respuesta") String respuesta,
+                            @Param("nombre") String mombre);
     
     public List<Respuesta> consultarRespuestas();
     
-    public Respuesta consultarRespuesta(@Param("id") int id);
+    public void deleteComentario(@Param("comentario") String comentario);
+    public void deleteRespuesta(@Param("respuesta") String respuesta);
+    
+    public List<Respuesta> consultarRespuesta(@Param("respuesta") String respuesta);
 
 }

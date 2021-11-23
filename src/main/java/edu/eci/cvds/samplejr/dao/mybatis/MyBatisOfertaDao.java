@@ -61,5 +61,14 @@ public class MyBatisOfertaDao implements OfertaDao{
 			throw new PersistenceException("Error al consultar ofertas", e);
 		}
 	}
+        
+        @Override
+        public void eliminarOferta(String oferta) throws PersistenceException{
+                try{
+                    ofertaMapper.deleteOferta(oferta);
+                }catch(org.apache.ibatis.exceptions.PersistenceException e){
+                    throw new PersistenceException("Error al eliminar la oferta "+oferta,e);
+                }
+        }
 
 }

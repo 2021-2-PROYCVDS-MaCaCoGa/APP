@@ -58,7 +58,15 @@ public class MyBatisNecesidadDao implements NecesidadDao{
 		}catch(org.apache.ibatis.exceptions.PersistenceException e) {
 			throw new PersistenceException("Error al actualizar estado: "+necesidad, e);
 		}
-		
 	}
+        
+        @Override 
+        public void eliminarNecesidad(String necesidad) throws PersistenceException{
+                try{
+                    necesidadMapper.eliminarNecesidad(necesidad);
+                }catch(org.apache.ibatis.exceptions.PersistenceException e){
+                    throw new PersistenceException("Error al eliminar la necesidad "+ necesidad,e);
+                }
+        }
 
 }

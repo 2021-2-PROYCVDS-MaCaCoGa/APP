@@ -122,6 +122,8 @@ public class ServiciosEscuelaImpl implements ServiciosEscuela {
     public void registrarRespuesta(String nombre, List<String> comentarios, String oferta_respondida) throws ExcepcionServiciosEscuela {
         
     }
+    
+    
 
     
 }
