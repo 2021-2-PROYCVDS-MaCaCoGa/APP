@@ -35,12 +35,13 @@ public class GuiceContextListener implements ServletContextListener {
         Injector injector = Guice.createInjector(new XMLMyBatisModule() {
             @Override
             protected void initialize() {
-                install(JdbcHelper.MySQL);
+                install(JdbcHelper.PostgreSQL);
                 setEnvironmentId("development");
                 setClassPathResource("mybatis-config.xml");
               
                 //La clase de login cuando se vaya a inyectar se hacen los metodos de loginconncetion
                 bind(login.class).to(loginconnection.class);
+                bind(CategoriaDao.class).to(MyBatisCategoriaDao.class);
          
                 
                 
