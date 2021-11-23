@@ -67,12 +67,21 @@ public class MyBatisUsuario implements UsuarioDao {
 	}
 
 	@Override
-	public int existenciaSusuario(String nombre, String contraseña) throws PersistenceException {
+	public int existenciaUsuario(String nombre, String contraseña) throws PersistenceException {
 		try {
 			return usuarioMapper.ExistenciaUsuario(nombre, contraseña);
 		}catch(org.apache.ibatis.exceptions.PersistenceException e) {
 			throw new PersistenceException("Error al consultar la existencia del usuario: "+nombre, e);
 		}
 	}
+        
+        @Override
+        public void deleteUsuario(String login, String contraseña) throws PersistenceException{
+            try{
+                usuarioMapper.deleteUsuario(login, contraseña);
+            }catch(org.apache.ibatis.exceptions.PersistenceException e){
+                throw new PersistenceException("Error al eliminar el usuario "+login,e);
+            }
+        }
 }
 

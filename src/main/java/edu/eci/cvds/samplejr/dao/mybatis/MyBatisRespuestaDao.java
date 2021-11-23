@@ -19,10 +19,19 @@ public class MyBatisRespuestaDao implements RespuestaDao{
 		try {
 			respuestaMapper.addRespuesta(nombre, comentario, nombreComentario,actividad,usuario);
 		}catch(org.apache.ibatis.exceptions.PersistenceException e) {
-			throw new PersistenceException("Error al agregar Respuesta: ", e);
+			throw new PersistenceException("Error al agregar Respuesta: "+nombre, e);
 		}
 		
 	}
+        
+        @Override
+        public void agregarComentario(String comentario, String usuario, String respuesta,String nombre) throws PersistenceException {
+                try{
+                    respuestaMapper.addComentario(comentario, usuario, respuesta, nombre);
+                }catch(org.apache.ibatis.exceptions.PersistenceException e){
+                        throw new PersistenceException("Error al agregar Comentario: "+nombre,e);
+                }
+        }
 
 	@Override
 	public List<Respuesta> consultarRespuestas() throws PersistenceException {
@@ -41,5 +50,23 @@ public class MyBatisRespuestaDao implements RespuestaDao{
 			throw new PersistenceException("Error al consultar respuesta: "+respuesta, e);
 		}
 	}
+        
+        @Override
+        public void eliminarComentario(String comentario) throws PersistenceException{
+                try{
+                    respuestaMapper.deleteComentario(comentario);
+                }catch(org.apache.ibatis.exceptions.PersistenceException e){
+                    throw new PersistenceException("Error al eliminar comentario"+comentario,e);
+                }
+        }
+        
+        @Override
+        public void eliminarRespuesta(String respuesta) throws PersistenceException{
+                try{
+                    respuestaMapper.deleteRespuesta(respuesta);
+                }catch(org.apache.ibatis.exceptions.PersistenceException e){
+                    throw new PersistenceException("Error al eliminar respuesta "+respuesta,e);
+                }
+        }
 
 }
