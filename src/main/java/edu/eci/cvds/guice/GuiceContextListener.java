@@ -41,10 +41,7 @@ public class GuiceContextListener implements ServletContextListener {
               
                 //La clase de login cuando se vaya a inyectar se hacen los metodos de loginconncetion
                 bind(login.class).to(loginconnection.class);
-                bind(CategoriaDao.class).to(MyBatisCategoriaDao.class);
-         
-                
-                
+                bind(CategoriaDao.class).to(MyBatisCategoriaDao.class);       
             }
         });
 
