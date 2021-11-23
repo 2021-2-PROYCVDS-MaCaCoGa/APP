@@ -123,9 +123,9 @@ public class ServiciosEscuelaImpl implements ServiciosEscuela {
         
     }
     
-    
-
-    
+    @Override
+    public void actualizarEstadoNecesidad(String necesidad, String nuevoEstado) throws ExcepcionServiciosEscuela{
+    }
 }
 
 
