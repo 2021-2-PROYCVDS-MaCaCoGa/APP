@@ -6,6 +6,7 @@ import edu.eci.cvds.samplejr.dao.OfertaDao;
 import javax.inject.Inject;
 import edu.eci.cvds.samplejr.dao.PersistenceException;
 import edu.eci.cvds.samplejr.dao.RespuestaDao;
+import edu.eci.cvds.samples.entities.Categoria;
 import edu.eci.cvds.samples.services.ExcepcionServiciosEscuela;
 import edu.eci.cvds.samples.services.ServiciosEscuela;
 import java.util.List;
@@ -162,6 +163,21 @@ public class ServiciosEscuelaImpl implements ServiciosEscuela {
         }
         catch(PersistenceException persistenceException){
             throw new ExcepcionServiciosEscuela("No se pudo actualizar el estado de la oferta "+oferta);
+        }
+    }
+
+    /**
+     * Se encarga de consultar las categorias que se encuentren en la base de datos
+     * @return
+     * @throws ExcepcionServiciosEscuela 
+     */
+    @Override
+    public List<Categoria> consultarCategorias() throws ExcepcionServiciosEscuela {
+        try{
+            return categoriaDao.consultarcategorias();
+        }
+        catch(PersistenceException persistenceException){
+            throw new ExcepcionServiciosEscuela("No se pudo consultar las categorias");
         }
     }
 }
