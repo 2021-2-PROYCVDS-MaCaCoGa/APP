@@ -22,6 +22,7 @@ public interface CategoriaMapper {
                                    @Param("nombre") String nombre,
                                    @Param("descripcion") String descripcion,
                                    @Param("estado") String estado);
+    
     public void borrarCategoria(@Param("NOMBRE")String nombre);
 
     public List<Categoria> consultarCategorias();

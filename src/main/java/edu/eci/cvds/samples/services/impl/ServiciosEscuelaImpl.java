@@ -57,6 +57,22 @@ public class ServiciosEscuelaImpl implements ServiciosEscuela {
             throw new ExcepcionServiciosEscuela("No se pudo actualizar la categoria");
         }
     }
+    
+    /**
+     * Función encargada de llamar al metodo eliminar categoria conectado a la base de datos
+     * Se elimina de acuerdo al nombre de la categoria que se quiera borrar
+     * @param nombre
+     * @throws ExcepcionServiciosEscuela 
+     */
+    @Override
+    public void eliminarCategoria(String nombre) throws ExcepcionServiciosEscuela{
+        try{
+            categoriaDao.borrarCategoria(nombre);
+        }
+        catch(PersistenceException persistenceException){
+            throw new ExcepcionServiciosEscuela("No se pudo eliminar la categoria "+nombre);
+        }
+    }
 
     /**
      * Se encarga de crear la necesidad solicitada por el estudiante.

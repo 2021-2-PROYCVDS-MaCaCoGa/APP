@@ -27,11 +27,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
  * @author hcadavid
  */
 public class MyBatisExample {
-    
-    static final String JDBC_DRIVER = "org.h2.Driver";   
-    static final String DB_URL = "jdbc:h2:~/test";  
-    static final String USER = "sa"; 
-   static final String PASS = "sa"; 
+
 
    /**
      * Método que construye una fábrica de sesiones de MyBatis a partir del
