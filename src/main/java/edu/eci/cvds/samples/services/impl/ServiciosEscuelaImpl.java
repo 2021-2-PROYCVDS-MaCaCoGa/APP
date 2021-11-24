@@ -9,12 +9,14 @@ import edu.eci.cvds.samplejr.dao.RespuestaDao;
 import edu.eci.cvds.samples.entities.Categoria;
 import edu.eci.cvds.samples.services.ExcepcionServiciosEscuela;
 import edu.eci.cvds.samples.services.ServiciosEscuela;
+import edu.eci.cvds.samples.services.ServiciosEscuelaFactory;
+import java.sql.SQLException;
 import java.util.List;
 
 public class ServiciosEscuelaImpl implements ServiciosEscuela {
 
-    @Inject
-    CategoriaDao categoriaDao;
+    
+    CategoriaDao categoriaDao = ServiciosEscuelaFactory.getInstance().getCategoria();
     
     @Inject
     NecesidadDao necesidadDao;
@@ -34,9 +36,11 @@ public class ServiciosEscuelaImpl implements ServiciosEscuela {
     @Override
     public void crearCategoria(String nombre, String descripcion) throws ExcepcionServiciosEscuela {
         try{
+            System.out.println("ENTRA AL METODO DE CREAR CATEGORIA EN SERVICIOS DE ESCUELA IMPLEMENTADO");
             categoriaDao.agregarCategoria(nombre, descripcion);
         }
         catch(PersistenceException persistenceException){
+            persistenceException.printStackTrace();
             throw new ExcepcionServiciosEscuela("No se pudo crear la categoria");
         }
     }  

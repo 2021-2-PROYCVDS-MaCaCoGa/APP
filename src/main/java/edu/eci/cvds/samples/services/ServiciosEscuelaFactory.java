@@ -49,9 +49,20 @@ public class ServiciosEscuelaFactory {
                 install(JdbcHelper.PostgreSQL);
                 setClassPathResource("mybatis-config.xml");
                 bind(CategoriaDao.class).to(MyBatisCategoriaDao.class);
+                bind(NecesidadDao.class).to(MyBatisNecesidadDao.class);
                 bind(ServiciosEscuela.class).to(ServiciosEscuelaImpl.class);
+                bind(OfertaDao.class).to(MyBatisOfertaDao.class);
+                bind(RespuestaDao.class).to(MyBatisRespuestaDao.class);
            }
        });
+   }
+   
+    public CategoriaDao getCategoria(){
+       if (!optInjector.isPresent()) {
+           optInjector = Optional.of(myBatisInjector("development","mybatis-config.xml"));
+       }
+
+       return optInjector.get().getInstance(CategoriaDao.class);
    }
 
    private ServiciosEscuelaFactory(){
@@ -80,33 +91,10 @@ public class ServiciosEscuelaFactory {
        return instance;
    }
    
-   public static SqlSessionFactory getSqlSessionFactory(){
-        SqlSessionFactory sqlSessionFactory = null;
-        if (sqlSessionFactory == null) {
-            InputStream inputStream;
-            try {
-                inputStream = Resources.getResourceAsStream("mybatis-config.xml");
-                sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-            } catch (IOException e) {
-                throw new RuntimeException(e.getCause());
-            }
-        }
-        return sqlSessionFactory;
-   }
-   
-  
-   
-   /**
-    * PRUEBA PARA REVISAR SI PODEMOS CONECTAR LA BASE A PARTIR DE ESTOS METODOS
-    * @return 
-    */
-   @PostConstruct
-   public  void iniciarSesionCategoria(){
-       SqlSessionFactory sessionfact = getSqlSessionFactory();
-       SqlSession sqlss = sessionfact.openSession();
-   }
+ 
 
    public static void main(String[] args) throws ExcepcionServiciosEscuela {
+       
         instance.getServiciosEscuela();
         /*System.out.println(instance.getServiciosEscuela().consultarClientes().toString());
 
