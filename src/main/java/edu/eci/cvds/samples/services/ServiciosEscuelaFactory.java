@@ -10,6 +10,8 @@ import org.mybatis.guice.XMLMyBatisModule;
 import org.mybatis.guice.datasource.helper.JdbcHelper;
 
 import edu.eci.cvds.samples.services.impl.ServiciosEscuelaImpl;
+import edu.eci.cvds.security.login;
+import edu.eci.cvds.security.loginconnection;
 import edu.eci.cvds.samples.services.ServiciosEscuela;
 
 import java.util.Optional;
@@ -53,6 +55,7 @@ public class ServiciosEscuelaFactory {
                 bind(ServiciosEscuela.class).to(ServiciosEscuelaImpl.class);
                 bind(OfertaDao.class).to(MyBatisOfertaDao.class);
                 bind(RespuestaDao.class).to(MyBatisRespuestaDao.class);
+                bind(login.class).to(loginconnection.class);
            }
        });
    }
@@ -64,6 +67,14 @@ public class ServiciosEscuelaFactory {
 
        return optInjector.get().getInstance(CategoriaDao.class);
    }
+    
+    public login getLogin() {
+    	if(!optInjector.isPresent()) {
+    		optInjector = Optional.of(myBatisInjector("development","mybatis-config.xml"));
+    	}
+    	
+    	return optInjector.get().getInstance(login.class);
+    }
 
    private ServiciosEscuelaFactory(){
         optInjector = Optional.empty();

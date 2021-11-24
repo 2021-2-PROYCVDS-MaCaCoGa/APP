@@ -2,6 +2,8 @@ package edu.eci.cvds.samples.services;
 
 import edu.eci.cvds.samples.entities.Categoria;
 import edu.eci.cvds.samples.entities.Usuario;
+import edu.eci.cvds.services.HistorialLoginExcepcion;
+
 import java.util.List;
 import org.apache.ibatis.session.SqlSessionFactory;
 
@@ -25,5 +27,9 @@ public interface ServiciosEscuela {
     public abstract void actualizarEstadoOferta(String oferta, String nuevoEstado) throws ExcepcionServiciosEscuela;
     
     public abstract List<Categoria> consultarCategorias() throws ExcepcionServiciosEscuela;
+    
+    public abstract void loggear(String correo, String contra) throws  ExcepcionServiciosEscuela;
+    
+    public abstract void cerrarSesion() throws  ExcepcionServiciosEscuela;
           
 }

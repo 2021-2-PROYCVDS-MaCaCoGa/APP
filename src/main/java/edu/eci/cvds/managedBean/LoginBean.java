@@ -2,30 +2,25 @@ package edu.eci.cvds.managedBean;
 
 
 
-import com.google.inject.Inject;
-import edu.eci.cvds.security.login;
-import edu.eci.cvds.security.loginconnection;
+import edu.eci.cvds.samples.services.ServiciosEscuela;
+import edu.eci.cvds.samples.services.ServiciosEscuelaFactory;
 
 import javax.faces.application.FacesMessage;
 import org.apache.shiro.subject.Subject;
 
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
-import javax.annotation.PostConstruct;
-import org.apache.shiro.SecurityUtils;
-import java.sql.Connection;
-import java.sql.DriverManager;
 
 
-@SuppressWarnings("deprecation")
+
+
 @ManagedBean(name = "loginListener")
-@SessionScoped
-
+@ApplicationScoped
 public class LoginBean{
-    @Inject
-    private login logger;
+    //@Inject
+    //ServiciosEscuela serviciosEscuela  = ServiciosEscuelaFactory.getInstance().getServiciosEscuela();
     
     private String correo;
     private String contra;
@@ -51,7 +46,7 @@ public class LoginBean{
             System.out.println(correo);
             System.out.println(contra);
             System.out.println("SIN ERRORES EN EL CORREO Y PASSWORD");
-            this.logger.log(correo, contra);
+            //serviciosEscuela.loggear(correo, contra);
             System.out.println("PROBLEMAS CON EL LOG DE LOGINCONNECTION");
             
             
@@ -119,7 +114,7 @@ public class LoginBean{
      */
     public void cerrar(){
         try{
-            logger.cerrarSesion();
+        	//serviciosEscuela.cerrarSesion();
         } catch(Exception exception){
             
         }
