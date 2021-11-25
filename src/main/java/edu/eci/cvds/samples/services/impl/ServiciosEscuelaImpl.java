@@ -178,6 +178,7 @@ public class ServiciosEscuelaImpl implements ServiciosEscuela {
     @Override
     public List<Categoria> consultarCategorias() throws ExcepcionServiciosEscuela {
         try{
+            System.out.println("ENTRA AL METODO DE GETLISTA EN SERVICIOS IMPLEMENTADOS");
             return categoriaDao.consultarcategorias();
         }
         catch(PersistenceException persistenceException){
