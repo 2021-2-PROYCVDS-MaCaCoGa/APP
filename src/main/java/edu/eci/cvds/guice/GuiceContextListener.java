@@ -43,6 +43,7 @@ public class GuiceContextListener implements ServletContextListener {
                 bind(ServiciosEscuela.class).to(ServiciosEscuelaImpl.class);  
                 bind(OfertaDao.class).to(MyBatisOfertaDao.class);
                 bind(RespuestaDao.class).to(MyBatisRespuestaDao.class);
+                bind(login.class).to(loginconnection.class);
             }
         });
 

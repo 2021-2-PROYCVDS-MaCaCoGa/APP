@@ -10,6 +10,9 @@ import edu.eci.cvds.samples.entities.Categoria;
 import edu.eci.cvds.samples.services.ExcepcionServiciosEscuela;
 import edu.eci.cvds.samples.services.ServiciosEscuela;
 import edu.eci.cvds.samples.services.ServiciosEscuelaFactory;
+import edu.eci.cvds.security.login;
+import edu.eci.cvds.services.HistorialLoginExcepcion;
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -17,6 +20,8 @@ public class ServiciosEscuelaImpl implements ServiciosEscuela {
 
     
     CategoriaDao categoriaDao = ServiciosEscuelaFactory.getInstance().getCategoria();
+    
+    login loginConcection = ServiciosEscuelaFactory.getInstance().getLogin();
     
     @Inject
     NecesidadDao necesidadDao;
@@ -185,6 +190,26 @@ public class ServiciosEscuelaImpl implements ServiciosEscuela {
             throw new ExcepcionServiciosEscuela("No se pudo consultar las categorias");
         }
     }
+
+	@Override
+	public void loggear(String correo, String contra) throws  ExcepcionServiciosEscuela {
+		try {
+			loginConcection.log(correo, contra);
+		}catch(HistorialLoginExcepcion persistenceException){
+			throw new ExcepcionServiciosEscuela("No se pudo loggear");
+		}
+		
+	}
+
+	@Override
+	public void cerrarSesion() throws ExcepcionServiciosEscuela {
+		try {
+			loginConcection.cerrarSesion();
+		}catch(HistorialLoginExcepcion persistenceException){
+			throw new ExcepcionServiciosEscuela("No se pudo cerrar la sesion");
+		}
+		
+	}
 }
 
 
