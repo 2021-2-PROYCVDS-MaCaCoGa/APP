@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3c.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+      <link rel="stylesheet" href="normalize.css"></link>
+    <h:head>
+        <title>Registrar Necesidad</title>
+    </h:head>
+    <h:body>
+        <style type="text/css">
+            *{
+                padding: 0px;
+                margin: 0px;
+            }
+            .site-header{
+                padding: 1rem 0 3rem 0;
+               
+                background-color: rgba(47, 55, 158, 0.418);
+            }
+            .centrarTexto{
+                text-align: center;
+            }
+            #header{
+                margin:auto;
+                max-width: 60rem;
+                padding: 1rem 0 3rem 9rem;
+                
+            }
+            ul, ol{
+                list-style: none;
+            }
+            .navegacion li a{
+                background-color: transparent;
+                color: white;
+                text-decoration: none;
+                padding: 30px 30px;
+                display: block;
+                font-size: 1.8rem;
+                margin-right: 3.5rem;
+             
+                object-position: left;
+
+            
+            }
+            .navegacion li a:hover{
+                background-color: rgb(105, 118, 236);
+            }
+            .navegacion > li{
+                float: left;
+            }
+            .navegacion li ul{
+                display: none;
+                position: absolute;
+                min-width: 140px;
+            }
+            .navegacion li ul a{
+                background-color: rgba(177, 177, 177, 0.8);
+                border: #0a2347;
+            }
+            .navegacion li:hover > ul{
+                display: block;
+            }
+            .margenBoton{
+            align-items: center;
+            margin-top: 2rem;
+            margin-left: 17rem;
+        }
+          
+        </style>
+        <body background="../resources/REGISTRAR.jpg"></body>
+        <header class="site-header">
+            <h3 class="centrarTexto" style="font-size: 35px; text-align: left;">Registrar Necesidad</h3>
+            <div id="header">
+                <ul class="navegacion">
+                    <li><a href="">Administración de Categorías</a>
+                        <ul>
+                            <li><a href="modificarCategoria.xhtml">Modificar Categoría</a></li>
+                            <li><a href="eliminarCategoria.xhtml">Eliminar Categoría</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../roles/administrador.xhtml">Volver al Inicio</a></li>
+                </ul>
+            </div>
+        </header>
+        
+        
+        <h:form id="Solidaridad-Escuela">
+            <h:panelGrid columns="1" cellpadding="1">
+                <h5 style="font-size: 20px; margin-top: 1rem; margin-left: 0.5rem;">Categoría</h5>
+                <p:selectOneMenu id="Categoria" value="#{listenerCategoria.nombreCategoria}" required="true" label="Text 2" style="margin-left: 0.5rem;">
+                    <f:selectItem itemLabel="Select One" itemValue="" noSelectionOption="true"/>
+                    <f:selectItems value="#{listenerCategoria.nombres}"/>
+                </p:selectOneMenu>
+            </h:panelGrid>
+
+            <h:panelGrid columns="1" style="margin-bottom: 10px;">
+
+                <!--Para poner el nombre de la categoria-->
+                 <h5 style="font-size: 20px; margin-top: 0.5rem; margin-left: 0.5rem;">Nombre de la Necesidad</h5>
+                <p:inputText id="float-input" value="#{listenerCategoria.nombreCategoria}" style="text-align: center; margin-left: 0.5rem;"/>
+
+                <h5 style="font-size: 20px; margin-top: 1rem; margin-left: 0.5rem;">Urgencia de la Necesidad</h5>
+                <p:inputText id="txt" value="#{aaa}" style="text-align: center; margin-left: 0.5rem;"/>
+                <p:slider for="txt" minValue="1" maxValue="5" style="text-align: center; margin-left: 0.5rem;"/>
+            </h:panelGrid>
+            
+            <!--Para el formato de descripcion, que sea de texto extendido-->
+            <h5 style="font-size: 30px; margin-top: 1rem; margin-left: 8rem;">Descripción</h5>
+            <p:inputTextarea rows="6" cols="50" value="#{listenerCategoria.descripcionCategoria}"/>
+
+            <div>
+                <p:commandButton  style="margin-left: 8rem;" value="Crear Categoría" action="#{listenerCategoria.agregarCategoria()}"/>
+            </div>
+        </h:form>
+    </h:body>
+</html>
