@@ -96,10 +96,13 @@ public class ServiciosEscuelaImpl implements ServiciosEscuela {
     @Override
     public void expresarNecesidad(String categoria, String nombre, String descripcion, int urgencia, String usuario) throws ExcepcionServiciosEscuela {
         try{
+            System.out.println("ENTRA AL METODO DE EXPRESAR NECESIDAD DE IMPL");
             necesidadDao.agregarNecesidad(categoria, nombre, descripcion,usuario, urgencia);
         }
         catch(PersistenceException persistenceException){
+            persistenceException.printStackTrace();
             throw new ExcepcionServiciosEscuela("No se pudo crear la necesidad");
+            
         }
     }
 
@@ -183,7 +186,7 @@ public class ServiciosEscuelaImpl implements ServiciosEscuela {
     @Override
     public List<Categoria> consultarCategorias() throws ExcepcionServiciosEscuela {
         try{
-            System.out.println("ENTRA AL METODO DE GETLISTA EN SERVICIOS IMPLEMENTADOS");
+            
             return categoriaDao.consultarcategorias();
         }
         catch(PersistenceException persistenceException){

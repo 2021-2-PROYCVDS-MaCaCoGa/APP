@@ -12,6 +12,7 @@ import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
+import org.apache.shiro.authz.annotation.RequiresGuest;
 
 
 
@@ -20,7 +21,7 @@ import javax.servlet.http.HttpSession;
 @ApplicationScoped
 public class LoginBean{
     //@Inject
-    //ServiciosEscuela serviciosEscuela  = ServiciosEscuelaFactory.getInstance().getServiciosEscuela();
+    ServiciosEscuela serviciosEscuela  = ServiciosEscuelaFactory.getInstance().getServiciosEscuela();
     
     private String correo;
     private String contra;
@@ -37,6 +38,7 @@ public class LoginBean{
     /**
      * Metodo encargado de loguear al usuario de acuerdo a su correo y contraseña
      */
+    
     public void loguear(){
         System.out.println("Entra al metodo loguear");
         try{
@@ -46,7 +48,7 @@ public class LoginBean{
             System.out.println(correo);
             System.out.println(contra);
             System.out.println("SIN ERRORES EN EL CORREO Y PASSWORD");
-            //serviciosEscuela.loggear(correo, contra);
+            serviciosEscuela.loggear(correo, contra);
             System.out.println("PROBLEMAS CON EL LOG DE LOGINCONNECTION");
             
             

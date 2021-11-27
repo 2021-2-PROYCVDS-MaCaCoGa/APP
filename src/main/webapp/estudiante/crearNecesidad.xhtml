@@ -89,7 +89,7 @@
         <h:form id="Solidaridad-Escuela">
             <h:panelGrid columns="1" cellpadding="1">
                 <h5 style="font-size: 20px; margin-top: 1rem; margin-left: 0.5rem;">Categoría</h5>
-                <p:selectOneMenu id="Categoria" value="#{listenerCategoria.nombreCategoria}" required="true" label="Text 2" style="margin-left: 0.5rem;">
+                <p:selectOneMenu id="Categoria" value="#{necesidadListener.categoriaNecesidad}" required="true" label="Text 2" style="margin-left: 0.5rem;">
                     <f:selectItem itemLabel="Select One" itemValue="" noSelectionOption="true"/>
                     <f:selectItems value="#{listenerCategoria.nombres}"/>
                 </p:selectOneMenu>
@@ -99,19 +99,22 @@
 
                 <!--Para poner el nombre de la categoria-->
                  <h5 style="font-size: 20px; margin-top: 0.5rem; margin-left: 0.5rem;">Nombre de la Necesidad</h5>
-                <p:inputText id="float-input" value="#{listenerCategoria.nombreCategoria}" style="text-align: center; margin-left: 0.5rem;"/>
+                <p:inputText id="float-input" value="#{necesidadListener.nombreNecesidad}" style="text-align: center; margin-left: 0.5rem;"/>
 
                 <h5 style="font-size: 20px; margin-top: 1rem; margin-left: 0.5rem;">Urgencia de la Necesidad</h5>
-                <p:inputText id="txt" value="#{aaa}" style="text-align: center; margin-left: 0.5rem;"/>
+                <p:inputText id="txt" value="#{necesidadListener.urgenciaNecesidad}" style="text-align: center; margin-left: 0.5rem;"/>
                 <p:slider for="txt" minValue="1" maxValue="5" style="text-align: center; margin-left: 0.5rem;"/>
+
+                <h5 style="font-size: 20px; margin-top: 0.5rem; margin-left: 0.5rem;">Nombre del Usuario</h5>
+                <p:inputText id="float-input1" value="#{necesidadListener.usuarioNecesidad}" style="text-align: center; margin-left: 0.5rem;"/>
             </h:panelGrid>
             
             <!--Para el formato de descripcion, que sea de texto extendido-->
             <h5 style="font-size: 30px; margin-top: 1rem; margin-left: 8rem;">Descripción</h5>
-            <p:inputTextarea rows="6" cols="50" value="#{listenerCategoria.descripcionCategoria}"/>
+            <p:inputTextarea rows="6" cols="50" value="#{necesidadListener.descripcionNecesidad}"/>
 
             <div>
-                <p:commandButton  style="margin-left: 8rem;" value="Crear Categoría" action="#{listenerCategoria.agregarCategoria()}"/>
+                <p:commandButton  style="margin-left: 8rem;" value="Crear Categoría" action="#{necesidadListener.agregarNecesidad}"/>
             </div>
         </h:form>
     </h:body>

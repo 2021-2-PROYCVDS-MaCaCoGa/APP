@@ -29,23 +29,28 @@ public class loginconnection implements login{
     public void log(String usuario, String contra) throws HistorialLoginExcepcion {
         System.out.println("Se intenta el log, entra al metodo");
         try{
-            Subject currentUser = SecurityUtils.getSubject();
+            System.out.println("PRIMERA PRUEBA PARA VER SI ESTAN LOS VALORES");
+            System.out.println(usuario);
+            System.out.println(contra);
+            //Subject currentUser = SecurityUtils.setSecurityManager(SecurityManager.);
+            //System.out.println(//currentUser.toString());
             //MD5HASH es un metodo de criptografia de shiro
             UsernamePasswordToken token = new UsernamePasswordToken(usuario, new Sha256Hash(contra).toHex());
-            currentUser.getSession().setAttribute("usuario",usuario);
-            currentUser.login(token);
+            //currentUser.getSession().setAttribute("usuario",usuario);
+            //currentUser.login(token);
             System.out.print("log exitoso");
         } catch(UnknownSessionException unknownSessionException){
-            System.out.print("pailas");
+            System.out.print("pailas1");
             throw new HistorialLoginExcepcion("El usuario no se encuentra registrado");
         } catch(IncorrectCredentialsException incorrectCredentialsException){
-            System.out.print("pailas");
+            System.out.print("pailas2");
             throw new HistorialLoginExcepcion("Contraseña del usuario incorrecta, pruebe de nuevo");
         } catch(LockedAccountException lockedAccountException){
-            System.out.print("pailas");
+            System.out.print("pailas3");
             throw new HistorialLoginExcepcion("El usuario se encuentra actualmente bloqueado");
         } catch(Exception exception){
-            System.out.print("pailas");
+            System.out.println("pailas4");
+            exception.printStackTrace();
             throw new HistorialLoginExcepcion("Ocurrio un error inesperado");
         }
     }

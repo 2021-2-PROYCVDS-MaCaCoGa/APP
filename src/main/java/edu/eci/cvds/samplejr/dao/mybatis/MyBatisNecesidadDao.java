@@ -13,6 +13,8 @@ public class MyBatisNecesidadDao implements NecesidadDao{
 	
 	@Inject
 	private NecesidadMapper necesidadMapper;
+        
+        private String NECESIDAD = "NECESIDAD";
 
 	@Override
             public void agregarNecesidad(String categoria, String nombre, String descripcion,String usuario, int urgencia) throws PersistenceException {

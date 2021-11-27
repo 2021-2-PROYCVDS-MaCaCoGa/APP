@@ -24,7 +24,7 @@ public class MyBatisCategoriaDao implements CategoriaDao{
          @Override
     public void agregarCategoria(String nombre, String descripcion) throws PersistenceException {
         try{
-            System.out.println("ENTRA AL MYBATISDAO DE CATEGORIA PARA CREAR");
+            
             categoriaMapper.agregarCategoria(nombre, descripcion);
         }
         catch(org.apache.ibatis.exceptions.PersistenceException exception){
@@ -78,7 +78,7 @@ public class MyBatisCategoriaDao implements CategoriaDao{
 	@Override
 	public List<Categoria> consultarcategorias() throws PersistenceException {
 		try {
-                    System.out.println("ENTRA AL METODO DE GETLISTA EN MYBATIS CATEGORIA");
+                    
                     return categoriaMapper.consultarCategorias();
 		}catch(org.apache.ibatis.exceptions.PersistenceException e) {
                     throw new PersistenceException("Error al consultar las categorias ", e);
