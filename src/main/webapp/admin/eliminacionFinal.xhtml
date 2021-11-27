@@ -6,7 +6,7 @@
       xmlns:p="http://primefaces.org/ui">
       <link rel="stylesheet" href="normalize.css"></link>
     <h:head>
-        <title>Eliminar Categoría</title>
+        <title>Eliminación en Curso</title>
     </h:head>
     <h:body>
         <style type="text/css">
@@ -107,19 +107,28 @@
             </div>
         </header>
         
-            <h:form id="calculadora_form"> 
-                <p:panel id="panel" header="Categorias" styleClass="p-mb-3" style="margin-left: 25rem; background-color: transparent;background-color: rgba(14, 57, 107, 0.596); margin-right: 28rem;text-align: center;margin-top:3rem;">
-                    <p:growl id="messages"/>
-                    <h:panelGrid columns="1" cellpadding="1">
-                        <p:selectOneMenu id="Categoria" value="#{listenerCategoria.nombreCategoria}" required="true" label="Text 2" style="margin-left: 9.5rem;">
-                            <f:selectItem itemLabel="Select One" itemValue="" noSelectionOption="true"/>
-                            <f:selectItems value="#{listenerCategoria.nombres}"/>
-                        </p:selectOneMenu>
-                        <div>
-                            <p:commandButton class="margenBoton" value="Buscar Categoría" action="#{listenerCategoria.redireccionarEliminacion}" style="margin-left: 9.5rem;"/>
-                        </div>
-                    </h:panelGrid>
-                </p:panel>
+            <h:form id="Valores_Categoria"> 
+               <!--Para poner el nombre de la categoria-->
+            <h5 style="font-size: 20px; margin-top: 1.5rem;">Nombre de la Categoría</h5>
+            <p:inputText id="nombre" value="#{listenerCategoria.nombreActualizar}" style="background-color: rgba(182, 165, 182, 0.712);"/>
+            
+            
+            <!--Para el formato de descripcion, que sea de texto extendido-->
+            <h5 style="font-size: 20px; margin-top: 1rem;">Descripción</h5>
+            <p:inputTextarea rows="5" cols="80" value="#{listenerCategoria.descripcionActualizar}" style="background-color: rgba(182, 165, 182, 0.712);"/>
+
+             <!--Para poner el estado de la categoria-->
+             <h5 style="font-size: 20px; margin-top: 0.5rem;">Estado de la Categoría</h5>
+             <p:inputText id="estado" value="#{listenerCategoria.estadoActualizar}" style="background-color: rgba(182, 165, 182, 0.712);"/>
+            <div>
+                <p:commandButton class="margenBoton" value="Eliminar Categoria" action="#{listenerCategoria.eliminarCategoria}" style="margin-top: 1rem; margin-left: 15rem;" >
+                    <p:confirm header="Confirmation" message="Está seguro de eliminar esta categoría?" icon="pi pi-info-circle"/>
+                </p:commandButton>
+            </div>
+            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350">
+                <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" />
+                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no ui-button-flat"/>
+            </p:confirmDialog>
             </h:form>
     </h:body>
 </html>

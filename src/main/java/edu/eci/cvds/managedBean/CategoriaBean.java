@@ -87,8 +87,15 @@ public class CategoriaBean{
         }
     }
     
-    
+    /**
+     * Metodo que se encarga de eliminar la categoria que el cliente desee.
+     * Este proceso se logra gracias al nombre de la categoria a eliminar
+     */
     public void eliminarCategoria(){
+        try{
+            serviciosEscuela.eliminarCategoria(nombreCategoria);
+        }
+        catch(Exception exception){}
         
     }
     
@@ -100,6 +107,15 @@ public class CategoriaBean{
         }
         catch(Exception exception){
         }
+    }
+    
+    public void redireccionarEliminacion(){
+        getDatosActualizar();
+        try{
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+            facesContext.getExternalContext().redirect("../admin/eliminacionFinal.xhtml");
+        }
+        catch(Exception exception){}
     }
 
     public String getNombreCategoria() {
@@ -158,6 +174,8 @@ public class CategoriaBean{
     public void setEstadoActualizar(String estadoActualizar) {
         this.estadoActualizar = estadoActualizar;
     }
+    
+    
 
     
 

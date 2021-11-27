@@ -41,7 +41,6 @@ public class ServiciosEscuelaImpl implements ServiciosEscuela {
     @Override
     public void crearCategoria(String nombre, String descripcion) throws ExcepcionServiciosEscuela {
         try{
-            System.out.println("ENTRA AL METODO DE CREAR CATEGORIA EN SERVICIOS DE ESCUELA IMPLEMENTADO");
             categoriaDao.agregarCategoria(nombre, descripcion);
         }
         catch(PersistenceException persistenceException){
@@ -96,7 +95,6 @@ public class ServiciosEscuelaImpl implements ServiciosEscuela {
     @Override
     public void expresarNecesidad(String categoria, String nombre, String descripcion, int urgencia, String usuario) throws ExcepcionServiciosEscuela {
         try{
-            System.out.println("ENTRA AL METODO DE EXPRESAR NECESIDAD DE IMPL");
             necesidadDao.agregarNecesidad(categoria, nombre, descripcion,usuario, urgencia);
         }
         catch(PersistenceException persistenceException){
