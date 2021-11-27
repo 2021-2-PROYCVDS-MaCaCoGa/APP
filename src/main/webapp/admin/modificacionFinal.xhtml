@@ -20,8 +20,8 @@
             }
             .site-header{
                 padding: 1rem 0 3rem 0;
-                border: 3px solid #b5b5b5;
-                background-color: rgba(177, 177, 177, 0.8);
+               
+                background-color: rgba(47, 55, 158, 0.418);
             }
             .fw-300{
                 font-weight: 300;
@@ -45,13 +45,13 @@
                 padding: 30px 30px;
                 display: block;
                 font-size: 1.8rem;
-                margin-right: 3.5rem;
+                margin-right: 4rem;
                 object-position: left;
 
             
             }
             .navegacion li a:hover{
-                background-color: rgb(199, 44, 44);
+                background-color: rgba(103, 44, 199, 0.692);
             }
             .navegacion > li{
                 float: left;
@@ -93,8 +93,8 @@
         </style>
         <body background="../resources/REGISTRAR.jpg"></body>
         <header class="site-header">
+            <h3 class="centrarTexto" style="font-size: 35px; text-align: left;">Modificar Categoría</h3>
             <div id="header">
-                <h3 class="centrarTexto">Bienvenido, Administrador</h3>
                 <ul class="navegacion">
                     <li><a href="">Administración de Categorías</a>
                         <ul>
@@ -102,14 +102,7 @@
                             <li><a href="eliminarCategoria.xhtml">Eliminar Categoría</a></li>
                         </ul>
                     </li>
-                    <li><a href="">Reportes</a>
-                        <ul>
-                            <li><a href="">Reporte 1</a></li>
-                            <li><a href="">Reporte 2</a></li>
-                            <li><a href="">Reporte 3</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="">Cerrar Sesión</a></li>
+                    <li><a href="../roles/administrador.xhtml">Volver al Inicio</a></li>
                 </ul>
             </div>
         </header>
@@ -117,16 +110,16 @@
             <h:form id="Valores_Categoria"> 
                <!--Para poner el nombre de la categoria-->
             <h5 style="font-size: 20px; margin-top: 1.5rem;">Nombre de la Categoría</h5>
-            <p:inputText id="nombre" value="#{listenerCategoria.nombreActualizar}"/>
+            <p:inputText id="nombre" value="#{listenerCategoria.nombreActualizar}" style="background-color: rgba(182, 165, 182, 0.712);"/>
             
             
             <!--Para el formato de descripcion, que sea de texto extendido-->
             <h5 style="font-size: 20px; margin-top: 1rem;">Descripción</h5>
-            <p:inputTextarea rows="5" cols="80" value="#{listenerCategoria.descripcionActualizar}"/>
+            <p:inputTextarea rows="5" cols="80" value="#{listenerCategoria.descripcionActualizar}" style="background-color: rgba(182, 165, 182, 0.712);"/>
 
              <!--Para poner el estado de la categoria-->
              <h5 style="font-size: 20px; margin-top: 0.5rem;">Estado de la Categoría</h5>
-             <p:inputText id="estado" value="#{listenerCategoria.estadoActualizar}"/>
+             <p:inputText id="estado" value="#{listenerCategoria.estadoActualizar}" style="background-color: rgba(182, 165, 182, 0.712);"/>
             <div>
                 <p:commandButton class="margenBoton" value="Modificar Categoria" action="#{listenerCategoria.actualizarCategoria}" style="margin-top: 1rem; margin-left: 15rem;"/>
             </div>
