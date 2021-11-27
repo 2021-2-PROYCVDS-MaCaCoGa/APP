@@ -17,7 +17,7 @@
             .site-header{
                 padding: 1rem 0 3rem 0;
                
-                background-color: rgba(47, 55, 158, 0.418);
+                background-color: rgba(111, 114, 155, 0.377);
             }
             .centrarTexto{
                 text-align: center;
@@ -45,7 +45,7 @@
             
             }
             .navegacion li a:hover{
-                background-color: rgb(105, 118, 236);
+                background-color: rgba(189, 58, 58, 0.568);
             }
             .navegacion > li{
                 float: left;
@@ -69,18 +69,17 @@
         }
           
         </style>
-        <body background="../resources/REGISTRAR.jpg"></body>
+        <body background="../resources/IMAGEN_OFERTA.jpg"></body>
         <header class="site-header">
             <h3 class="centrarTexto" style="font-size: 35px; text-align: left;">Registrar Oferta</h3>
             <div id="header">
                 <ul class="navegacion">
                     <li><a href="">Administración de Categorías</a>
                         <ul>
-                            <li><a href="modificarCategoria.xhtml">Modificar Categoría</a></li>
-                            <li><a href="eliminarCategoria.xhtml">Eliminar Categoría</a></li>
+                            <!--en caso que tengamos mas submetodos-->
                         </ul>
                     </li>
-                    <li><a href="../roles/administrador.xhtml">Volver al Inicio</a></li>
+                    <li><a href="../roles/estudiante.xhtml">Volver al Inicio</a></li>
                 </ul>
             </div>
         </header>
@@ -89,8 +88,8 @@
         <h:form id="Solidaridad-Escuela">
             <h:panelGrid columns="1" cellpadding="1">
                 <h5 style="font-size: 20px; margin-top: 1rem; margin-left: 0.5rem;">Categoría</h5>
-                <p:selectOneMenu id="Categoria" value="#{necesidadListener.categoriaNecesidad}" required="true" label="Text 2" style="margin-left: 0.5rem;">
-                    <f:selectItem itemLabel="Select One" itemValue="" noSelectionOption="true"/>
+                <p:selectOneMenu id="Categoria" value="#{ofertaListener.categoriaOferta}" required="true" label="Text 2" style="margin-left: 0.5rem;">
+                    <f:selectItem itemLabel="Select One" itemValue="" noSelectionOption="true" />
                     <f:selectItems value="#{listenerCategoria.nombres}"/>
                 </p:selectOneMenu>
             </h:panelGrid>
@@ -98,23 +97,19 @@
             <h:panelGrid columns="1" style="margin-bottom: 10px;">
 
                 <!--Para poner el nombre de la categoria-->
-                 <h5 style="font-size: 20px; margin-top: 0.5rem; margin-left: 0.5rem;">Nombre de la Necesidad</h5>
-                <p:inputText id="float-input" value="#{necesidadListener.nombreNecesidad}" style="text-align: center; margin-left: 0.5rem;"/>
+                 <h5 style="font-size: 20px; margin-top: 0.5rem; margin-left: 0.5rem;">Nombre de la Oferta</h5>
+                <p:inputText id="float-input" value="#{ofertaListener.nombreOferta}" style="text-align: center; margin-left: 0.5rem;background-color: rgba(182, 165, 182, 0.712);"/>
 
-                <h5 style="font-size: 20px; margin-top: 1rem; margin-left: 0.5rem;">Urgencia de la Necesidad</h5>
-                <p:inputText id="txt" value="#{necesidadListener.urgenciaNecesidad}" style="text-align: center; margin-left: 0.5rem;"/>
-                <p:slider for="txt" minValue="1" maxValue="5" style="text-align: center; margin-left: 0.5rem;"/>
-
-                <h5 style="font-size: 20px; margin-top: 0.5rem; margin-left: 0.5rem;">Nombre del Usuario</h5>
-                <p:inputText id="float-input1" value="#{necesidadListener.usuarioNecesidad}" style="text-align: center; margin-left: 0.5rem;"/>
+                <h5 style="font-size: 20px; margin-top: 0.5rem; margin-left: 0.5rem;">Usuario que crea la oferta</h5>
+                <p:inputText id="float-input1" value="#{ofertaListener.usuarioOferta}" style="text-align: center; margin-left: 0.5rem;background-color: rgba(182, 165, 182, 0.712);"/>
             </h:panelGrid>
             
             <!--Para el formato de descripcion, que sea de texto extendido-->
-            <h5 style="font-size: 30px; margin-top: 1rem; margin-left: 8rem;">Descripción</h5>
-            <p:inputTextarea rows="6" cols="50" value="#{necesidadListener.descripcionNecesidad}"/>
+            <h5 style="font-size: 30px; margin-top: 1rem; margin-left: 5rem;">Descripción de la Oferta</h5>
+            <p:inputTextarea rows="6" cols="50" value="#{ofertaListener.descripcionOferta}" style="background-color: rgba(182, 165, 182, 0.712);"/>
 
             <div>
-                <p:commandButton  style="margin-left: 8rem;" value="Crear Categoría" action="#{necesidadListener.agregarNecesidad}"/>
+                <p:commandButton  style="margin-left: 8rem;" value="Crear Oferta" action="#{ofertaListener.registrarOferta}"/>
             </div>
         </h:form>
     </h:body>

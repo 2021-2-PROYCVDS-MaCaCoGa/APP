@@ -6,6 +6,7 @@ package edu.eci.cvds.managedBean;
 
 import com.google.inject.Inject;
 import edu.eci.cvds.samples.services.ServiciosEscuela;
+import edu.eci.cvds.samples.services.ServiciosEscuelaFactory;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -15,16 +16,13 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean(name = "ofertaListener")
 @SessionScoped
 public class OfertaBean {
-    @Inject
-    ServiciosEscuela serviciosEscuela;
+    ServiciosEscuela serviciosEscuela = ServiciosEscuelaFactory.getInstance().getServiciosEscuela();
+
     
     private String categoriaOferta;
     private String nombreOferta;
     private String descripcionOferta;
-    private String mensaje;
-    private String usuarioOferta; //--> Ocurre lo mismo que en el caso de necesidad
-    private FacesMessage.Severity estadoSolicitud;
-    
+    private String usuarioOferta; 
     /**
      * Se encarga de crear la oferta del estudiante en la base de datos
      * Solo se pide estos parametros, pues los demás se crean de manera automatica 
@@ -33,30 +31,43 @@ public class OfertaBean {
     public void registrarOferta(){
         try{
             serviciosEscuela.registrarOferta(categoriaOferta, nombreOferta, descripcionOferta, usuarioOferta);
-            mensajeSinErrores();
+         
         }
         catch(Exception exception){
-            mensajeConErrores(exception.getMessage());
+            exception.printStackTrace();
         }
+    }  
+
+    public String getCategoriaOferta() {
+        return categoriaOferta;
     }
-    
-    /**
-     * Se encarga de decirle al usuario que su solicitud de categoria
-     * ha pasado sin problemas.
-     */
-    public void mensajeSinErrores(){
-        this.mensaje = "Se pudo crear la oferta";
-        this.estadoSolicitud = FacesMessage.SEVERITY_INFO;
+
+    public void setCategoriaOferta(String categoriaOferta) {
+        this.categoriaOferta = categoriaOferta;
     }
-    
-    /**
-     * Se encarga de decirle al usuario que hubo un problema
-     * con la solicitud requerida en la categoria
-     * @param mensajeError --> Mensaje enviado por la excepcion
-     */
-    public void mensajeConErrores(String mensajeError){
-        this.mensaje = mensajeError;
-        this.estadoSolicitud = FacesMessage.SEVERITY_WARN;  
+
+    public String getNombreOferta() {
+        return nombreOferta;
+    }
+
+    public void setNombreOferta(String nombreOferta) {
+        this.nombreOferta = nombreOferta;
+    }
+
+    public String getDescripcionOferta() {
+        return descripcionOferta;
+    }
+
+    public void setDescripcionOferta(String descripcionOferta) {
+        this.descripcionOferta = descripcionOferta;
+    }
+
+    public String getUsuarioOferta() {
+        return usuarioOferta;
+    }
+
+    public void setUsuarioOferta(String usuarioOferta) {
+        this.usuarioOferta = usuarioOferta;
     }
     
 }
