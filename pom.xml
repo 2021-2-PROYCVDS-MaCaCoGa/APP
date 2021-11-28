@@ -199,7 +199,57 @@
 
 
 
+<<<<<<< HEAD
       
+=======
+       <!-- create local H2 database -->
+        <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>sql-maven-plugin</artifactId>
+            <version>1.5</version>
+            <dependencies>
+                <dependency>
+                    <groupId>com.h2database</groupId>
+                    <artifactId>h2</artifactId>
+                    <version>1.4.184</version>
+                </dependency>
+            </dependencies>
+            <configuration>
+                <driver>org.h2.Driver</driver>
+                <url>jdbc:h2:file:./target/db/testdb;MODE=PostgreSQL</url>
+                <username>sa</username>
+                <password>sa</password>
+                <autocommit>false</autocommit>
+                <skip>${maven.test.skip}</skip>
+            </configuration>
+            <executions>
+                <execution>
+                    <id>create-db</id>
+                    <phase>process-test-resources</phase>
+                    <goals>
+                        <goal>execute</goal>
+                    </goals>
+                    <configuration>
+                        <srcFiles>
+                            <srcFile>src/main/SQL/Tablas.sql</srcFile>
+                        </srcFiles>
+                    </configuration>
+                </execution>
+                <execution>
+                    <id>create-data</id>
+                    <phase>process-test-resources</phase>
+                    <goals>
+                        <goal>execute</goal>
+                    </goals>
+                    <configuration>
+                        <srcFiles>
+                            <srcFile>src/main/sql/poblar.sql</srcFile>
+                        </srcFiles>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
+>>>>>>> 73032befcc18638ce557e4a3e4662b5d2c7bfd62
 
 
 
