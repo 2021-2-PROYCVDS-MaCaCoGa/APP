@@ -1,5 +1,6 @@
 package edu.eci.cvds.samplejr.dao;
 
+import edu.eci.cvds.samples.entities.Actividad;
 import java.util.List;
 
 import edu.eci.cvds.samples.entities.Oferta;
@@ -44,7 +45,7 @@ public interface OfertaDao {
      * @return
      * @throws PersistenceException 
      */
-    public List<Oferta> consultarOfertas() throws PersistenceException;
+    public List<Actividad> consultarOfertas() throws PersistenceException;
     
     /**
      * Elimina la oferta dado el nombre

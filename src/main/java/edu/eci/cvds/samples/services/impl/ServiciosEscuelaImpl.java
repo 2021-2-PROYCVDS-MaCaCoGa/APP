@@ -209,6 +209,16 @@ public class ServiciosEscuelaImpl implements ServiciosEscuela {
             throw new ExcepcionServiciosEscuela("No se pudo consultar las necesidades");
         }
     }
+    
+    @Override
+    public List<Actividad> consultarOfertas() throws ExcepcionServiciosEscuela {
+        try{
+            return ofertaDao.consultarOfertas();
+        }
+        catch(PersistenceException persistenceException){
+            throw new ExcepcionServiciosEscuela("No se pudo consultar las ofertas");
+        }
+    }
 
 	@Override
 	public void loggear(String correo, String contra) throws  ExcepcionServiciosEscuela {
@@ -229,6 +239,8 @@ public class ServiciosEscuelaImpl implements ServiciosEscuela {
 		}
 		
 	}
+
+    
 
     
 }

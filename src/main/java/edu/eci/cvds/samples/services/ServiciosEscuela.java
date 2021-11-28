@@ -31,6 +31,8 @@ public interface ServiciosEscuela {
     
     public abstract List<Actividad> consultarNecesidades() throws ExcepcionServiciosEscuela;
     
+    public abstract List<Actividad> consultarOfertas() throws ExcepcionServiciosEscuela;
+    
     public abstract void loggear(String correo, String contra) throws  ExcepcionServiciosEscuela;
     
     public abstract void cerrarSesion() throws  ExcepcionServiciosEscuela;

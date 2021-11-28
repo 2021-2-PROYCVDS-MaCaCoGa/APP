@@ -7,6 +7,7 @@ import com.google.inject.Inject;
 import edu.eci.cvds.samplejr.dao.OfertaDao;
 import edu.eci.cvds.samplejr.dao.PersistenceException;
 import edu.eci.cvds.samplejr.dao.mybatis.mappers.OfertaMapper;
+import edu.eci.cvds.samples.entities.Actividad;
 import edu.eci.cvds.samples.entities.Oferta;
 
 public class MyBatisOfertaDao implements OfertaDao{
@@ -54,7 +55,7 @@ public class MyBatisOfertaDao implements OfertaDao{
 	}
 
 	@Override
-	public List<Oferta> consultarOfertas() throws PersistenceException {
+	public List<Actividad> consultarOfertas() throws PersistenceException {
 		try {
 			return ofertaMapper.consultarOfertas();
 		}catch(org.apache.ibatis.exceptions.PersistenceException e) {

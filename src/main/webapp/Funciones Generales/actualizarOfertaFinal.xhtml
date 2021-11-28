@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3c.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+      <link rel="stylesheet" href="normalize.css"></link>
+    <h:head>
+        <title>Modificación de Oferta</title>
+    </h:head>
+    <h:body>
+        <style type="text/css">
+            *{
+                padding: 0px;
+                margin: 0px;
+            }
+            .site-header{
+                padding: 1rem 0 3rem 0;
+               
+                background-color: rgba(111, 114, 155, 0.377);
+            }
+            .centrarTexto{
+                text-align: center;
+            }
+            #header{
+                margin:auto;
+                max-width: 60rem;
+                padding: 1rem 0 3rem 9rem;
+                
+            }
+            ul, ol{
+                list-style: none;
+            }
+            .navegacion li a{
+                background-color: transparent;
+                color: white;
+                text-decoration: none;
+                padding: 30px 30px;
+                display: block;
+                font-size: 1.8rem;
+                margin-right: 3.5rem;
+             
+                object-position: left;
+
+            
+            }
+            .navegacion li a:hover{
+                background-color: rgba(189, 58, 58, 0.568);
+            }
+            .navegacion > li{
+                float: left;
+            }
+            .navegacion li ul{
+                display: none;
+                position: absolute;
+                min-width: 140px;
+            }
+            .navegacion li ul a{
+                background-color: rgba(177, 177, 177, 0.8);
+                border: #0a2347;
+            }
+            .navegacion li:hover > ul{
+                display: block;
+            }
+            .margenBoton{
+            align-items: center;
+            margin-top: 2rem;
+            margin-left: 17rem;
+        }
+          
+        </style>
+        <body background="../resources/IMAGEN_OFERTA.jpg"></body>
+        <header class="site-header">
+            <h3 class="centrarTexto" style="font-size: 35px; text-align: left;">Modificar Estado de Oferta</h3>
+            <div id="header">
+                <ul class="navegacion">
+                    <li><a href="">Administración de Ofertas</a>
+                        <ul>
+                            <li><a href="../estudiante/crearOferta.xhtml">Registrar Oferta</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../roles/estudiante.xhtml">Volver al Inicio</a></li>
+                </ul>
+            </div>
+        </header>
+        
+            <h:form id="Valores_Categoria"> 
+               <!--Para poner el nombre de la categoria-->
+            <h5 style="font-size: 20px; margin-top: 1.5rem;">Nombre de la Oferta</h5>
+            <p:inputText id="nombre" value="#{ofertaListener.nombreOferta}" style="background-color: rgba(182, 165, 182, 0.712);"/>
+            
+            
+            <!--Para el formato de descripcion, que sea de texto extendido-->
+            <h5 style="font-size: 20px; margin-top: 1rem;">Descripción</h5>
+            <p:inputTextarea rows="5" cols="80" value="#{ofertaListener.descripcionOferta}" style="background-color: rgba(182, 165, 182, 0.712);"/>
+
+             <!--Para poner el estado de la categoria-->
+             <h5 style="font-size: 20px; margin-top: 1rem;">Estado de la Necesidad</h5>
+             <p:selectOneMenu id="option" value="#{ofertaListener.estadoActualizar}">
+                <f:selectItem itemLabel="#{ofertaListener.estadoOferta}" itemValue="#{ofertaListener.estadoOferta}"/>
+                <f:selectItem itemLabel="EN PROCESO" itemValue="EN PROCESO"/>
+                <f:selectItem itemLabel="RESUELTA" itemValue="RESUELTA"/>
+                <f:selectItem itemLabel="CERRADA" itemValue="CERRADA"/>
+            </p:selectOneMenu>
+            <div>
+                <p:commandButton class="margenBoton" value="Modificar Categoria" action="#{ofertaListener.actualizarEstadoOferta}" style="margin-top: 1rem; margin-left: 15rem;"/>
+            </div>
+            </h:form>
+    </h:body>
+</html>
