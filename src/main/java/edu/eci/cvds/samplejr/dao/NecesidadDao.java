@@ -1,5 +1,6 @@
 package edu.eci.cvds.samplejr.dao;
 
+import edu.eci.cvds.samples.entities.Actividad;
 import java.util.List;
 
 import edu.eci.cvds.samples.entities.Necesidad;
@@ -30,7 +31,7 @@ public interface NecesidadDao {
          * @return
          * @throws PersistenceException 
          */
-	public List<Necesidad> consultarNecesidades()throws PersistenceException;
+	public List<Actividad> consultarNecesidades()throws PersistenceException;
 	
         /**
          * Retorna una necesidad dada su nombre

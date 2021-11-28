@@ -6,7 +6,7 @@
       xmlns:p="http://primefaces.org/ui">
       <link rel="stylesheet" href="normalize.css"></link>
     <h:head>
-        <title>Registrar Necesidad</title>
+        <title>Modificación de Necesidad</title>
     </h:head>
     <h:body>
         <style type="text/css">
@@ -71,13 +71,12 @@
         </style>
         <body background="../resources/IMAGEN_NECESIDAD.jpg"></body>
         <header class="site-header">
-            <h3 class="centrarTexto" style="font-size: 35px; text-align: left;">Registrar Necesidad</h3>
+            <h3 class="centrarTexto" style="font-size: 35px; text-align: left;">Modificar Estado de Necesidad</h3>
             <div id="header">
                 <ul class="navegacion">
                     <li><a href="">Administración de Necesidades</a>
                         <ul>
-                            <li><a href="../Funciones Generales/actualizarNecesidad.xhtml">Actualizar Necesidad</a></li>
-                           
+                            <li><a href="../estudiante/crearNecesidad.xhtml">Crear Necesidad</a></li>
                         </ul>
                     </li>
                     <li><a href="../roles/estudiante.xhtml">Volver al Inicio</a></li>
@@ -85,37 +84,27 @@
             </div>
         </header>
         
-        
-        <h:form id="Solidaridad-Escuela">
-            <h:panelGrid columns="1" cellpadding="1">
-                <h5 style="font-size: 20px; margin-top: 1rem; margin-left: 0.5rem;">Categoría</h5>
-                <p:selectOneMenu id="Categoria" value="#{necesidadListener.categoriaNecesidad}" required="true" label="Text 2" style="margin-left: 0.5rem;">
-                    <f:selectItem itemLabel="Select One" itemValue="" noSelectionOption="true"/>
-                    <f:selectItems value="#{listenerCategoria.nombres}"/>
-                </p:selectOneMenu>
-            </h:panelGrid>
-
-            <h:panelGrid columns="1" style="margin-bottom: 10px;">
-
-                <!--Para poner el nombre de la categoria-->
-                 <h5 style="font-size: 20px; margin-top: 0.5rem; margin-left: 0.5rem;">Nombre de la Necesidad</h5>
-                <p:inputText id="float-input" value="#{necesidadListener.nombreNecesidad}" style="text-align: center; margin-left: 0.5rem;"/>
-
-                <h5 style="font-size: 20px; margin-top: 1rem; margin-left: 0.5rem;">Urgencia de la Necesidad</h5>
-                <p:inputText id="txt" value="#{necesidadListener.urgenciaNecesidad}" style="text-align: center; margin-left: 0.5rem;"/>
-                <p:slider for="txt" minValue="1" maxValue="5" style="text-align: center; margin-left: 0.5rem;"/>
-
-                <h5 style="font-size: 20px; margin-top: 0.5rem; margin-left: 0.5rem;">Nombre del Usuario</h5>
-                <p:inputText id="float-input1" value="#{necesidadListener.usuarioNecesidad}" style="text-align: center; margin-left: 0.5rem;"/>
-            </h:panelGrid>
+            <h:form id="Valores_Categoria"> 
+               <!--Para poner el nombre de la categoria-->
+            <h5 style="font-size: 20px; margin-top: 1.5rem;">Nombre de la Necesidad</h5>
+            <p:inputText id="nombre" value="#{necesidadListener.nombreNecesidad}" style="background-color: rgba(182, 165, 182, 0.712);"/>
+            
             
             <!--Para el formato de descripcion, que sea de texto extendido-->
-            <h5 style="font-size: 30px; margin-top: 1rem; margin-left: 8rem;">Descripción</h5>
-            <p:inputTextarea rows="6" cols="50" value="#{necesidadListener.descripcionNecesidad}"/>
+            <h5 style="font-size: 20px; margin-top: 1rem;">Descripción</h5>
+            <p:inputTextarea rows="5" cols="80" value="#{necesidadListener.descripcionNecesidad}" style="background-color: rgba(182, 165, 182, 0.712);"/>
 
+             <!--Para poner el estado de la categoria-->
+             <h5 style="font-size: 20px; margin-top: 1rem;">Estado de la Necesidad</h5>
+             <p:selectOneMenu id="option" value="#{necesidadListener.estadoActualizar}">
+                <f:selectItem itemLabel="#{necesidadListener.estadoNecesidad}" itemValue="#{necesidadListener.estadoNecesidad}"/>
+                <f:selectItem itemLabel="EN PROCESO" itemValue="EN PROCESO"/>
+                <f:selectItem itemLabel="RESUELTA" itemValue="RESUELTA"/>
+                <f:selectItem itemLabel="CERRADA" itemValue="CERRADA"/>
+            </p:selectOneMenu>
             <div>
-                <p:commandButton  style="margin-left: 8rem;" value="Crear Categoría" action="#{necesidadListener.agregarNecesidad}"/>
+                <p:commandButton class="margenBoton" value="Modificar Categoria" action="#{necesidadListener.actualizarEstadoNecesidad}" style="margin-top: 1rem; margin-left: 15rem;"/>
             </div>
-        </h:form>
+            </h:form>
     </h:body>
 </html>

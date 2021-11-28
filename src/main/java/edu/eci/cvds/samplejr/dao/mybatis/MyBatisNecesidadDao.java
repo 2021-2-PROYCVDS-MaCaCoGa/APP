@@ -7,6 +7,7 @@ import com.google.inject.Inject;
 import edu.eci.cvds.samplejr.dao.NecesidadDao;
 import edu.eci.cvds.samplejr.dao.PersistenceException;
 import edu.eci.cvds.samplejr.dao.mybatis.mappers.NecesidadMapper;
+import edu.eci.cvds.samples.entities.Actividad;
 import edu.eci.cvds.samples.entities.Necesidad;
 
 public class MyBatisNecesidadDao implements NecesidadDao{
@@ -14,8 +15,7 @@ public class MyBatisNecesidadDao implements NecesidadDao{
 	@Inject
 	private NecesidadMapper necesidadMapper;
         
-        private String NECESIDAD = "NECESIDAD";
-
+        
 	@Override
             public void agregarNecesidad(String categoria, String nombre, String descripcion,String usuario, int urgencia) throws PersistenceException {
 		try {
@@ -36,7 +36,7 @@ public class MyBatisNecesidadDao implements NecesidadDao{
 	}
 
 	@Override
-	public List<Necesidad> consultarNecesidades() throws PersistenceException {
+	public List<Actividad> consultarNecesidades() throws PersistenceException {
 		try {
 			return necesidadMapper.consultarNecesidades();
 		}catch(org.apache.ibatis.exceptions.PersistenceException e) {
@@ -57,7 +57,9 @@ public class MyBatisNecesidadDao implements NecesidadDao{
 	public void actualizarEstado(String necesidad, String estado) throws PersistenceException {
 		try {
 			necesidadMapper.actualizarEstado(necesidad, estado);
+                        System.out.println("TODO BIEN EN MYBATIS");
 		}catch(org.apache.ibatis.exceptions.PersistenceException e) {
+                        e.printStackTrace();
 			throw new PersistenceException("Error al actualizar estado: "+necesidad, e);
 		}
 	}

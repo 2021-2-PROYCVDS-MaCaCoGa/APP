@@ -1,5 +1,6 @@
 package edu.eci.cvds.samplejr.dao.mybatis.mappers;
 
+import edu.eci.cvds.samples.entities.Actividad;
 import java.sql.Date;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -31,7 +32,7 @@ public interface NecesidadMapper {
      * @return 
      */
     public List<Necesidad> consultarNecesidadesCategoria(@Param("categoria") int categoria);
-    public List<Necesidad> consultarNecesidades();
+    public List<Actividad> consultarNecesidades();
     
     public Necesidad consultarNecesidad(@Param("nombre") String nombre);
     

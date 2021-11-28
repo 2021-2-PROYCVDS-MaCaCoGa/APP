@@ -6,6 +6,7 @@ import edu.eci.cvds.samplejr.dao.OfertaDao;
 import javax.inject.Inject;
 import edu.eci.cvds.samplejr.dao.PersistenceException;
 import edu.eci.cvds.samplejr.dao.RespuestaDao;
+import edu.eci.cvds.samples.entities.Actividad;
 import edu.eci.cvds.samples.entities.Categoria;
 import edu.eci.cvds.samples.services.ExcepcionServiciosEscuela;
 import edu.eci.cvds.samples.services.ServiciosEscuela;
@@ -133,8 +134,10 @@ public class ServiciosEscuelaImpl implements ServiciosEscuela {
     public void actualizarEstadoNecesidad(String necesidad, String nuevoEstado) throws ExcepcionServiciosEscuela{
         try{
             necesidadDao.actualizarEstado(necesidad, nuevoEstado);
+            System.out.println("TODO CORRECTO ACTUALIZANDO");
         }
         catch(PersistenceException persistenceException){
+            persistenceException.printStackTrace();
             throw new ExcepcionServiciosEscuela("No se pudo actualizar la necesidad "+necesidad);
         }
     }
@@ -191,6 +194,21 @@ public class ServiciosEscuelaImpl implements ServiciosEscuela {
             throw new ExcepcionServiciosEscuela("No se pudo consultar las categorias");
         }
     }
+    
+    /**
+     * Metodo encargado de dar todas las necesidades. Se revisan actividades de acuerdo  
+     * @return
+     * @throws ExcepcionServiciosEscuela 
+     */
+    @Override
+    public List<Actividad> consultarNecesidades() throws ExcepcionServiciosEscuela {
+        try{
+            return necesidadDao.consultarNecesidades();
+        }
+        catch(PersistenceException persistenceException){
+            throw new ExcepcionServiciosEscuela("No se pudo consultar las necesidades");
+        }
+    }
 
 	@Override
 	public void loggear(String correo, String contra) throws  ExcepcionServiciosEscuela {
@@ -211,6 +229,8 @@ public class ServiciosEscuelaImpl implements ServiciosEscuela {
 		}
 		
 	}
+
+    
 }
 
 
