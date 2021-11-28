@@ -228,7 +228,7 @@
                     </goals>
                     <configuration>
                         <srcFiles>
-                            <srcFile>src/main/sql/Tablas.sql</srcFile>
+                            <srcFile>src/main/SQL/Tablas.sql</srcFile>
                         </srcFiles>
                     </configuration>
                 </execution>
