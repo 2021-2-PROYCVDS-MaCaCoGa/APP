@@ -87,6 +87,10 @@ public class OfertaBean {
             exception.printStackTrace();
         }
     }
+    
+    public List<Actividad> tablaOfertas() throws ExcepcionServiciosEscuela{
+        return serviciosEscuela.consultarOfertas();
+    }
 
     public String getCategoriaOferta() {
         return categoriaOferta;
