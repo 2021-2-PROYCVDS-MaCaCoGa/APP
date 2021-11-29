@@ -72,8 +72,7 @@ public class NecesidadBean {
      */
     public void agregarNecesidad(){
         try{
-            serviciosEscuela.expresarNecesidad(categoriaNecesidad, nombreNecesidad, descripcionNecesidad, urgenciaNecesidad,usuarioNecesidad);
-        
+            serviciosEscuela.expresarNecesidad(categoriaNecesidad, nombreNecesidad, descripcionNecesidad, urgenciaNecesidad,usuarioNecesidad);       
         }
         catch(Exception exception){
             exception.printStackTrace();
@@ -92,6 +91,12 @@ public class NecesidadBean {
             exception.printStackTrace();
         }
     }
+    
+    
+    public List<Actividad> tablaNecesidades() throws ExcepcionServiciosEscuela{
+        return serviciosEscuela.consultarNecesidades();
+    }
+    
 
     public String getCategoriaNecesidad() {
         return categoriaNecesidad;

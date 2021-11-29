@@ -17,7 +17,7 @@
             .site-header{
                 padding: 1rem 0 3rem 0;
                
-                background-color: rgba(47, 55, 158, 0.418);
+                background-color: rgba(155, 44, 44, 0.486);
             }
             .centrarTexto{
                 text-align: center;
@@ -38,15 +38,14 @@
                 padding: 30px 30px;
                 display: block;
                 font-size: 1.8rem;
-                margin-right: 5rem;
-                margin-left: 7rem;
+                margin-right: 3.5rem;
              
                 object-position: left;
 
             
             }
             .navegacion li a:hover{
-                background-color: rgb(105, 118, 236);
+                background-color: rgba(201, 201, 201, 0.733);
             }
             .navegacion > li{
                 float: left;
@@ -57,19 +56,20 @@
                 min-width: 140px;
             }
             .navegacion li ul a{
-                background-color: rgba(177, 177, 177, 0.8);
+                background-color: rgba(78, 78, 78, 0.8);
                 border: #0a2347;
             }
             .navegacion li:hover > ul{
                 display: block;
-            }
+            }   
             .margenBoton{
             align-items: center;
             margin-top: 2rem;
             margin-left: 17rem;
         }
+          
         </style>
-        <body background="../resources/REGISTRAR.jpg"></body>
+        <body background="../resources/IMAGEN_NECESIDAD.jpg"></body>
         <header class="site-header">
             <h3 class="centrarTexto" style="font-size: 35px; text-align: left;">Reporte de Necesidades</h3>
             <div id="header">
@@ -87,8 +87,54 @@
         </header>
         
         
-        <h:form id="Solidaridad-Escuela">
-           
+        <h:form>
+            <div class="card">
+
+                
+                <h:commandLink>
+                    <p:graphicImage value="/resources/BOTON_PDF.png"/>
+                    <p:dataExporter type="pdf" target="tablaNecesidades" fileName="reporteNecesidades" />
+                </h:commandLink>
+                <h:commandLink>
+                    <p:graphicImage value="/resources/BOTON_EXCEL.png"/>
+                    <p:dataExporter type="xlsxstream" target="tablaNecesidades" fileName="reporteNecesidades"/>
+                </h:commandLink>
+
+                <p:dataTable id="tablaNecesidades" var="necesidad" value="#{necesidadListener.tablaNecesidades()}" style="margin-right: 1rem;margin-left: 1rem;">
+
+                    <p:column headerText="ID" style="background-color: rgba(73, 13, 73, 0.418);text-align: center;">
+                        <h:outputText value="#{necesidad.id}" />
+                    </p:column>
+
+                    <p:column headerText="CATEGORIA" style="background-color: rgba(73, 13, 73, 0.418);text-align: center;">
+                        <h:outputText value="#{necesidad.categoria}" />
+                    </p:column>
+
+                    <p:column headerText="NOMBRE" style="background-color: rgba(73, 13, 73, 0.418);text-align: center;">
+                        <h:outputText value="#{necesidad.nombre}" />
+                    </p:column>
+
+                    <p:column headerText="DESCRIPCION" style="background-color: rgba(73, 13, 73, 0.418);text-align: center;">
+                        <h:outputText value="#{necesidad.descripcion}" />
+                    </p:column>
+
+                    <p:column headerText="FECHA DE CREACION" style="background-color: rgba(73, 13, 73, 0.418);text-align: center;">
+                        <h:outputText value="#{necesidad.fechaCreacion}" />
+                    </p:column>
+
+                    <p:column headerText="ESTADO" style="background-color: rgba(73, 13, 73, 0.418);text-align: center;">
+                        <h:outputText value="#{necesidad.estado}" />
+                    </p:column>
+
+                    <p:column headerText="FECHA DE MODIFICACION" style="background-color: rgba(73, 13, 73, 0.418);text-align: center;">
+                        <h:outputText value="#{necesidad.fechaModificacion}" />
+                    </p:column>
+
+                    <p:column headerText="USUARIO" style="background-color: rgba(73, 13, 73, 0.418);text-align: center;">
+                        <h:outputText value="#{necesidad.usuario}" />
+                    </p:column>
+                </p:dataTable>
+            </div>
         </h:form>
     </h:body>
 </html>
