@@ -25,10 +25,10 @@ El producto desarrollado es una herramienta que busca facilitar comunicación e 
 
 ## Arquitectura y Diseño Detallado
 ### Modelo ER
-![Modelo ER](/imgs/Modelo ER.png)
+![ModeloER](/imgs/ModeloER.png)
 
 ### Diagrama de Clases
-
+![DClases](/imgs/DClases.png)
 
 ### Stack de Tecnologías
 1. Java
