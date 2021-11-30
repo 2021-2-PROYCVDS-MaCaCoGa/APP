@@ -8,8 +8,10 @@ import edu.eci.cvds.samples.services.ServiciosEscuelaFactory;
 import javax.faces.application.FacesMessage;
 import org.apache.shiro.subject.Subject;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 import org.apache.shiro.authz.annotation.RequiresGuest;
@@ -116,7 +118,7 @@ public class LoginBean{
      */
     public void cerrar(){
         try{
-        	//serviciosEscuela.cerrarSesion();
+        	serviciosEscuela.cerrarSesion();
         } catch(Exception exception){
             
         }
