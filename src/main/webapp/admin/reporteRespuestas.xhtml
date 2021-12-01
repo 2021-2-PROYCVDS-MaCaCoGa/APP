@@ -100,7 +100,7 @@
                     <p:dataExporter type="xlsxstream" target="tablaRespuesta" fileName="reporteRespuestas"/>
                 </h:commandLink>
 
-                <p:dataTable id="tablaRespuesta" var="respuesta" value="#{ofertaListener.tablaRespuestas}" style="margin-right: 1rem;margin-left: 1rem;">
+                <p:dataTable id="tablaRespuesta" var="respuesta" value="#{ofertaListener.tablaRespuestas()}" style="margin-right: 1rem;margin-left: 1rem;">
 
                     <p:column headerText="RESPUESTA" style="background-color: rgba(30, 150, 158, 0.349);text-align: center;">
                         <h:outputText value="#{oferta.nombre}" />
