@@ -43,7 +43,7 @@ public class MyBatisRespuestaDao implements RespuestaDao{
 	}
 
 	@Override
-	public List<Respuesta> consultarrespuesta(String respuesta)throws PersistenceException {
+	public List<Respuesta> consultarRespuesta(String respuesta)throws PersistenceException {
 		try {
 			return respuestaMapper.consultarRespuesta(respuesta);
 		}catch(org.apache.ibatis.exceptions.PersistenceException e) {

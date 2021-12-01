@@ -39,7 +39,7 @@ public interface RespuestaDao {
          * @return
          * @throws PersistenceException 
          */
-	public List<Respuesta> consultarrespuesta(String respuesta) throws PersistenceException;
+	public List<Respuesta> consultarRespuesta(String respuesta) throws PersistenceException;
         
         /**
          * Elimina de la base de datos un comentario dado su nombre
