@@ -28,7 +28,7 @@ El producto desarrollado es una herramienta que busca facilitar comunicación e 
 ![ModeloER](/imgs/ModeloER.png)
 
 ### Diagrama de Clases
-![DClases](/imgs/DClases.png)
+![DClases](/imgs/DiagramaClases.png)
 
 ### Stack de Tecnologías
 1. Java
