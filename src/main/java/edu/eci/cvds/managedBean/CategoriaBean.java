@@ -59,6 +59,16 @@ public class CategoriaBean{
         
     }
     
+    public List<Categoria> tablaCategoriasMasUsadas(){
+        List<Categoria> categorias = new ArrayList<Categoria>(); 
+        try{
+            categorias = serviciosEscuela.consultarCategoriasMasBuscadas();
+        }catch(ExcepcionServiciosEscuela e){
+            e.printStackTrace();
+        }
+        return categorias;
+    }
+    
     /**
      * Se encarga de conectar el boton de "CREAR CATEGORIA" del frontend con el método crear categoria
      * implementado en los servicios de la escuela

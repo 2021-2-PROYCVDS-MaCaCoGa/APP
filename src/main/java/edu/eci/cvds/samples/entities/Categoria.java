@@ -11,6 +11,34 @@ public class Categoria implements Serializable {
     private Date fechaCreacion;
     private String estado;
     private Date fechaModificacion;
+    private int solicitadas;
+    private int ofrecidas;
+    private int total;
+
+    public int getSolicitadas() {
+        return solicitadas;
+    }
+
+    public void setSolicitadas(int solicitadas) {
+        this.solicitadas = solicitadas;
+    }
+
+    public int getOfrecidas() {
+        return ofrecidas;
+    }
+
+    public void setOfrecidas(int ofrecidas) {
+        this.ofrecidas = ofrecidas;
+    }
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
+    
 
     public Categoria(){
         this.estado = "ACTIVO";

@@ -39,5 +39,7 @@ public interface ServiciosEscuela {
     public abstract void loggear(String correo, String contra) throws  ExcepcionServiciosEscuela;
     
     public abstract void cerrarSesion() throws  ExcepcionServiciosEscuela;
+    
+    public abstract List<Categoria> consultarCategoriasMasBuscadas() throws ExcepcionServiciosEscuela;
           
 }

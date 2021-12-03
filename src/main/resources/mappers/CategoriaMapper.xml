@@ -26,6 +26,16 @@
         FROM CATEGORIA as c
         WHERE c.ID = #{id};
     </select>
+    
+    <select parameterType = "map" id = "consultarCategoriasMasBuscadas" resultMap="ResultCategoriaMasBuscada">
+        select 
+            categoria,
+            sum(case when actividad like '%OFERTA%' then 1 else 0 end) as ofrecidas,
+            sum(case when actividad like '%NECESIDAD%' then 1 else 0 end) as solicitadas,
+            sum(case when actividad like '%OFERTA%' or actividad like '%NECESIDAD%' then 1 else 0 end) total
+        from actividad 
+        group by categoria;
+    </select>
 
     <select parameterType="map" id="consultarCategoriaNombre" resultMap="CategoriaResult">
         SELECT
@@ -67,6 +77,13 @@
         <result property="fechaCreacion" column="fCreacion"/>
         <result property="estado" column="estado"/>
         <result property="fechaModificacion" column="fModificacion"/>
+    </resultMap>
+    
+    <resultMap type = "Categoria" id = "ResultCategoriaMasBuscada">
+        <id property = "nombre" column = "categoria"/>
+        <result property = "solicitadas" column = "solicitadas"/>
+        <result property = "ofrecidas" column = "ofrecidas"/>
+        <result property = "total" column = "total" /> 
     </resultMap>
 
 </mapper>
