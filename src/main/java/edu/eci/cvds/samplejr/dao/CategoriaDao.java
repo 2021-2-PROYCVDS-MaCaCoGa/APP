@@ -52,6 +52,12 @@ public interface CategoriaDao {
      * @throws PersistenceException 
      */
     public List<Categoria> consultarcategorias()throws PersistenceException;
+    
+    /**
+     * Consulta las categorias mas usadas en el ambiente
+     * @throws PersistenceException
+     */
+    public List<Categoria> consultarCategoriasMasBuscadas() throws PersistenceException;
 
 }
 

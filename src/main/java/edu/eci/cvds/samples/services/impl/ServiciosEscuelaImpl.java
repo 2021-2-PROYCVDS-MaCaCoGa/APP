@@ -249,8 +249,19 @@ public class ServiciosEscuelaImpl implements ServiciosEscuela {
 		}catch(HistorialLoginExcepcion persistenceException){
 			throw new ExcepcionServiciosEscuela("No se pudo cerrar la sesion");
 		}
-		
+
+	}
+        
+        @Override
+        public List<Categoria> consultarCategoriasMasBuscadas() throws ExcepcionServiciosEscuela{
+            try{
+                return categoriaDao.consultarCategoriasMasBuscadas();
+            }catch(PersistenceException e){
+                throw new ExcepcionServiciosEscuela("No se pudo consultar las categorias ",e);
+            }
         }
+
+
 
   
     

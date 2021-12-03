@@ -85,6 +85,15 @@ public class MyBatisCategoriaDao implements CategoriaDao{
 		}
 		
 	}
+        
+        @Override
+        public List<Categoria> consultarCategoriasMasBuscadas() throws PersistenceException{
+            try{
+                return categoriaMapper.consultarCategoriasMasBuscadas();
+            }catch(org.apache.ibatis.exceptions.PersistenceException e){
+                throw new PersistenceException("Error al consultas las categorias mas usadas ",e);
+            }
+        }
 
 
 

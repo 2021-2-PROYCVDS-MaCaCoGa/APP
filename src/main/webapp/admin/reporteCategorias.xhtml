@@ -89,26 +89,34 @@
         
         <h:form>
             <div class="card">
-                <p:dataTable var="categoria" value="#{LoginBean.us}">
-                    <p:column headerText="Nombre">
-                        <h:outputText value="#{categoria.NOMBRE}" />
+                
+                
+                <h:commandLink>
+                    <p:graphicImage value="/resources/BOTON_PDF.png"/>
+                    <p:dataExporter type="pdf" target="tablaCategoria" fileName="reporteCategorias" />
+                </h:commandLink>
+                <h:commandLink>
+                    <p:graphicImage value="/resources/BOTON_EXCEL.png"/>
+                    <p:dataExporter type="xlsxstream" target="tablaCategoria" fileName="reporteCategorias"/>
+                </h:commandLink>
+                
+                <p:dataTable id="tablaCategoria" var="categoria" value="#{listenerCategoria.tablaCategoriasMasUsadas()}" style="margin-right: 1rem;margin-left: 1rem;">
+                    <p:column headerText="Categoria" style="background-color: rgba(149, 243, 191, 0.37);text-align: center">
+                        <h:outputText value="#{categoria.nombre}"/>
                     </p:column>
-
-                    <p:column headerText="Descripcion">
-                        <h:outputText value="#{categoria.name}" />
+                    
+                    <p:column headerText="Solicitadas" style="background-color: rgba(149, 243, 191, 0.8);text-align: center">
+                        <h:outputText value="#{categoria.solicitadas}"/>
                     </p:column>
-
-                    <p:column headerText="Fecha de Creacion ">
-                        <h:outputText value="#{categoria.category}" />
+                    
+                    <p:column headerText="Ofrecidas" style="background-color: rgba(149, 243, 191, 0.8);text-align: center">
+                        <h:outputText value="#{categoria.ofrecidas}"/>
                     </p:column>
-
-                    <p:column headerText="Estado">
-                        <h:outputText value="#{categoria.quantity}" />
+                    
+                    <p:column headerText="Total" style="background-color: rgba(149, 243, 191, 0.8);text-align: center" >
+                        <h:outputText value="#{categoria.total}" />
                     </p:column>
-
-                    <p:column headerText="Fecha de Modificacion">
-                        <h:outputText value="#{categoria.quantity}" />
-                    </p:column>
+}
                 </p:dataTable>
             </div>
         </h:form>
