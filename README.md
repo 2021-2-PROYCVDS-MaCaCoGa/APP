@@ -41,7 +41,11 @@ El producto desarrollado es una herramienta que busca facilitar comunicación e 
 8. HTML
 9. CSS
 
+### Enlace a la aplicación en Heroku
+[Heroku](https://dashboard.heroku.com/apps)
+
 ## Descripción del Proceso
+
 ### Integrantes
 * Diego Alejandro Gonzalez Gualteros
 * Cristian Andres Castellanos Fino
@@ -55,21 +59,22 @@ El producto desarrollado es una herramienta que busca facilitar comunicación e 
 [Backlog Taiga](https://tree.taiga.io/project/rixco-solidaridad-escuela/backlog)
 
 ### Release-Burndown Chart
-
+![BC](/imgs/Backlog.png)
 
 ### SPRINT 1
 
 
 #### Burndown Chart
-
+![SP1](/imgs/Sprint1.png)
 
 ### SPRINT 2
 
 
 #### Burndown Chart
-
+![SP2](/imgs/Sprint2.png)
 
 ### SPRINT 3
 
 
 #### Burndown Chart
+![SP3](/imgs/Sprint3.png)
