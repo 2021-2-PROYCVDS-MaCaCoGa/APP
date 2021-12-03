@@ -1,10 +1,13 @@
 package edu.eci.cvds.managedBean;
 
+import edu.eci.cvds.samples.entities.Actividad;
 import edu.eci.cvds.samples.entities.Respuesta;
 import edu.eci.cvds.samples.services.ExcepcionServiciosEscuela;
 import edu.eci.cvds.samples.services.ServiciosEscuela;
 import edu.eci.cvds.samples.services.ServiciosEscuelaFactory;
+import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -24,7 +27,28 @@ public class RespuestaBean {
     private String nombreComentarioRespuesta;
     private String actividadRespuesta;
     private String usuarioRespuesta;
-
+    private List<String> actividades;
+    
+ 
+    @PostConstruct
+    public void init(){
+        actividades = new ArrayList<String>();
+        try{
+            agregarActividades(serviciosEscuela.consultarNecesidades());
+            agregarActividades(serviciosEscuela.consultarOfertas());
+        }catch(ExcepcionServiciosEscuela e){
+            e.printStackTrace();
+        }
+    } 
+    
+    public void agregarActividades(List<Actividad> actividades_){
+        for(Actividad actividad:actividades_){
+            System.out.println("Nombre de la actividad: "+actividad.getNombre());
+            actividades.add(actividad.getNombre());
+        }
+    } 
+    
+    
     public void registrarRespuesta() {
         try{
             serviciosEscuela.registrarRespuesta(nombreRespuesta, comentarioRespuesta, nombreComentarioRespuesta, actividadRespuesta, usuarioRespuesta);
@@ -86,6 +110,13 @@ public class RespuestaBean {
         this.usuarioRespuesta = usuarioRespuesta;
     }
     
+    public List<String> getActividades() {
+        return actividades;
+    }
+
+    public void setActividades(List<String> actividades) {
+        this.actividades = actividades;
+    }
     
     
 }

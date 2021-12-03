@@ -19,7 +19,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class ServiciosEscuelaImpl implements ServiciosEscuela {
-
     
     CategoriaDao categoriaDao = ServiciosEscuelaFactory.getInstance().getCategoria();
     
