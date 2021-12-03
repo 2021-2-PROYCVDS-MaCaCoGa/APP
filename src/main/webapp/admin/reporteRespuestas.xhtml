@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3c.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+      <link rel="stylesheet" href="normalize.css"></link>
+    <h:head>
+        <title>Reporte de Respuestas</title>
+    </h:head>
+    <h:body>
+        <style type="text/css">
+            *{
+                padding: 0px;
+                margin: 0px;
+            }
+            .site-header{
+                padding: 1rem 0 3rem 0;
+               
+                background-color: rgba(111, 114, 155, 0.377);
+            }
+            .centrarTexto{
+                text-align: center;
+            }
+            #header{
+                margin:auto;
+                max-width: 60rem;
+                padding: 1rem 0 3rem 9rem;
+                
+            }
+            ul, ol{
+                list-style: none;
+            }
+            .navegacion li a{
+                background-color: transparent;
+                color: white;
+                text-decoration: none;
+                padding: 30px 30px;
+                display: block;
+                font-size: 1.8rem;
+                margin-right: 3.5rem;
+             
+                object-position: left;
+
+            
+            }
+            .navegacion li a:hover{
+                background-color: rgba(189, 58, 58, 0.568);
+            }
+            .navegacion > li{
+                float: left;
+            }
+            .navegacion li ul{
+                display: none;
+                position: absolute;
+                min-width: 140px;
+            }
+            .navegacion li ul a{
+                background-color: rgba(177, 177, 177, 0.8);
+                border: #0a2347;
+            }
+            .navegacion li:hover > ul{
+                display: block;
+            }
+            .margenBoton{
+            align-items: center;
+            margin-top: 2rem;
+            margin-left: 17rem;
+        }
+          
+        </style>
+        <body background="../resources/IMAGEN_RESPUESTA.jpg"></body>
+        <header class="site-header">
+            <h3 class="centrarTexto" style="font-size: 35px; text-align: left;">Reporte de Respuestas</h3>
+            <div id="header">
+                <ul class="navegacion">
+                    <li><a href="">Reportes</a>
+                        <ul>
+                            <li><a href="reporteCategorias.xhtml">Reporte de Categorias</a></li>
+                            <li><a href="reporteNecesidades.xhtml">Reporte de Necesidades</a></li>
+                            <li><a href="reporteRespuestas.xhtml">Reporte de Respuestas</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../roles/administrador.xhtml">Volver al Inicio</a></li>
+                </ul>
+            </div>
+        </header>
+        
+        
+        <h:form>
+            <div class="card">
+
+                
+                <h:commandLink>
+                    <p:graphicImage value="/resources/BOTON_PDF.png"/>
+                    <p:dataExporter type="pdf" target="tablaRespuesta" fileName="reporteRespuestas" />
+                </h:commandLink>
+                <h:commandLink>
+                    <p:graphicImage value="/resources/BOTON_EXCEL.png"/>
+                    <p:dataExporter type="xlsxstream" target="tablaRespuesta" fileName="reporteRespuestas"/>
+                </h:commandLink>
+
+                <p:dataTable id="tablaRespuesta" var="respuesta" value="#{respuestaListener.tablaRespuestas()}" style="margin-right: 1rem;margin-left: 1rem;">
+
+                    <p:column headerText="RESPUESTA" style="background-color: rgba(30, 150, 158, 0.349);text-align: center;">
+                        <h:outputText value="#{respuesta.nombre}" />
+                    </p:column>
+                    
+                    <p:column headerText="COMENTARIO"  style="background-color: rgba(30, 150, 158, 0.349);text-align: center;">
+                        <h:outputText value="#{respuesta.comentario.comentario}" />
+                    </p:column>
+                    
+                    <p:column headerText="RESPUESTA_A" style="background-color: rgba(30, 150, 158, 0.349);text-align: center;">
+                        <h:outputText value="#{respuesta.actividad}" />
+                    </p:column>
+                    
+                    <p:column headerText="ACTIVIDAD" style="background-color: rgba(30, 150, 158, 0.349);text-align: center;">
+                        <h:outputText value="#{respuesta.tActividad}" />
+                    </p:column>
+                    
+                </p:dataTable>
+            </div>
+        </h:form>
+    </h:body>
+</html>

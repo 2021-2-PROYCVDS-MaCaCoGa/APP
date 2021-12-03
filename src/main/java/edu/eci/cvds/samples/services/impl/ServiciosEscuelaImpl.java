@@ -8,6 +8,7 @@ import edu.eci.cvds.samplejr.dao.PersistenceException;
 import edu.eci.cvds.samplejr.dao.RespuestaDao;
 import edu.eci.cvds.samples.entities.Actividad;
 import edu.eci.cvds.samples.entities.Categoria;
+import edu.eci.cvds.samples.entities.Respuesta;
 import edu.eci.cvds.samples.services.ExcepcionServiciosEscuela;
 import edu.eci.cvds.samples.services.ServiciosEscuela;
 import edu.eci.cvds.samples.services.ServiciosEscuelaFactory;
@@ -218,6 +219,16 @@ public class ServiciosEscuelaImpl implements ServiciosEscuela {
         catch(PersistenceException persistenceException){
             throw new ExcepcionServiciosEscuela("No se pudo consultar las ofertas");
         }
+    }
+    
+    @Override
+    public List<Respuesta> consultarRespuestas() throws ExcepcionServiciosEscuela{
+        try{
+            return respuestaDao.consultarRespuestas();
+        }catch(PersistenceException e){
+            throw new ExcepcionServiciosEscuela("No se pudo consultar las respuestas");
+        }
+        
     }
 
 	@Override

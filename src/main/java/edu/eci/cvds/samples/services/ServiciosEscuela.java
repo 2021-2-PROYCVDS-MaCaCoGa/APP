@@ -2,6 +2,7 @@ package edu.eci.cvds.samples.services;
 
 import edu.eci.cvds.samples.entities.Actividad;
 import edu.eci.cvds.samples.entities.Categoria;
+import edu.eci.cvds.samples.entities.Respuesta;
 import edu.eci.cvds.samples.entities.Usuario;
 import edu.eci.cvds.services.HistorialLoginExcepcion;
 
@@ -32,6 +33,8 @@ public interface ServiciosEscuela {
     public abstract List<Actividad> consultarNecesidades() throws ExcepcionServiciosEscuela;
     
     public abstract List<Actividad> consultarOfertas() throws ExcepcionServiciosEscuela;
+    
+    public abstract List<Respuesta> consultarRespuestas() throws ExcepcionServiciosEscuela;
     
     public abstract void loggear(String correo, String contra) throws  ExcepcionServiciosEscuela;
     
