@@ -10,4 +10,10 @@ public interface login {
 
     public boolean Logueado();
     
+    public void redireccion();
+    
+    public void redireccionEstudiante();
+    
+    public void redireccionAdmin();
+    
 }
