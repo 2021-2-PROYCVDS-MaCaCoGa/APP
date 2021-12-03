@@ -17,12 +17,19 @@
 
      <select parameterType="map" id="consultarCantidadNecesidades" resultMap="cantidadResult">
         SELECT 
-            COUNT(*)
-            FROM Actividad as a
-            WHERE a.actividad = 'NECESIDAD'
-            AND
-            a.usuario = #{nombreUsuario};
+            COUNT(*) as solicitadas
+        FROM Actividad as a
+        WHERE a.actividad = 'NECESIDAD'
+            AND a.usuario = #{nombreUsuario};
     </select>
+    
+    <select parameterType="map" id="consultarCantidadOfertas" resultMap="cantidadResult">
+        SELECT 
+            COUNT(*) as ofrecidas
+        FROM Actividad as a
+        WHERE a.actividad = 'OFERTA'
+            AND a.usuario = #{nombreUsuario};
+    </select> 
     
     <select parameterType="map" id="consultarUsuario" resultMap="UsuarioResult">
         SELECT
@@ -46,8 +53,11 @@
         WHERE u.LOGIN = #{LOGIN} and u.PASSWORD = #{PASSWORD};
     </delete>
 
-    <resultMap type="Number" id="cantidadResult">   
- 
+    <resultMap type="Usuario" id="cantidadResult">
+        <result property="ofrecidas" column = "ofrecidas" />
+        <result property = "solicitadas" column = "solicitadas"/>
+    </resultMap>
+    
     <resultMap type="Usuario" id="UsuarioResult">
         <id property="id" column="id"/>
         <result property="nombre" column="nombre" />

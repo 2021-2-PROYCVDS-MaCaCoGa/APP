@@ -16,6 +16,9 @@ public class Usuario implements Serializable{
     private String password;
     private String login;
     private List<Actividad> actividades;
+    
+    private int ofrecidas;
+    private int solicitadas;
 
 
     /**
