@@ -71,7 +71,7 @@
         </style>
         <body background="../resources/IMAGEN_RESPUESTA.jpg"></body>
         <header class="site-header">
-            <h3 class="centrarTexto" style="font-size: 35px; text-align: left;">Reporte de Ofertas</h3>
+            <h3 class="centrarTexto" style="font-size: 35px; text-align: left;">Reporte de Respuestas</h3>
             <div id="header">
                 <ul class="navegacion">
                     <li><a href="">Reportes</a>
@@ -106,8 +106,16 @@
                         <h:outputText value="#{respuesta.nombre}" />
                     </p:column>
                     
+                    <p:column headerText="COMENTARIO"  style="background-color: rgba(30, 150, 158, 0.349);text-align: center;">
+                        <h:outputText value="#{respuesta.comentario.comentario}" />
+                    </p:column>
+                    
                     <p:column headerText="RESPUESTA_A" style="background-color: rgba(30, 150, 158, 0.349);text-align: center;">
                         <h:outputText value="#{respuesta.actividad}" />
+                    </p:column>
+                    
+                    <p:column headerText="ACTIVIDAD" style="background-color: rgba(30, 150, 158, 0.349);text-align: center;">
+                        <h:outputText value="#{respuesta.tActividad}" />
                     </p:column>
                     
                 </p:dataTable>

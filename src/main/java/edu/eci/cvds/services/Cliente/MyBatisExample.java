@@ -10,6 +10,7 @@ import edu.eci.cvds.samplejr.dao.mybatis.mappers.OfertaMapper;
 import edu.eci.cvds.samplejr.dao.mybatis.mappers.RespuestaMapper;
 import edu.eci.cvds.samplejr.dao.mybatis.mappers.UsuarioMapper;
 import edu.eci.cvds.samples.entities.Perfil;
+import edu.eci.cvds.samples.entities.Respuesta;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.DriverManager;
@@ -17,6 +18,7 @@ import java.sql.DriverManager;
 
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -132,6 +134,10 @@ public class MyBatisExample {
         //Prueba funcionamiento de Respuesta
         System.out.println("-------------------------Consultar Respuestas----------------------");
         System.out.println(respuestaM.consultarRespuestas());
+        List<Respuesta> respuestas = respuestaM.consultarRespuestas();
+        for(Respuesta respuesta:respuestas){
+            System.out.println("Comentarios de Respuesta"+respuesta.getComentario());
+        }
         System.out.println("--------------------------Insertar Respuesta------------------------");
         respuestaM.addRespuesta("RCuidado", "En el parrafo 10 se encuentra el error...", "RCuidado", "CUIDADO", "CristianC");
         respuestaM.addComentario("Si efectivamente, en ese parrafo se encuentra lo que les digo", "DiegoG", "RCuidado", "RRCuidado");
@@ -139,7 +145,9 @@ public class MyBatisExample {
         System.out.println(respuestaM.consultarRespuesta("RCuidado"));
         respuestaM.deleteComentario("RRCuidado");
         respuestaM.deleteRespuesta("RCuidado");
+        respuestaM.deleteComentario("RCuidado");
         System.out.println("-------------------------Respuesta Eliminada-------------------------");
+        System.out.println(respuestaM.consultarRespuesta("RCuidado"));
         
         
         sqlss.commit();

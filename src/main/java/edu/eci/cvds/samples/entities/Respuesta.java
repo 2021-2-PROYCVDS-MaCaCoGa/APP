@@ -12,9 +12,10 @@ public class Respuesta {
     
     private int id;
     private String nombre;
-    private List<Comentario> comentarios;
+    private Comentario comentario;
     private Date fechaCreacion;
     private String actividad;
+    private String tActividad;
     
     public Respuesta(){
 
@@ -32,8 +33,16 @@ public class Respuesta {
         return nombre;
     }
 
-    public List<Comentario> getComentarios() {
-        return comentarios;
+    public Comentario getComentario() {
+        return comentario;
+    }
+
+    public String gettActividad() {
+        return tActividad;
+    }
+
+    public void settActividad(String tActividad) {
+        this.tActividad = tActividad;
     }
 
     public Date getFechaCreacion() {
@@ -44,8 +53,8 @@ public class Respuesta {
         this.nombre = nombre;
     }
 
-    public void setComentarios(List<Comentario> comentarios) {
-        this.comentarios = comentarios;
+    public void setComentario(Comentario comentario) {
+        this.comentario = comentario;
     }
 
     public void setFechaCreacion(Date fechaCreacion) {
@@ -64,9 +73,11 @@ public class Respuesta {
     
     @Override
     public String toString(){
-        return "Respuesta{ id="+getId()+", nombre= "+getNombre()+", comentarios = ["+ getComentarios()+ "], fechaCreacion= "+getFechaCreacion()+",actividad"+getActividad()+"}";
+        return "Respuesta{ id="+getId()+", nombre= "+getNombre()+", comentarios = ["+ getComentario()+ "], fechaCreacion= "+getFechaCreacion()+",actividad"+getActividad()+", tipoActividad= "+gettActividad()+"}";
     }
     
+    
+        
     
     
 }

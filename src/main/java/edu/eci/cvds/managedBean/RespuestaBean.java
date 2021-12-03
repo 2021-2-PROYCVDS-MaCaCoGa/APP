@@ -36,6 +36,7 @@ public class RespuestaBean {
     public List<Respuesta> tablaRespuestas() throws ExcepcionServiciosEscuela{
         return serviciosEscuela.consultarRespuestas();
     }
+    
 
     public ServiciosEscuela getServiciosEscuela() {
         return serviciosEscuela;

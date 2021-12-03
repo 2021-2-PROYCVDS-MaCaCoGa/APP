@@ -22,9 +22,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
             r.fechaCreacion as fCreacion,
             r.actividad as actividad,
             c.comentario as comentario,
-            c.usuario as usuario
+            c.usuario as usuario,
+            a.actividad as tActividad
         FROM Respuesta as r
-        LEFT JOIN Comentario as c ON c.nombre = r.comentario;
+        LEFT JOIN Comentario as c ON c.nombre = r.comentario
+        LEFT JOIN Actividad as a ON a.nombre = r.actividad;
     </select>
     
     <insert id = "addRespuesta">
@@ -62,9 +64,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
             r.fechaCreacion as fCreacion,
             r.actividad as actividad,
             c.comentario as comentario,
-            c.usuario as usuario
+            c.usuario as usuario,
+            a.actividad as tActividad
         FROM Respuesta as r
         LEFT JOIN Comentario as c ON c.nombre = r.comentario
+        LEFT JOIN Actividad as a ON a.nombre = r.actividad
         WHERE r.nombre = #{respuesta};
     </select>    
     
@@ -83,10 +87,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
         <result property="nombre" column="nombre"/>
         <result property="fechaCreacion" column="fCreacion"/>
         <result property = "actividad" column = "actividad" />
-        <collection property ="comentarios" ofType="Comentario">
+        <result property = "tActividad" column="tActividad" />
+        <association property ="comentario" javaType="Comentario">
             <result property = "comentario" column = "comentario"/>
             <result property = "usuario" column = "usuario" />
-        </collection>
+        </association>
     </resultMap>
    
     <!--resultMap type="Respuesta" id="InformeRespuestaResult">
