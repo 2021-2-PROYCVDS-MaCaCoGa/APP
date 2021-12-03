@@ -39,5 +39,7 @@ public interface NecesidadMapper {
     public void actualizarEstado (@Param("necesidad") String necesidad,
                                     @Param("estado") String estado);
     public void eliminarNecesidad(@Param("necesidad") String necesidad);
+    
+    public Number consultarCantidadNecesidades(@Param("nombreUsuario") String nombreUsuario);
    
 }

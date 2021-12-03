@@ -14,6 +14,15 @@
             u.LOGIN as login
         FROM USUARIO as u;
     </select>
+
+     <select parameterType="map" id="consultarCantidadNecesidades" resultMap="cantidadResult">
+        SELECT 
+            COUNT(*)
+            FROM Actividad as a
+            WHERE a.actividad = 'NECESIDAD'
+            AND
+            a.usuario = #{nombreUsuario};
+    </select>
     
     <select parameterType="map" id="consultarUsuario" resultMap="UsuarioResult">
         SELECT
@@ -36,6 +45,8 @@
         DELETE FROM Usuario as u
         WHERE u.LOGIN = #{LOGIN} and u.PASSWORD = #{PASSWORD};
     </delete>
+
+    <resultMap type="Number" id="cantidadResult">   
  
     <resultMap type="Usuario" id="UsuarioResult">
         <id property="id" column="id"/>

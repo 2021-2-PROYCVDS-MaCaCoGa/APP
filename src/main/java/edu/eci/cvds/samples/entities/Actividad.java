@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package edu.eci.cvds.samples.entities;
 
 import java.sql.Date;
@@ -22,7 +19,7 @@ public abstract class Actividad {
     protected LocalDate fechaModificacion;
     protected String usuario;
     protected String actividad;
-    public static  int nSolicitudes;
+    public static Number nSolicitudes = 1;
     public final static String ACTIVA = "Activa";
     public final static String ENPROCESO = "En Proceso";
     public final static String RESUELTA = "Resuelta";
@@ -64,7 +61,7 @@ public abstract class Actividad {
         return this.usuario;
     }
 
-    public static int getnSolicitudes() {
+    public Number getnSolicitudes() {
         return nSolicitudes;
     }
 
@@ -103,7 +100,6 @@ public abstract class Actividad {
     public static void setnSolicitudes(int nSolicitudes) {
         Actividad.nSolicitudes = nSolicitudes;
     }
-    
     
     
     @Override

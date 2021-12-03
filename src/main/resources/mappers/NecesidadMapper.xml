@@ -85,6 +85,8 @@
         DELETE FROM ACTIVIDAD as a
         WHERE a.nombre = #{necesidad}; 
     </delete>
+
+
     
     <resultMap type="Necesidad" id="NecesidadResult">
         <id property="id" column="id"/>
