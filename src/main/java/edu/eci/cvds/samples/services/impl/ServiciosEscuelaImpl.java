@@ -225,6 +225,7 @@ public class ServiciosEscuelaImpl implements ServiciosEscuela {
 		try {
 			loginConcection.log(correo, contra);
 		}catch(HistorialLoginExcepcion persistenceException){
+                    persistenceException.printStackTrace();
 			throw new ExcepcionServiciosEscuela("No se pudo loggear");
 		}
 		
@@ -238,10 +239,9 @@ public class ServiciosEscuelaImpl implements ServiciosEscuela {
 			throw new ExcepcionServiciosEscuela("No se pudo cerrar la sesion");
 		}
 		
-	}
+        }
 
-    
-
+  
     
 }
 

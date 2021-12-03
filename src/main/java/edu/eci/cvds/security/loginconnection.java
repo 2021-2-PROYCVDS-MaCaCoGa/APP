@@ -1,5 +1,8 @@
 package edu.eci.cvds.security;
 
+import com.google.inject.Inject;
+import edu.eci.cvds.samplejr.dao.mybatis.mappers.UsuarioMapper;
+import edu.eci.cvds.samples.entities.Usuario;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.IncorrectCredentialsException;
@@ -20,6 +23,12 @@ import org.apache.shiro.crypto.hash.Sha256Hash;
 import sun.security.provider.SHA;
 
 public class loginconnection implements login{
+    @Inject
+    private UsuarioMapper mapperUsuario;
+    
+    private Usuario usuarioRevisar;
+    
+    private String rolUsuario;
 
     /**
      * Funcion utilizada para loguear al usuario de acuerdo al id y contraseña proporcionada
@@ -27,31 +36,17 @@ public class loginconnection implements login{
      */
     @Override
     public void log(String usuario, String contra) throws HistorialLoginExcepcion {
-        System.out.println("Se intenta el log, entra al metodo");
+        System.out.println("ENTRA AL METODO DE LOG DE LOGINCONNECTION");
         try{
-            System.out.println("PRIMERA PRUEBA PARA VER SI ESTAN LOS VALORES");
-            System.out.println(usuario);
-            System.out.println(contra);
-            //Subject currentUser = SecurityUtils.setSecurityManager(SecurityManager.);
-            //System.out.println(//currentUser.toString());
-            //MD5HASH es un metodo de criptografia de shiro
-            UsernamePasswordToken token = new UsernamePasswordToken(usuario, new Sha256Hash(contra).toHex());
-            //currentUser.getSession().setAttribute("usuario",usuario);
-            //currentUser.login(token);
-            System.out.print("log exitoso");
-        } catch(UnknownSessionException unknownSessionException){
-            System.out.print("pailas1");
-            throw new HistorialLoginExcepcion("El usuario no se encuentra registrado");
-        } catch(IncorrectCredentialsException incorrectCredentialsException){
-            System.out.print("pailas2");
-            throw new HistorialLoginExcepcion("Contraseña del usuario incorrecta, pruebe de nuevo");
-        } catch(LockedAccountException lockedAccountException){
-            System.out.print("pailas3");
-            throw new HistorialLoginExcepcion("El usuario se encuentra actualmente bloqueado");
-        } catch(Exception exception){
-            System.out.println("pailas4");
+            usuarioRevisar = mapperUsuario.consultarUsuario(usuario);
+            if(usuarioRevisar.getContraseña().equals(contra)){
+                this.rolUsuario = usuarioRevisar.getPerfil();
+                redireccion();
+            }
+        }
+        catch(Exception exception){
             exception.printStackTrace();
-            throw new HistorialLoginExcepcion("Ocurrio un error inesperado");
+            throw new HistorialLoginExcepcion("No se pudo revisar los datos del usuario");
         }
     }
 
@@ -78,5 +73,37 @@ public class loginconnection implements login{
     public boolean Logueado() {
         return SecurityUtils.getSubject().isAuthenticated();
     }
+
+    @Override
+    public void redireccion() {
+        System.out.println("SE REDIRECCIONA HACIA "+this.usuarioRevisar.getPerfil());
+        if(this.rolUsuario.equals("Estudiante")){
+            redireccionEstudiante();
+        }
+        else if(this.rolUsuario.equals("Administrador")){
+            redireccionAdmin();
+        }
+    }
+
+    @Override
+    public void redireccionEstudiante() {
+        try{
+            FacesContext.getCurrentInstance().getExternalContext().redirect("../faces/roles/estudiante.xhtml");
+        }
+        catch(Exception exception){
+            exception.printStackTrace();
+        }
+    }
+
+    @Override
+    public void redireccionAdmin() {
+        try{
+            FacesContext.getCurrentInstance().getExternalContext().redirect("../faces/roles/administrador.xhtml");
+        }
+        catch(Exception exception){
+            exception.printStackTrace();
+        }
+    }
+    
     
 }
