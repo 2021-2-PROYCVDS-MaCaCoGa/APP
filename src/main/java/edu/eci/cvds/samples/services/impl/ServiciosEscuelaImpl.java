@@ -249,8 +249,7 @@ public class ServiciosEscuelaImpl implements ServiciosEscuela {
 		}catch(HistorialLoginExcepcion persistenceException){
 			throw new ExcepcionServiciosEscuela("No se pudo cerrar la sesion");
 		}
-		
-<<<<<<< HEAD
+
 	}
         
         @Override
@@ -262,10 +261,7 @@ public class ServiciosEscuelaImpl implements ServiciosEscuela {
             }
         }
 
-    
-=======
-        }
->>>>>>> 5e4db2cf7eb52630a313976dad6d4b6b5bc77d62
+
 
   
     
