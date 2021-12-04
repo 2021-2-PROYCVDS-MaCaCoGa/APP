@@ -19,11 +19,8 @@ public abstract class Actividad {
     protected LocalDate fechaModificacion;
     protected String usuario;
     protected String actividad;
-<<<<<<< HEAD
     public static Number nSolicitudes = 10;
-=======
-    public static Number nSolicitudes = 7;
->>>>>>> 0322e88754ddd22332a98f19af1f11b709d784de
+
     public final static String ACTIVA = "Activa";
     public final static String ENPROCESO = "En Proceso";
     public final static String RESUELTA = "Resuelta";
