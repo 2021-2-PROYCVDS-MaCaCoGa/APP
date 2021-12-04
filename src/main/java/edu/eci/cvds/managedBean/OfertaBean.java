@@ -14,7 +14,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import org.primefaces.context.RequestContext;
+import org.primefaces.PrimeFaces;
 
 
 @SuppressWarnings("deprecation")
@@ -77,7 +77,7 @@ public class OfertaBean {
         }
         catch(Exception exception){
             FacesMessage mensaje = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",exception.getMessage());
-            RequestContext.getCurrentInstance().showMessageInDialog(mensaje);
+            PrimeFaces.current().dialog().showMessageDynamic(mensaje);
         }
     }  
     

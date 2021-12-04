@@ -6,6 +6,7 @@ import edu.eci.cvds.samples.services.ExcepcionServiciosEscuela;
 import edu.eci.cvds.samples.services.ServiciosEscuela;
 import edu.eci.cvds.samples.services.ServiciosEscuelaFactory;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,6 +16,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.swing.JOptionPane;
+import org.primefaces.model.charts.ChartData;
+import org.primefaces.model.charts.donut.DonutChartDataSet;
+import org.primefaces.model.charts.donut.DonutChartModel;
 
 
 @ManagedBean(name = "listenerCategoria")
@@ -30,6 +34,8 @@ public class CategoriaBean{
     private String nombreActualizar;
     private String descripcionActualizar;
     private String estadoActualizar;
+    private DonutChartModel donutModel;
+    private HashMap<String,Number> valoresGrafico;
     
     /**
      * Este PostConstruct se crea para poder agregar valores a la lsta de nombres de categorias
@@ -44,6 +50,7 @@ public class CategoriaBean{
             for(Categoria categoria : categorias){
                 this.nombres.add(categoria.getNombre());
             }
+            createDonutModel();
         } catch (ExcepcionServiciosEscuela ex){
         }
     }
@@ -63,6 +70,53 @@ public class CategoriaBean{
         }
     }
     
+    public void createDonutModel() {
+        donutModel = new DonutChartModel();
+        ChartData data = new ChartData();
+
+        DonutChartDataSet dataSet = new DonutChartDataSet();
+        List<Number> values = new ArrayList<Number>();
+        List<String> labels = new ArrayList<String>();
+        List<String> bgColors = new ArrayList<String>();
+        HashMap<String,Number> mapa = getValues();
+        for(String key:getValues().keySet()){
+            labels.add(key);
+            bgColors.add(getColors());
+        }
+        for(Number value:getValues().values()){
+           values.add(value);
+        }
+        dataSet.setData(values);
+        dataSet.setBackgroundColor(bgColors);
+
+        data.addChartDataSet(dataSet);
+        data.setLabels(labels);
+        donutModel.setData(data);
+    }
+    
+    public String getColors(){
+        int r = (int)Math.random()*255;
+        int b = (int)(Math.random()*255);
+        int g = (int)(Math.random()*255);
+        String colores = "rgb("+r+", "+b+", "+g+")";
+        return colores;
+    }
+    
+    public HashMap<String,Number> getValues(){
+        List<Categoria> categorias = new ArrayList<>();
+        HashMap<String,Number> mapa = new HashMap<>();
+        try{
+            categorias = serviciosEscuela.consultarCategoriasMasBuscadas();
+            for(Categoria categoria:categorias){
+                mapa.put(categoria.getNombre(), categoria.getTotal());
+            }
+        }catch(ExcepcionServiciosEscuela e){
+            e.printStackTrace();
+        }
+        return mapa;
+    }
+        
+        
     /**
      * Metodo que retorna la tabla modificada con las categorias mas usadas en las necesidades 
      * @return -> List<Categoria> sentencia de las categorias mas usadas en las necesidades y ofertas
@@ -242,6 +296,32 @@ public class CategoriaBean{
     public void setEstadoActualizar(String estadoActualizar) {
         this.estadoActualizar = estadoActualizar;
     }
+
+    public ServiciosEscuela getServiciosEscuela() {
+        return serviciosEscuela;
+    }
+
+    public void setServiciosEscuela(ServiciosEscuela serviciosEscuela) {
+        this.serviciosEscuela = serviciosEscuela;
+    }
+
+    public DonutChartModel getDonutModel() {
+        return donutModel;
+    }
+
+    public void setDonutModel(DonutChartModel donutModel) {
+        this.donutModel = donutModel;
+    }
+
+    public HashMap<String, Number> getValoresGrafico() {
+        return valoresGrafico;
+    }
+
+    public void setValoresGrafico(HashMap<String, Number> valoresGrafico) {
+        this.valoresGrafico = valoresGrafico;
+    }
+    
+    
     
     
 
