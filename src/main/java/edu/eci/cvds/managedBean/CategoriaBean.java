@@ -12,11 +12,13 @@ import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.swing.JOptionPane;
 
 
 @ManagedBean(name = "listenerCategoria")
-@ApplicationScoped
+@SessionScoped
 public class CategoriaBean{
     //@Inject
     ServiciosEscuela serviciosEscuela = ServiciosEscuelaFactory.getInstance().getServiciosEscuela();
@@ -29,6 +31,11 @@ public class CategoriaBean{
     private String descripcionActualizar;
     private String estadoActualizar;
     
+    /**
+     * Este PostConstruct se crea para poder agregar valores a la lsta de nombres de categorias
+     * Tambien sirve para llamar de nuevo a esos valores y meterlos en la lista en caso
+     * de haber insertado o actualizado alguno
+     */
     @PostConstruct
     public void init(){
         nombres = new ArrayList<>();
@@ -41,6 +48,11 @@ public class CategoriaBean{
         }
     }
     
+    /**
+     * Con este metodo se le da valor a los valores que se quieran actualizar de la categoria
+     * como ya se buscó la categoria y se encontró, se deja como valores predeterminados
+     * de descripcion, nombre y estado a actualizar como los actuales 
+     */
     public void getDatosActualizar(){
         for(Categoria categoria : categorias){
             if(categoria.getNombre().equals(nombreCategoria)){
@@ -51,14 +63,10 @@ public class CategoriaBean{
         }
     }
     
-    public void prueba(){
-        System.out.println(nombreCategoria);
-        System.out.println(nombreActualizar);
-        System.out.println(descripcionActualizar);
-        System.out.println(estadoActualizar);
-        
-    }
-    
+    /**
+     * Metodo que retorna la tabla modificada con las categorias mas usadas en las necesidades 
+     * @return -> List<Categoria> sentencia de las categorias mas usadas en las necesidades y ofertas
+     */
     public List<Categoria> tablaCategoriasMasUsadas(){
         List<Categoria> categorias = new ArrayList<Categoria>(); 
         try{
@@ -75,10 +83,7 @@ public class CategoriaBean{
      */
     public void agregarCategoria(){
         try{
-            System.out.println(nombreCategoria.getClass());
-            System.out.println(descripcionCategoria.getClass());
             serviciosEscuela.crearCategoria(nombreCategoria, descripcionCategoria);
-          
         }
         catch(Exception exception){
             exception.printStackTrace();
@@ -91,7 +96,12 @@ public class CategoriaBean{
      */
     public void actualizarCategoria(){
         try{
-            serviciosEscuela.actualizarCategoria(nombreCategoria, nombreActualizar, descripcionActualizar, estadoActualizar);
+            if(!revisionNombre()){
+                serviciosEscuela.actualizarCategoria(nombreCategoria, nombreActualizar, descripcionActualizar, estadoActualizar);
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "No se puede repetir nombres de categorias");
+            }
         }
         catch(Exception exception){
         }
@@ -104,11 +114,18 @@ public class CategoriaBean{
     public void eliminarCategoria(){
         try{
             serviciosEscuela.eliminarCategoria(nombreCategoria);
+            this.nombres.clear();
+            init();
         }
         catch(Exception exception){}
         
     }
     
+    /**
+     * Debido a que primero se busca la categoria a la cual se le quiere actualizar
+     * apenas tengamos la que queremos, nos dirigimos a la actualizacion final
+     * que es donde esta la informacion de esta categoria
+     */
     public void redireccionarActualizacion(){
         getDatosActualizar();
         try{
@@ -119,6 +136,35 @@ public class CategoriaBean{
         }
     }
     
+    /**
+     * Ya modificada la categoria, nos devolvemos a la busqueda de las categorias
+     * que se encuentran en la base para ver si el cliente quiere modificar otra
+     */
+    public void redireccionAnterior(){
+        try{
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+            facesContext.getExternalContext().redirect("../admin/modificarCategoria.xhtml");
+        }
+        catch(Exception exception){
+        }
+    }
+    
+    /**
+     * Apenas haga el proceso que necesitaba el cliente, se le dirige a la pagina principal
+     * del administador
+     */
+    public void redireccionPrincipal(){
+        try{
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+            facesContext.getExternalContext().redirect("../roles/administrador.xhtml");
+        }
+        catch(Exception exception){
+        }
+    }
+    
+    /**
+     * Como primero se busca 
+     */
     public void redireccionarEliminacion(){
         getDatosActualizar();
         try{
@@ -126,6 +172,16 @@ public class CategoriaBean{
             facesContext.getExternalContext().redirect("../admin/eliminacionFinal.xhtml");
         }
         catch(Exception exception){}
+    }
+    
+    public boolean revisionNombre(){
+        boolean valor = true;
+        for(String nombre : this.nombres){
+            if(nombre.equals(this.nombreActualizar)){
+                valor = false;
+            }
+        }
+        return valor;
     }
 
     public String getNombreCategoria() {
@@ -146,6 +202,8 @@ public class CategoriaBean{
     
 
     public List<String> getNombres() {
+        this.nombres.clear();
+        init();
         return nombres;
     }
 

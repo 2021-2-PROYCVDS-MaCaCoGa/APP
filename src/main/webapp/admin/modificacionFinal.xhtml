@@ -121,8 +121,13 @@
              <h5 style="font-size: 20px; margin-top: 0.5rem;">Estado de la Categoría</h5>
              <p:inputText id="estado" value="#{listenerCategoria.estadoActualizar}" style="background-color: rgba(182, 165, 182, 0.712);"/>
             <div>
-                <p:commandButton class="margenBoton" value="Modificar Categoria" action="#{listenerCategoria.actualizarCategoria}" style="margin-top: 1rem; margin-left: 15rem;"/>
+                <p:commandButton class="margenBoton" value="Modificar Categoria" action="#{listenerCategoria.actualizarCategoria}" style="margin-top: 1rem; margin-left: 15rem;">
+                    <p:confirm header="Confirmation" message="Se ha modificado la categoria exitosamente"/>
+                </p:commandButton>
             </div>
+            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350">
+                <p:commandButton value="Ok" type="link" styleClass="ui-confirmdialog-yes" action="#{listenerCategoria.redireccionAnterior()}"/>
+            </p:confirmDialog>
             </h:form>
     </h:body>
 </html>

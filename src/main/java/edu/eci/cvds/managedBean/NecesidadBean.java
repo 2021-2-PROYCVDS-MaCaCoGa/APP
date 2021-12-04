@@ -15,7 +15,10 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import org.primefaces.context.PrimeFacesContext;
+<<<<<<< HEAD
 import org.primefaces.context.RequestContext;
+=======
+>>>>>>> c1291667b712def7f4ea4bf37ced6b2f1cfea6db
 
 
 @SuppressWarnings("deprecation")
@@ -62,6 +65,15 @@ public class NecesidadBean {
         try{
             FacesContext facesContext = FacesContext.getCurrentInstance();
             facesContext.getExternalContext().redirect("../Funciones Generales/actualizarFinal.xhtml");
+        }
+        catch(Exception exception){
+        }
+    }
+    
+    public void redireccionPrincipal(){
+        try{
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+            facesContext.getExternalContext().redirect("../roles/administrador.xhtml");
         }
         catch(Exception exception){
         }

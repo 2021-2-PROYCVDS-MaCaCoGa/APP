@@ -89,14 +89,19 @@
             <!--Para poner el nombre de la categoria-->
             <h5 style="font-size: 20px; margin-top: 1.5rem;">Nombre de la Categoría</h5>
            
-            <p:inputText id="float-input" value="#{listenerCategoria.nombreCategoria}" style="background-color: rgba(182, 165, 182, 0.712);"/>
+            <p:inputText id="float-input" value="#{listenerCategoria.nombreCategoria}" style="background-color: rgba(206, 195, 206, 0.712);"/>
             
             <!--Para el formato de descripcion, que sea de texto extendido-->
             <h5 style="font-size: 20px; margin-top: 1rem;">Descripción</h5>
-            <p:inputTextarea rows="6" cols="80" value="#{listenerCategoria.descripcionCategoria}" style="background-color: rgba(182, 165, 182, 0.712);"/>
+            <p:inputTextarea rows="6" cols="80" value="#{listenerCategoria.descripcionCategoria}" style="background-color:rgba(206, 195, 206, 0.712);"/>
             <div>
-                <p:commandButton class="margenBoton" value="Crear Categoría" action="#{listenerCategoria.agregarCategoria()}" />
+                <p:commandButton class="margenBoton" value="Crear Categoría" action="#{listenerCategoria.agregarCategoria()}">
+                    <p:confirm header="Confirmation" message="Se ha agregado la categoria exitosamente"/>
+                </p:commandButton>
             </div>
+            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350">
+                <p:commandButton value="Ok" type="link" styleClass="ui-confirmdialog-yes" action="#{listenerCategoria.redireccionPrincipal()}"/>
+            </p:confirmDialog>
         </h:form>
     </h:body>
 </html>
