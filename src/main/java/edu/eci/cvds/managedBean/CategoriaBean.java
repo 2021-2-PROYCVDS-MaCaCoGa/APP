@@ -48,6 +48,11 @@ public class CategoriaBean{
         }
     }
     
+    /**
+     * Con este metodo se le da valor a los valores que se quieran actualizar de la categoria
+     * como ya se buscó la categoria y se encontró, se deja como valores predeterminados
+     * de descripcion, nombre y estado a actualizar como los actuales 
+     */
     public void getDatosActualizar(){
         for(Categoria categoria : categorias){
             if(categoria.getNombre().equals(nombreCategoria)){
@@ -58,14 +63,10 @@ public class CategoriaBean{
         }
     }
     
-    public void prueba(){
-        System.out.println(nombreCategoria);
-        System.out.println(nombreActualizar);
-        System.out.println(descripcionActualizar);
-        System.out.println(estadoActualizar);
-        
-    }
-    
+    /**
+     * Metodo que retorna la tabla modificada con las categorias mas usadas en las necesidades 
+     * @return -> List<Categoria> sentencia de las categorias mas usadas en las necesidades y ofertas
+     */
     public List<Categoria> tablaCategoriasMasUsadas(){
         List<Categoria> categorias = new ArrayList<Categoria>(); 
         try{
@@ -120,6 +121,11 @@ public class CategoriaBean{
         
     }
     
+    /**
+     * Debido a que primero se busca la categoria a la cual se le quiere actualizar
+     * apenas tengamos la que queremos, nos dirigimos a la actualizacion final
+     * que es donde esta la informacion de esta categoria
+     */
     public void redireccionarActualizacion(){
         getDatosActualizar();
         try{
@@ -130,6 +136,10 @@ public class CategoriaBean{
         }
     }
     
+    /**
+     * Ya modificada la categoria, nos devolvemos a la busqueda de las categorias
+     * que se encuentran en la base para ver si el cliente quiere modificar otra
+     */
     public void redireccionAnterior(){
         try{
             FacesContext facesContext = FacesContext.getCurrentInstance();
@@ -139,6 +149,10 @@ public class CategoriaBean{
         }
     }
     
+    /**
+     * Apenas haga el proceso que necesitaba el cliente, se le dirige a la pagina principal
+     * del administador
+     */
     public void redireccionPrincipal(){
         try{
             FacesContext facesContext = FacesContext.getCurrentInstance();
@@ -148,6 +162,9 @@ public class CategoriaBean{
         }
     }
     
+    /**
+     * Como primero se busca 
+     */
     public void redireccionarEliminacion(){
         getDatosActualizar();
         try{

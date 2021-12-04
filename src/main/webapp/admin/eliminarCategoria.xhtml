@@ -113,7 +113,7 @@
                     <h:panelGrid columns="1" cellpadding="1">
                         <p:selectOneMenu id="Categoria" value="#{listenerCategoria.nombreCategoria}" required="true" label="Text 2" style="margin-left: 9.5rem;">
                             <f:selectItem itemLabel="Select One" itemValue="" noSelectionOption="true"/>
-                            <f:selectItems value="#{listenerCategoria.nombres}"/>
+                            <f:selectItems value="#{listenerCategoria.getNombres()}"/>
                         </p:selectOneMenu>
                         <div>
                             <p:commandButton class="margenBoton" value="Buscar Categoría" action="#{listenerCategoria.redireccionarEliminacion}" style="margin-left: 9.5rem;"/>
