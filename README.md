@@ -2,6 +2,9 @@
 [![CircleCI](https://circleci.com/gh/2021-2-PROYCVDS-MaCaCoGa/APP/tree/main.svg?style=svg)](https://circleci.com/gh/2021-2-PROYCVDS-MaCaCoGa/APP/tree/main)
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/4bdf1d5d421f4696bf880e013a8abdef)](https://www.codacy.com/gh/2021-2-PROYCVDS-MaCaCoGa/APP/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=2021-2-PROYCVDS-MaCaCoGa/APP&amp;utm_campaign=Badge_Grade)
+
+[![Heroku CI Status](https://https://app-databse-cvds.herokuapp.com/.herokuapp.com/last.svg)](https://dashboard.heroku.com/pipelines/{pipeline ID}/tests)
+
 ## CVDS 2021-2
 ### Product Owner
 * Oscar David Ospina Rodriguez
