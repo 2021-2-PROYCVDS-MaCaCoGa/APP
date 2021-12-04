@@ -66,10 +66,14 @@ public class NecesidadBean {
         }
     }
     
+    /**
+     * Despues de que el cliente haya hecho lo que necesita con la necesidad, se le redirecciona
+     * hacia la pagina principal del estudiante.
+     */
     public void redireccionPrincipal(){
         try{
             FacesContext facesContext = FacesContext.getCurrentInstance();
-            facesContext.getExternalContext().redirect("../roles/administrador.xhtml");
+            facesContext.getExternalContext().redirect("../roles/estudiante.xhtml");
         }
         catch(Exception exception){
         }

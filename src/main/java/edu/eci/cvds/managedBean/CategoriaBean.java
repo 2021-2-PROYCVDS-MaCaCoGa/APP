@@ -163,7 +163,8 @@ public class CategoriaBean{
     }
     
     /**
-     * Como primero se busca 
+     * Como primero se busca la categoria que se quiera eliminar, se redirecciona a 
+     * una pagina donde se da los valores de la categoria buscada.
      */
     public void redireccionarEliminacion(){
         getDatosActualizar();
@@ -174,6 +175,11 @@ public class CategoriaBean{
         catch(Exception exception){}
     }
     
+    /**
+     * Funcion que revisa si el nombre que se le quiere poner como actulizacion a la categoria
+     * esta dentro del arreglo de nombres de categorias.
+     * @return -> boolean 
+     */
     public boolean revisionNombre(){
         boolean valor = true;
         for(String nombre : this.nombres){
