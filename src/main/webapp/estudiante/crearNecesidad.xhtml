@@ -114,8 +114,17 @@
             <p:inputTextarea rows="6" cols="50" value="#{necesidadListener.descripcionNecesidad}"/>
 
             <div>
+<<<<<<< HEAD
                 <p:commandButton  style="margin-left: 8rem;" value="Solicitar" action="#{necesidadListener.agregarNecesidad}"/>
+=======
+                <p:commandButton  style="margin-left: 8rem;" value="Crear Categoría" action="#{necesidadListener.agregarNecesidad()}">
+                    <p:confirm header="Confirmation" message="Se ha agregado la necesidad exitosamente"/>
+                </p:commandButton>
+>>>>>>> 0322e88754ddd22332a98f19af1f11b709d784de
             </div>
+            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350">
+                <p:commandButton value="Ok" type="link" styleClass="ui-confirmdialog-yes" action="#{necesidadListener.redireccionPrincipal()}"/>
+            </p:confirmDialog>
         </h:form>
     </h:body>
 </html>

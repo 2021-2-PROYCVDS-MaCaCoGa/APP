@@ -85,7 +85,7 @@
         </header>
         
             <h:form id="Valores_Categoria"> 
-               <!--Para poner el nombre de la categoria-->
+               <!--Para poner el nombre de la oferta-->
             <h5 style="font-size: 20px; margin-top: 1.5rem;">Nombre de la Oferta</h5>
             <p:inputText id="nombre" value="#{ofertaListener.nombreOferta}" style="background-color: rgba(182, 165, 182, 0.712);"/>
             
@@ -94,7 +94,7 @@
             <h5 style="font-size: 20px; margin-top: 1rem;">Descripción</h5>
             <p:inputTextarea rows="5" cols="80" value="#{ofertaListener.descripcionOferta}" style="background-color: rgba(182, 165, 182, 0.712);"/>
 
-             <!--Para poner el estado de la categoria-->
+             <!--Para poner el estado de la oferta-->
              <h5 style="font-size: 20px; margin-top: 1rem;">Estado de la Necesidad</h5>
              <p:selectOneMenu id="option" value="#{ofertaListener.estadoActualizar}">
                 <f:selectItem itemLabel="#{ofertaListener.estadoOferta}" itemValue="#{ofertaListener.estadoOferta}"/>
@@ -103,8 +103,13 @@
                 <f:selectItem itemLabel="CERRADA" itemValue="CERRADA"/>
             </p:selectOneMenu>
             <div>
-                <p:commandButton class="margenBoton" value="Modificar Categoria" action="#{ofertaListener.actualizarEstadoOferta}" style="margin-top: 1rem; margin-left: 15rem;"/>
+                <p:commandButton class="margenBoton" value="Modificar Oferta" action="#{ofertaListener.actualizarEstadoOferta}" style="margin-top: 1rem; margin-left: 15rem;">
+                    <p:confirm header="Confirmation" message="Se ha modificado el estado de la oferta exitosamente"/>
+                </p:commandButton>
             </div>
+            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350">
+                <p:commandButton value="Ok" type="link" styleClass="ui-confirmdialog-yes" action="#{ofertaListener.redireccionPrincipal()}"/>
+            </p:confirmDialog>
             </h:form>
     </h:body>
 </html>

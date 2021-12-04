@@ -109,8 +109,13 @@
             <p:inputTextarea rows="6" cols="50" value="#{ofertaListener.descripcionOferta}" style="background-color: rgba(182, 165, 182, 0.712);"/>
 
             <div>
-                <p:commandButton  style="margin-left: 8rem;" value="Crear Oferta" action="#{ofertaListener.registrarOferta}"/>
+                <p:commandButton  style="margin-left: 8rem;" value="Crear Oferta" action="#{ofertaListener.registrarOferta}">
+                    <p:confirm header="Confirmation" message="Se ha agregado la oferta exitosamente"/>
+                </p:commandButton>
             </div>
+            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350">
+                <p:commandButton value="Ok" type="link" styleClass="ui-confirmdialog-yes" action="#{ofertaListener.redireccionPrincipal()}"/>
+            </p:confirmDialog>
         </h:form>
     </h:body>
 </html>

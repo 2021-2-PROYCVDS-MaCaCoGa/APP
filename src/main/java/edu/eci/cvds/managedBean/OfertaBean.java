@@ -33,7 +33,10 @@ public class OfertaBean {
     private List<String> nombresOfertas;
     private List<Actividad> ofertas;
     
-    
+    /**
+     * Se crea este postConstruct con el fin de pedir los nombres de las ofertas
+     * actualizadas. Esto para el reporte y la busqueda de ofertas.
+     */
     @PostConstruct
     public void init(){
         nombresOfertas = new ArrayList<>();
@@ -46,6 +49,10 @@ public class OfertaBean {
         }
     }
     
+    /**
+     * Metodo creado para dar valores predeterminados a los valores a actualizar
+     * pues cuando se quiere actualizar una oferta, primero se le muestran sus datos
+     */
     public void getDatosActualizar(){
         for(Actividad oferta : this.ofertas){
             if(oferta.getNombre().equals(nombreOferta)){
@@ -56,6 +63,9 @@ public class OfertaBean {
         }
     }
     
+    /**
+     * Metodo que se encarga de redireccionar a la actualizacion de la oferta que el cliente pide
+     */
     public void redireccionActualizar(){
         getDatosActualizar();
         try{
@@ -65,6 +75,20 @@ public class OfertaBean {
         catch(Exception exception){
         }
     }
+    
+    /**
+     * Metodo creado para devolver al cliente a la pagina de inicio de estudiante, pues ya creó la oferta.
+     */
+    public void redireccionPrincipal(){
+        try{
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+            facesContext.getExternalContext().redirect("../roles/estudiante.xhtml");
+        }
+        catch(Exception exception){
+        }
+    }
+    
+    
     /**
      * Se encarga de crear la oferta del estudiante en la base de datos
      * Solo se pide estos parametros, pues los demás se crean de manera automatica 
@@ -81,6 +105,9 @@ public class OfertaBean {
         }
     }  
     
+    /**
+     * Metodo creado para actualizar el estado de una oferta de acuerdo a los 4 valores 
+     */
     public void actualizarEstadoOferta(){
         try{
             serviciosEscuela.actualizarEstadoOferta(nombreOferta,estadoActualizar);
@@ -144,6 +171,8 @@ public class OfertaBean {
     }
 
     public List<String> getNombresOfertas() {
+        this.nombresOfertas.clear();
+        init();
         return nombresOfertas;
     }
 

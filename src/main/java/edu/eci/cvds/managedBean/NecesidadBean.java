@@ -70,10 +70,27 @@ public class NecesidadBean {
         }
     }
     
+    /**
+     * Despues de que el cliente haya hecho lo que necesita con la necesidad, se le redirecciona
+     * hacia la pagina principal del estudiante.
+     */
     public void redireccionPrincipal(){
         try{
             FacesContext facesContext = FacesContext.getCurrentInstance();
-            facesContext.getExternalContext().redirect("../roles/administrador.xhtml");
+            facesContext.getExternalContext().redirect("../roles/estudiante.xhtml");
+        }
+        catch(Exception exception){
+        }
+    }
+    
+    /**
+     * Cuando se haya modificado el estado de la necesidad, se devuelve hacia el buscador de necesidades
+     * en caso que el cliente quiera modificar otra.
+     */
+    public void redireccionAnterior(){
+        try{
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+            facesContext.getExternalContext().redirect("../Funciones Generales/actualizarNecesidad.xhtml");
         }
         catch(Exception exception){
         }
@@ -155,6 +172,8 @@ public class NecesidadBean {
     }
 
     public List<String> getNombresNecesidades() {
+        this.nombresNecesidades.clear();
+        init();
         return nombresNecesidades;
     }
 

@@ -89,7 +89,7 @@
                     <p:growl id="messages"/>
                     <h:panelGrid columns="1" cellpadding="1">
                         <p:selectOneMenu id="Oferta" value="#{ofertaListener.nombreOferta}" required="true" label="Text 2" style="margin-left: 8rem;">
-                            <f:selectItems value="#{ofertaListener.nombresOfertas}"/>
+                            <f:selectItems value="#{ofertaListener.getNombresOfertas()}"/>
                         </p:selectOneMenu>
                         <div>
                             <p:commandButton class="margenBoton" value="Buscar Necesidad" action="#{ofertaListener.redireccionActualizar}" style="margin-left: 8rem;"/>
