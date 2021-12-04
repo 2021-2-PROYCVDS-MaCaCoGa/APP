@@ -83,5 +83,29 @@ public class MyBatisUsuario implements UsuarioDao {
                 throw new PersistenceException("Error al eliminar el usuario "+login,e);
             }
         }
+
+        @Override
+        public int consultarNumeroSolicitadas(String usuario) throws PersistenceException {
+            int solicitadas = 0;
+            try{
+                solicitadas = usuarioMapper.consultarCantidadNecesidades(usuario).getSolicitadas();
+            }catch(org.apache.ibatis.exceptions.PersistenceException e){
+                throw new PersistenceException("No fue posible obtener el numero de necesidades del usuario "+usuario,e);
+            }
+            return solicitadas;
+        }
+        
+        @Override
+        public int consultarNumeroOfrecidas(String usuario) throws PersistenceException{
+            int ofrecidas = 0;
+            try{
+                ofrecidas = usuarioMapper.consultarCantidadOfertas(usuario).getOfrecidas();
+            }catch(org.apache.ibatis.exceptions.PersistenceException e){
+                throw new PersistenceException("No fue posible obtener el numero de ofertas del usuario "+usuario,e);
+            }
+            return ofrecidas;
+        }
+        
+        
 }
 

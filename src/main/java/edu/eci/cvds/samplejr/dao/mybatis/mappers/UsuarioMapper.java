@@ -27,4 +27,8 @@ public interface UsuarioMapper {
     
     public void deleteUsuario(@Param("LOGIN") String login,@Param("PASSWORD") String password);
     
+    public Usuario consultarCantidadNecesidades(@Param("nombreUsuario") String usuario);
+    
+    public Usuario consultarCantidadOfertas(@Param("nombreUsuario") String usuario);
+        
 }

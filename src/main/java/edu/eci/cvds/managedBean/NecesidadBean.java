@@ -15,6 +15,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import org.primefaces.context.PrimeFacesContext;
+import org.primefaces.context.RequestContext;
 
 
 @SuppressWarnings("deprecation")
@@ -89,8 +90,10 @@ public class NecesidadBean {
             serviciosEscuela.expresarNecesidad(categoriaNecesidad, nombreNecesidad, descripcionNecesidad, urgenciaNecesidad,usuarioNecesidad);       
         }
         catch(Exception exception){
-            exception.printStackTrace();
+            FacesMessage mensaje = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",exception.getMessage());
+            RequestContext.getCurrentInstance().showMessageInDialog(mensaje);
         }
+
     }
     
     /**

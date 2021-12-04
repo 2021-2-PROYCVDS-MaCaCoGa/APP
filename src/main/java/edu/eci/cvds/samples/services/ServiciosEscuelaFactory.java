@@ -56,6 +56,7 @@ public class ServiciosEscuelaFactory {
                 bind(OfertaDao.class).to(MyBatisOfertaDao.class);
                 bind(RespuestaDao.class).to(MyBatisRespuestaDao.class);
                 bind(login.class).to(loginconnection.class);
+                bind(UsuarioDao.class).to(MyBatisUsuario.class);
            }
        });
    }

@@ -41,5 +41,7 @@ public interface ServiciosEscuela {
     public abstract void cerrarSesion() throws  ExcepcionServiciosEscuela;
     
     public abstract List<Categoria> consultarCategoriasMasBuscadas() throws ExcepcionServiciosEscuela;
+    
+    public abstract int consultarNumeroActividadesUsuario(String usuario, String actividad) throws ExcepcionServiciosEscuela;
           
 }
