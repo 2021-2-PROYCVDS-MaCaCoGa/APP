@@ -52,4 +52,21 @@ public interface UsuarioDao {
      * @throws PersistenceException 
      */
     public void deleteUsuario(String login, String password) throws PersistenceException;
+    
+    /**
+     * Consulta el número de solicitudes de un usuario
+     * @param usuario Usuario al que se busca saber el numero de necesidades registradas
+     * @return
+     * @throws PersistenceException 
+     */
+    public int consultarNumeroSolicitadas(String usuario) throws PersistenceException;
+    
+    
+    /**
+     * Consulta el numero de ofertas de un usuario
+     * @param usuario Usuario al que se busca saber el numero de ofertas registradas
+     * @return
+     * @throws PersistenceException 
+     */
+    public int consultarNumeroOfrecidas(String usuario) throws PersistenceException;
 }

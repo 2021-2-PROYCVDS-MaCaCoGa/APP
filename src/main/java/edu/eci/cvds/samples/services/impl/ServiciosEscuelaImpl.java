@@ -6,6 +6,7 @@ import edu.eci.cvds.samplejr.dao.OfertaDao;
 import javax.inject.Inject;
 import edu.eci.cvds.samplejr.dao.PersistenceException;
 import edu.eci.cvds.samplejr.dao.RespuestaDao;
+import edu.eci.cvds.samplejr.dao.UsuarioDao;
 import edu.eci.cvds.samples.entities.Actividad;
 import edu.eci.cvds.samples.entities.Categoria;
 import edu.eci.cvds.samples.entities.Respuesta;
@@ -32,6 +33,9 @@ public class ServiciosEscuelaImpl implements ServiciosEscuela {
     
     @Inject
     RespuestaDao respuestaDao;
+    
+    @Inject
+    UsuarioDao usuarioDao;
     
     /**
      * Se encarga de crear la categoria y meterla a la base de datos
@@ -96,7 +100,11 @@ public class ServiciosEscuelaImpl implements ServiciosEscuela {
     @Override
     public void expresarNecesidad(String categoria, String nombre, String descripcion, int urgencia, String usuario) throws ExcepcionServiciosEscuela {
         try{
-            necesidadDao.agregarNecesidad(categoria, nombre, descripcion,usuario, urgencia);
+            if(consultarNumeroActividadesUsuario(usuario, "NECESIDAD") >= (int)Actividad.nSolicitudes){
+                throw new ExcepcionServiciosEscuela("El usuario no puede registrar mas solicitudes");
+            }else{
+                necesidadDao.agregarNecesidad(categoria, nombre, descripcion,usuario, urgencia);
+            }
         }
         catch(PersistenceException persistenceException){
             persistenceException.printStackTrace();
@@ -115,7 +123,11 @@ public class ServiciosEscuelaImpl implements ServiciosEscuela {
     @Override
     public void registrarOferta(String categoria, String nombre, String descripcion, String usuario) throws ExcepcionServiciosEscuela {
         try{
-            ofertaDao.agregarOferta(categoria, descripcion, nombre, usuario);
+            if(consultarNumeroActividadesUsuario(usuario, "OFERTA") >= (int)Actividad.nSolicitudes){
+                throw new ExcepcionServiciosEscuela("El usuario no puede registrar mas ofertas");
+            }else{
+                ofertaDao.agregarOferta(categoria, descripcion, nombre, usuario);
+            }
         }
         catch(PersistenceException persistenceException){
             throw new ExcepcionServiciosEscuela("No se pudo registrar la oferta del estudiante");
@@ -259,6 +271,21 @@ public class ServiciosEscuelaImpl implements ServiciosEscuela {
                 throw new ExcepcionServiciosEscuela("No se pudo consultar las categorias ",e);
             }
         }
+        
+    @Override
+    public int consultarNumeroActividadesUsuario(String usuario, String actividad) throws ExcepcionServiciosEscuela{
+        int actividades = 0;
+        try{
+            if(actividad == "OFERTA"){
+                actividades = usuarioDao.consultarNumeroOfrecidas(usuario);
+            }else{
+                actividades = usuarioDao.consultarNumeroSolicitadas(usuario);
+            }
+        }catch(PersistenceException e){
+            throw new ExcepcionServiciosEscuela("No se pudo obtener el numero de actividades de el usuario "+usuario,e);
+        }
+        return actividades;
+    }
 
 
 

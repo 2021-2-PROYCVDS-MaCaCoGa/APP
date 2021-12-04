@@ -22,17 +22,7 @@ public class MyBatisNecesidadDao implements NecesidadDao{
 	@Override
             public void agregarNecesidad(String categoria, String nombre, String descripcion,String usuario, int urgencia) throws PersistenceException {
 		try {
-                    //PRIMERO REVISAMOS QUE LA PERSONA NO SE HAYA PASADO DE LA CANTIDAD MAXIMA DE NECESIDADES A INGRESAR
-                    System.out.println(usuario);
-                    System.out.println(consultarCantidadNecesidades(usuario));
-                    System.out.println(actividad.getnSolicitudes());
-                    if(consultarCantidadNecesidades(usuario) != actividad.getnSolicitudes()){
-                        necesidadMapper.addNecesidad(categoria, nombre, descripcion,urgencia,usuario);
-                    }
-                    else{
-                        JOptionPane.showMessageDialog(null, "El usuario excede la cantidad máxima de necesidades a ingresar");
-                    }
-			
+                        necesidadMapper.addNecesidad(categoria, nombre, descripcion,urgencia,usuario);			
 		}catch(org.apache.ibatis.exceptions.PersistenceException e) {
 			throw new PersistenceException("Error al agregar necesidad "+nombre, e);
 		}
@@ -86,16 +76,5 @@ public class MyBatisNecesidadDao implements NecesidadDao{
                 }
         }
 
-    @Override
-    public Number consultarCantidadNecesidades(String nombreUsuario) throws PersistenceException {
-        try{
-            return necesidadMapper.consultarCantidadNecesidades(nombreUsuario);
-        }
-        catch(org.apache.ibatis.exceptions.PersistenceException e){
-            e.printStackTrace();
-            throw new PersistenceException("No se pudo revisar la cantidad de necesidades registradas por el usuario");
-            
-        }
-    }
 
 }

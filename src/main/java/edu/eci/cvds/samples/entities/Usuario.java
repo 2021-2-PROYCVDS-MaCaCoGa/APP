@@ -54,6 +54,56 @@ public class Usuario implements Serializable{
 
     public void setLogin(String login){this.login = login;}
     public String getLogin(){return this.login;}
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public List<Actividad> getActividades() {
+        return actividades;
+    }
+
+    public void setActividades(List<Actividad> actividades) {
+        this.actividades = actividades;
+    }
+
+    public int getOfrecidas() {
+        return ofrecidas;
+    }
+
+    public void setOfrecidas(int ofrecidas) {
+        this.ofrecidas = ofrecidas;
+    }
+
+    public int getSolicitadas() {
+        return solicitadas;
+    }
+
+    public void setSolicitadas(int solicitadas) {
+        this.solicitadas = solicitadas;
+    }
+    
+    
     
     @Override
     public String toString(){

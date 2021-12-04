@@ -56,12 +56,5 @@ public interface NecesidadDao {
          */
         public void eliminarNecesidad(String necesidad) throws PersistenceException;
         
-        /**
-         * Revisa la cantidad de necesidades que ha publicado un usuario
-         * @param nombreUsuario
-         * @return
-         * @throws PersistenceException 
-         */
-        public Number consultarCantidadNecesidades(String nombreUsuario) throws PersistenceException;
 	
 }
