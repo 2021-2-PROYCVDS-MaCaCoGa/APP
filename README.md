@@ -34,15 +34,13 @@ El producto desarrollado es una herramienta que busca facilitar comunicación e 
 
 ![Foto](https://github.com/2021-2-PROYCVDS-MaCaCoGa/APP/blob/main/imgs/manual3.png)
 
-	a.En la opcion Registrar necesidad podemos crear nuestra necesidad, o si el usuario se equivoco tambien puede
-	volver al inicio o actualizar una necesidad anterior
+	a.En la opcion Registrar necesidad podemos crear nuestra necesidad, o si el usuario se equivoco tambien puede volver al inicio o actualizar una necesidad anterior
 
-	 ![Foto](https://github.com/2021-2-PROYCVDS-MaCaCoGa/APP/blob/main/imgs/manual4.png)
+	![Foto](https://github.com/2021-2-PROYCVDS-MaCaCoGa/APP/blob/main/imgs/manual4.png)
 
-	b.En actualizar necesidad podemos selecionar entra las categorias que existen para actualizar una necesidad 
-	anteriormente creada
+	b.En actualizar necesidad podemos selecionar entra las categorias que existen para actualizar una necesidad anteriormente creada
 
-	 ![Foto](https://github.com/2021-2-PROYCVDS-MaCaCoGa/APP/blob/main/imgs/manual5.png)
+	![Foto](https://github.com/2021-2-PROYCVDS-MaCaCoGa/APP/blob/main/imgs/manual5.png)
 
 4. En la seccion de ofrecer elementos podemos encontrar las opciones de, Registrar Oferta o Actualizar Oferta
 
