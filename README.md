@@ -21,16 +21,54 @@ El producto desarrollado es una herramienta que busca facilitar comunicación e 
 
 ### Manual de Usuario
 
-> 1. Logearse o iniciar sesion de usuarion en la pagina 
-![Foto](https://github.com/JuanesCortes/Lab01/blob/master/Andres%20Martinez%20Velasquez/1.png)
-
-> 2. Al ingresar podemos ver varias opciones para entrar y una breve explicacion de que es Solidaridad Escuela.
+1. Logearse o iniciar sesion de usuarion en la pagina 
 
 ![Foto](https://github.com/JuanesCortes/Lab01/blob/master/Andres%20Martinez%20Velasquez/1.png)
 
-> 3. En la seccion de perdir elementos encontramos dos opciones, registrar necesidad o actualizar necesidad.
+2. Al ingresar podemos ver varias opciones para entrar y una breve explicacion de que es Solidaridad Escuela.
 
- 
+![Foto](https://github.com/JuanesCortes/Lab01/blob/master/Andres%20Martinez%20Velasquez/1.png)
+
+3. En la seccion de perdir elementos encontramos dos opciones, registrar necesidad o actualizar necesidad.
+
+
+![Foto](https://github.com/JuanesCortes/Lab01/blob/master/Andres%20Martinez%20Velasquez/1.png)
+
+	a. En la opcion Registrar necesidad podemos crear nuestra necesidad, o si el usuario se equivoco tambien puede
+	volver al inicio o actualizar una necesidad anterior
+
+	![Foto](https://github.com/JuanesCortes/Lab01/blob/master/Andres%20Martinez%20Velasquez/1.png)
+
+	b. En actualizar necesidad podemos selecionar entra las categorias que existen para actualizar una necesidad 
+	anteriormente creada
+
+	![Foto](https://github.com/JuanesCortes/Lab01/blob/master/Andres%20Martinez%20Velasquez/1.png)
+
+4. En la seccion de ofrecer elementos podemos encontrar las opciones de, Registrar Oferta o Actualizar Oferta
+
+	a. En registro de oferta podemos registrar nuestra oferta o volver al incio si asi se desea.
+	
+	![Foto](https://github.com/JuanesCortes/Lab01/blob/master/Andres%20Martinez%20Velasquez/1.png)
+
+	b. En la seccion actualizar oferta podemos buscar una oferta previamente creada para modificarla
+
+	![Foto](https://github.com/JuanesCortes/Lab01/blob/master/Andres%20Martinez%20Velasquez/1.png)
+
+5. En la opcion de registrar oferta nos permite registrar una respuesta que desee el usuario.
+
+	a. Nos permite resgistrar una respuesta en una actividad con el nombre del usuario
+
+	![Foto](https://github.com/JuanesCortes/Lab01/blob/master/Andres%20Martinez%20Velasquez/1.png)
+
+6. La sexta y ultima opcion nos permite cerrar sesion de usuario despues de haber utilizado la plataforma como se
+necesitaba.
+	
+	![Foto](https://github.com/JuanesCortes/Lab01/blob/master/Andres%20Martinez%20Velasquez/1.png)
+
+
+#Muchas gracias, por leer el manual de usuario Solidaridad Escuela.
+
+
 
 ### Imágenes y Descripción de las Funcionalidades más Importantes
 
