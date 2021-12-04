@@ -85,7 +85,7 @@
         </header>
         
             <h:form id="Valores_Categoria"> 
-               <!--Para poner el nombre de la categoria-->
+               <!--Para poner el nombre de la necesidad-->
             <h5 style="font-size: 20px; margin-top: 1.5rem;">Nombre de la Necesidad</h5>
             <p:inputText id="nombre" value="#{necesidadListener.nombreNecesidad}" style="background-color: rgba(182, 165, 182, 0.712);"/>
             
@@ -94,7 +94,7 @@
             <h5 style="font-size: 20px; margin-top: 1rem;">Descripción</h5>
             <p:inputTextarea rows="5" cols="80" value="#{necesidadListener.descripcionNecesidad}" style="background-color: rgba(182, 165, 182, 0.712);"/>
 
-             <!--Para poner el estado de la categoria-->
+             <!--Para poner el estado de la necesidad-->
              <h5 style="font-size: 20px; margin-top: 1rem;">Estado de la Necesidad</h5>
              <p:selectOneMenu id="option" value="#{necesidadListener.estadoActualizar}">
                 <f:selectItem itemLabel="#{necesidadListener.estadoNecesidad}" itemValue="#{necesidadListener.estadoNecesidad}"/>
@@ -103,7 +103,7 @@
                 <f:selectItem itemLabel="CERRADA" itemValue="CERRADA"/>
             </p:selectOneMenu>
             <div>
-                <p:commandButton class="margenBoton" value="Modificar Categoria" action="#{necesidadListener.actualizarEstadoNecesidad}" style="margin-top: 1rem; margin-left: 15rem;">
+                <p:commandButton class="margenBoton" value="Modificar Necesidad" action="#{necesidadListener.actualizarEstadoNecesidad}" style="margin-top: 1rem; margin-left: 15rem;">
                     <p:confirm header="Confirmation" message="Se ha modificado el estado de la necesidad exitosamente"/>
                 </p:commandButton>
             </div>
