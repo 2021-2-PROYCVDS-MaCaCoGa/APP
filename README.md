@@ -31,7 +31,6 @@ El producto desarrollado es una herramienta que busca facilitar comunicación e 
 
 3. En la seccion de perdir elementos encontramos dos opciones, registrar necesidad o actualizar necesidad.
 
-
 ![Foto](https://github.com/2021-2-PROYCVDS-MaCaCoGa/APP/blob/main/imgs/manual3.png)
 
 	a.En la opcion Registrar necesidad podemos crear nuestra necesidad, o si el usuario se equivoco tambien puede volver al inicio o actualizar una necesidad anterior
