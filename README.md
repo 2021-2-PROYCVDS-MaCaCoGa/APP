@@ -1,7 +1,9 @@
 # ECI Solidaridad Escuela
 [![CircleCI](https://circleci.com/gh/2021-2-PROYCVDS-MaCaCoGa/APP/tree/main.svg?style=svg)](https://circleci.com/gh/2021-2-PROYCVDS-MaCaCoGa/APP/tree/main)
 
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/4bdf1d5d421f4696bf880e013a8abdef)](https://www.codacy.com/gh/2021-2-PROYCVDS-MaCaCoGa/APP/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=2021-2-PROYCVDS-MaCaCoGa/APP&amp;utm_campaign=Badge_Grade)
 
+[![Deployed to Heroku](https://www.herokucdn.com/deploy/button.png)](https://dashboard.heroku.com/apps/app-databse-cvds)
 ## CVDS 2021-2
 ### Product Owner
 * Oscar David Ospina Rodriguez
@@ -41,7 +43,11 @@ El producto desarrollado es una herramienta que busca facilitar comunicación e 
 8. HTML
 9. CSS
 
+### Enlace a la aplicación en Heroku
+[Heroku](https://app-databse-cvds.herokuapp.com/)
+
 ## Descripción del Proceso
+
 ### Integrantes
 * Diego Alejandro Gonzalez Gualteros
 * Cristian Andres Castellanos Fino
@@ -55,21 +61,22 @@ El producto desarrollado es una herramienta que busca facilitar comunicación e 
 [Backlog Taiga](https://tree.taiga.io/project/rixco-solidaridad-escuela/backlog)
 
 ### Release-Burndown Chart
-
+![BC](/imgs/Backlog.png)
 
 ### SPRINT 1
 
 
 #### Burndown Chart
-
+![SP1](/imgs/Sprint1.png)
 
 ### SPRINT 2
 
 
 #### Burndown Chart
-
+![SP2](/imgs/Sprint2.png)
 
 ### SPRINT 3
 
 
 #### Burndown Chart
+![SP3](/imgs/Sprint3.png)
