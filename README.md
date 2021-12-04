@@ -21,6 +21,16 @@ El producto desarrollado es una herramienta que busca facilitar comunicación e 
 
 ### Manual de Usuario
 
+> 1. Logearse o iniciar sesion de usuarion en la pagina 
+![Foto](https://github.com/JuanesCortes/Lab01/blob/master/Andres%20Martinez%20Velasquez/1.png)
+
+> 2. Al ingresar podemos ver varias opciones para entrar y una breve explicacion de que es Solidaridad Escuela.
+
+![Foto](https://github.com/JuanesCortes/Lab01/blob/master/Andres%20Martinez%20Velasquez/1.png)
+
+> 3. En la seccion de perdir elementos encontramos dos opciones, registrar necesidad o actualizar necesidad.
+
+ 
 
 ### Imágenes y Descripción de las Funcionalidades más Importantes
 
