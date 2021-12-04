@@ -103,8 +103,13 @@
                 <f:selectItem itemLabel="CERRADA" itemValue="CERRADA"/>
             </p:selectOneMenu>
             <div>
-                <p:commandButton class="margenBoton" value="Modificar Categoria" action="#{necesidadListener.actualizarEstadoNecesidad}" style="margin-top: 1rem; margin-left: 15rem;"/>
+                <p:commandButton class="margenBoton" value="Modificar Categoria" action="#{necesidadListener.actualizarEstadoNecesidad}" style="margin-top: 1rem; margin-left: 15rem;">
+                    <p:confirm header="Confirmation" message="Se ha modificado el estado de la necesidad exitosamente"/>
+                </p:commandButton>
             </div>
+            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350">
+                <p:commandButton value="Ok" type="link" styleClass="ui-confirmdialog-yes" action="#{necesidadListener.redireccionPrincipal()}"/>
+            </p:confirmDialog>
             </h:form>
     </h:body>
 </html>

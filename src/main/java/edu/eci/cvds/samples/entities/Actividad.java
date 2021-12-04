@@ -19,7 +19,7 @@ public abstract class Actividad {
     protected LocalDate fechaModificacion;
     protected String usuario;
     protected String actividad;
-    public static Number nSolicitudes = 1;
+    public static Number nSolicitudes = 7;
     public final static String ACTIVA = "Activa";
     public final static String ENPROCESO = "En Proceso";
     public final static String RESUELTA = "Resuelta";

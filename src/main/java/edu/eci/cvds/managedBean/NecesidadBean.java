@@ -81,6 +81,19 @@ public class NecesidadBean {
     }
     
     /**
+     * Cuando se haya modificado el estado de la necesidad, se devuelve hacia el buscador de necesidades
+     * en caso que el cliente quiera modificar otra.
+     */
+    public void redireccionAnterior(){
+        try{
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+            facesContext.getExternalContext().redirect("../Funciones Generales/actualizarNecesidad.xhtml");
+        }
+        catch(Exception exception){
+        }
+    }
+    
+    /**
      * Se encarga de crear la necesidad del estudiante en la base de datos
      * Solo se pide estos parametros, pues los demás se crean de manera automatica 
      * mediante disparadores SQL.
@@ -156,6 +169,8 @@ public class NecesidadBean {
     }
 
     public List<String> getNombresNecesidades() {
+        this.nombresNecesidades.clear();
+        init();
         return nombresNecesidades;
     }
 

@@ -90,7 +90,7 @@
                     <h:panelGrid columns="1" cellpadding="1">
                         <p:selectOneMenu id="Categoria" value="#{necesidadListener.nombreNecesidad}" required="true" label="Text 2" style="margin-left: 8rem;">
                             <f:selectItem itemLabel="Select One" itemValue="" noSelectionOption="true"/>
-                            <f:selectItems value="#{necesidadListener.nombresNecesidades}"/>
+                            <f:selectItems value="#{necesidadListener.getNombresNecesidades()}"/>
                         </p:selectOneMenu>
                         <div>
                             <p:commandButton class="margenBoton" value="Buscar Necesidad" action="#{necesidadListener.redireccionActualizar}" style="margin-left: 8rem;"/>
